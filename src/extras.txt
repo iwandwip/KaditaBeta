@@ -19,4 +19,4 @@ communication
 - LCD (optional)
 - Oled (optional)
 
-- analog input / output
+- (critical) analog input / output
