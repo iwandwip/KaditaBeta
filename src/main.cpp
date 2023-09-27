@@ -1,6 +1,5 @@
 #include <Arduino.h>
-#include "output-module.h"
-#include "input-module.h"
+#include "KaditaIoT.h"
 
 void setup() {
     Serial.begin(9600);
