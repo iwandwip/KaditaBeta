@@ -13,6 +13,7 @@
 #include "Arduino.h"
 
 // custom external sensor
+// will be updated soon
 #ifdef SENSOR_MODULE_H
 #include "sensor-module.h"
 #include "abstract-sens.h"

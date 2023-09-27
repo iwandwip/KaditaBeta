@@ -1,11 +1,12 @@
-#include <Arduino.h>
-#include "KaditaIoT.h"
+#include <KaditaIoT.h>
+
+DigitalOut led(LED_BUILTIN);
 
 void setup() {
     Serial.begin(9600);
 }
 
 void loop() {
-    Serial.println(20);
-    delay(1000);
+    led.toggle();
+    delay(100);
 }
