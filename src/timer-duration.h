@@ -1,24 +1,28 @@
 /*
- *  timer-arduino.h
+ *  timer-duration.h
  *
- *  arduino timer lib
+ *  arduino timer duration lib
  *  Created on: 2023. 4. 3
  */
 
 #pragma once
 
-#ifndef KADITA_TIMER_ARDUINO_H
-#define KADITA_TIMER_ARDUINO_H
+#ifndef KADITA_TIMER_DURATION_H
+#define KADITA_TIMER_DURATION_H
 
 #include "Arduino.h"
 
-class TimerArduino {
+class TimerDuration {
 public:
-    TimerArduino();
+    TimerDuration();
 
     void setDuration(unsigned long interval);
 
     void start();
+
+    void stop();
+
+    void resume();
 
     bool isExpired() const;
 
@@ -35,6 +39,7 @@ public:
 private:
     unsigned long _startMillis;
     unsigned long _interval;  // in milliseconds
+    bool _isRunning;
 };
 
-#endif // KADITA_TIMER_ARDUINO_H
+#endif // KADITA_TIMER_DURATION_H

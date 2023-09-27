@@ -1,0 +1,22 @@
+- add module / driver
+- add type sensor
+
+x.0.0 => based on hardware, protocol, platform
+0.x.0 => based on added modules, communication
+0.0.x => based on revision (bug fixed)
+
+communication
+- software serial (avr)
+- hardware serial (esp32)
+    - goals => define pin
+- i2c scanner => function
+- LoRa
+- NRF24L01 (optional)
+- RS485 (optional)
+- Bluetooth (optional)
+
+- KeypadI2C
+- LCD (optional)
+- Oled (optional)
+
+- analog input / output

@@ -1,41 +1,41 @@
 /*
- *  timer-ticks.cpp
+ *  timer-task.cpp
  *
  *  timer module c
  *  Created on: 2023. 4. 3
  */
 
-#include "timer-ticks.h"
+#include "timer-task.h"
 
-TimerTicks::TimerTicks() = default;
+TimerTask::TimerTask() = default;
 
-TimerTicks::TimerTicks(const unsigned long &timeout, const bool &micros) {
+TimerTask::TimerTask(const unsigned long &timeout, const bool &micros) {
     us = micros;
     update(timeout);
 }
 
-void TimerTicks::begin(const unsigned long &timeout, const bool &micros) {
+void TimerTask::begin(const unsigned long &timeout, const bool &micros) {
     us = micros;
     update(timeout);
 }
 
-void TimerTicks::update(const unsigned long &timeout) {
+void TimerTask::update(const unsigned long &timeout) {
     period = timeout;
     start();
 }
 
-void TimerTicks::start() {
+void TimerTask::start() {
     if (us)
         timeBench = micros();
     else
         timeBench = millis();
 }
 
-void TimerTicks::reset() {
+void TimerTask::reset() {
     timeBench += period;
 }
 
-bool TimerTicks::tick(const bool &_reset) {
+bool TimerTask::tick(const bool &_reset) {
     unsigned long currentTime;
 
     if (us)

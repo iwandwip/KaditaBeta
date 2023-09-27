@@ -29,8 +29,8 @@
 #include "output-module.h"
 
 // timer lib
-#include "timer-arduino.h"
-#include "timer-ticks.h"
+#include "timer-duration.h"
+#include "timer-task.h"
 
 //#include "blynk-handler.h"
 
