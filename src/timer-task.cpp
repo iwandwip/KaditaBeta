@@ -35,7 +35,7 @@ void TimerTask::reset() {
     timeBench += period;
 }
 
-bool TimerTask::tick(const bool &_reset) {
+bool TimerTask::triggered(const bool &_reset) {
     unsigned long currentTime;
 
     if (us)

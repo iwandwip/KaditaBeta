@@ -36,7 +36,7 @@ public:
 
     void reset();
 
-    bool tick(const bool &_reset = true);
+    bool triggered(const bool &_reset = true);
 };
 
 #endif  // KADITA_TIMER_TASK_H
