@@ -12,9 +12,8 @@
 
 #include "Arduino.h"
 
-const unsigned long UL_MAX = 4294967295;
-const bool MILLI_SECONDS = false;
-const bool MICRO_SECONDS = true;
+#define MILLI_SECONDS false
+#define MICRO_SECONDS true
 
 class TimerTask {
 private:

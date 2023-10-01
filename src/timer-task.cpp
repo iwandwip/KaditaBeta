@@ -7,6 +7,8 @@
 
 #include "timer-task.h"
 
+const unsigned long UL_MAX = 4294967295;
+
 TimerTask::TimerTask() = default;
 
 TimerTask::TimerTask(const unsigned long &timeout, const bool &micros) {
