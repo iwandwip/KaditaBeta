@@ -1,5 +1,5 @@
 /*
- *  Kadita.h
+ *  KaditaIoT.h
  *
  *  Kadita lib header
  *  Created on: 2023. 4. 3
