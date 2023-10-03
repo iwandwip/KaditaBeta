@@ -1,3 +1,3 @@
 #######################################
-# Syntax Coloring Map For KaditaIoT
+# Syntax Coloring Map For iMake Beta
 #######################################
