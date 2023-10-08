@@ -36,9 +36,13 @@ public:
         /*updated soon*/
     }
 #endif
-    virtual void getValue(float *output) = 0;
-    virtual void getValue(int *output) = 0;
-    virtual void getValue(char *output) = 0;
+
+    virtual void getValue(float *output) {/*updated soon*/}
+
+    virtual void getValue(int *output) {/*updated soon*/}
+
+    virtual void getValue(char *output) {/*updated soon*/}
+
 #if defined(EXTENDED_FUNCTION_VTABLE)
     virtual void setCallBack(void (*callbackFunc)()) {
         /*updated soon*/

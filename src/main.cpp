@@ -1,12 +1,15 @@
 #include <Kadita.h>
 
-DigitalOut led(13);
+DHTSens dht(2, DHT22);
+
+float value[2];
 
 void setup() {
     Serial.begin(9600);
+    dht.init();
 }
 
 void loop() {
-    led.toggle();
-    delay(1000);
+    dht.getValue(value);
+    dht.update();
 }

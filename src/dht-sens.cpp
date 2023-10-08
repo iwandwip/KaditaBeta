@@ -1,40 +1,42 @@
 /*
- *  abstract-sens.cpp
+ *  dht-sens.cpp
  *
- *  abstract sensor c
+ *  dht sensor c
  *  Created on: 2023. 4. 3
  */
 
-#include "abstract-sens.h"
+#include "dht-sens.h"
 #include "Arduino.h"
 
-Abstract::Abstract()
+DHTSens::DHTSens()
         : isCalibrate(false), sensorPin(A0) {
 }
 
-Abstract::Abstract(uint8_t _pin, bool enableCalibrate) {
+DHTSens::DHTSens(uint8_t _pin, uint8_t _type, bool enableCalibrate) {
     this->sensorPin = _pin;
+    this->type = _type;
     isCalibrate = enableCalibrate;
 }
 
-Abstract::~Abstract() = default;
+DHTSens::~DHTSens() = default;
 
-void Abstract::init() {
-    pinMode(sensorPin, INPUT);
+void DHTSens::init() {
+    thisClass = new DHT(sensorPin, type);
+    (*thisClass).begin();
 }
 
-void Abstract::update() {
+void DHTSens::update() {
     if (millis() - sensTimer[0] >= 500) {
         if (!isCalibrate) {
-            thisValue = analogRead(sensorPin);
-            thisValue *= (5.0 / 1023.0);
+            thisValue[0] = (*thisClass).readTemperature();
+            thisValue[1] = (*thisClass).readHumidity();
         }
         sensTimer[0] = millis();
     }
 }
 
 #if defined(EXTENDED_FUNCTION_VTABLE)
-void Abstract::debug() {
+void DHTSens::debug() {
     if (millis() - sensTimer[1] >= 500) {
         if (isCalibrate) return;
         Serial.print("| thisValueRaw: ");
@@ -44,7 +46,7 @@ void Abstract::debug() {
     }
 }
 
-void Abstract::calibrate() {
+void DHTSens::calibrate() {
     if (millis() - sensTimer[2] >= 500) {
         if (!isCalibrate) return;
         Serial.print("| arrTemplateValueRaw: ");
@@ -61,32 +63,31 @@ void Abstract::calibrate() {
 }
 #endif
 
-void Abstract::getValue(float *output) {
-    *output = thisValue;
-}
-
-void Abstract::getValue(int *output) {
-}
-
-void Abstract::getValue(char *output) {
+void DHTSens::getValue(float *output) {
+    output[0] = thisValue[0];
+    output[1] = thisValue[1];
 }
 
 #if defined(EXTENDED_FUNCTION_VTABLE)
-void Abstract::setCallBack(void (*callbackFunc)(void)) {
+void DHTSens::setCallBack(void (*callbackFunc)(void)) {
     thisCallbackFunc = callbackFunc;
 }
 
-void Abstract::count() {
+void DHTSens::count() {
 }
 
-void Abstract::reset() {
+void DHTSens::reset() {
 }
 #endif
 
-float Abstract::getValue() const {
-    return thisValue;
+float DHTSens::getValueTemperature() const {
+    return thisValue[0];
 }
 
-void Abstract::setPins(uint8_t _pin) {
+float DHTSens::getValueHumidity() const {
+    return thisValue[1];
+}
+
+void DHTSens::setPins(uint8_t _pin) {
     this->sensorPin = _pin;
 }

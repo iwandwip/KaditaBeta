@@ -15,6 +15,7 @@
 // custom external sensor: will be updated soon
 #include "sensor-module.h"
 #include "abstract-sens.h"
+#include "dht-sens.h"
 
 #include "input-module.h"
 #include "output-module.h"
