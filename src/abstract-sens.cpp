@@ -7,7 +7,6 @@
 
 #include "abstract-sens.h"
 #include "Arduino.h"
-#include "sensor-filter.h"
 
 #define SENSOR_FILTER_KF 8
 
@@ -21,7 +20,7 @@ Abstract::Abstract(uint8_t __pin, bool enableCalibrate) {
 }
 
 Abstract::~Abstract() {
-    delete this;
+
 }
 
 void Abstract::init() {
@@ -35,19 +34,12 @@ void Abstract::update() {
             templateValue = templateValue * (5.0 / 1023.0);
             templateValue = templateValue + (templateValue * SENSOR_FILTER_KF);
             templateValue /= SENSOR_FILTER_KF + 1;
-        } else {
-            KalmanFilter *sensorKf = new KalmanFilter(2, 2, 0.01);
-            arrTemplateValue[SENS_RET_RAW_DATA] = analogRead(sensorPin);
-            arrTemplateValue[SENS_RET_ACT_DATA] =
-                    arrTemplateValue[SENS_RET_RAW_DATA] + (arrTemplateValue[SENS_RET_RAW_DATA] * SENSOR_FILTER_KF);
-            arrTemplateValue[SENS_RET_ACT_DATA] /= SENSOR_FILTER_KF + 1;
-            arrTemplateValue[SENS_RET_FILTERED_DATA] = sensorKf->updateEstimate(arrTemplateValue[SENS_RET_ACT_DATA]);
-            delete sensorKf;
         }
         sensTimer[0] = millis();
     }
 }
 
+#if defined(EXTENDED_FUNCTION_VTABLE)
 void Abstract::debug() {
     if (millis() - sensTimer[1] >= 500) {
         if (isCalibrate) return;
@@ -73,6 +65,7 @@ void Abstract::calibrate() {
         sensTimer[2] = millis();
     }
 }
+#endif
 
 void Abstract::getValue(float *output) {
     *output = templateValue;
@@ -84,6 +77,7 @@ void Abstract::getValue(int *output) {
 void Abstract::getValue(char *output) {
 }
 
+#if defined(EXTENDED_FUNCTION_VTABLE)
 void Abstract::setCallBack(void (*callbackFunc)(void)) {
     thisCallbackFunc = callbackFunc;
 }
@@ -93,6 +87,7 @@ void Abstract::count() {
 
 void Abstract::reset() {
 }
+#endif
 
 float Abstract::getValue(sens_ret_index_t c) {
     if (!isCalibrate) return templateValue;
@@ -102,5 +97,3 @@ float Abstract::getValue(sens_ret_index_t c) {
 void Abstract::setPins(uint8_t __pin) {
     this->sensorPin = __pin;
 }
-
-#pragma clang diagnostic pop
