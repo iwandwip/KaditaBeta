@@ -37,9 +37,9 @@ void SensorModule::update(void (*update)(void)) {
     }
 }
 
-void SensorModule::debug(int __index) {
+void SensorModule::debug(int _index) {
     if (base == nullptr) return;
-    if (__index != -1) base[__index]->debug();
+    if (_index != -1) base[_index]->debug();
     else {
         for (uint8_t i = 0; i < len; i++) {
             base[i]->debug();

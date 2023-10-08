@@ -22,7 +22,7 @@ private:
     unsigned long _offDelayStart;
     bool _offDelayState;
     bool _state;
-    bool _reverse{};
+    bool _reverse;
 
 public:
     DigitalOut();

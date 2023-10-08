@@ -39,7 +39,7 @@ public:
 
     virtual void getValue(char *output) = 0;
 
-    virtual void setCallBack(void (*callbackFunc)(void)) = 0;
+    virtual void setCallBack(void (*callbackFunc)()) = 0;
 
     virtual void count() = 0;
 
@@ -59,13 +59,13 @@ public:
 
     ~SensorModule();
 
-    void init(void (*initialize)(void) = nullptr);
+    void init(void (*initialize)() = nullptr);
 
-    void update(void (*update)(void) = nullptr);
+    void update(void (*update)() = nullptr);
 
-    void debug(int __index = -1);
+    void debug(int _index = -1);
 
-    void loop(void (*loop)(void) = nullptr);
+    static void loop(void (*loop)() = nullptr);
 
     void addModule(BaseSens *sensModule);
 

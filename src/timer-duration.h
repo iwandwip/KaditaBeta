@@ -16,6 +16,8 @@ class TimerDuration {
 public:
     TimerDuration();
 
+    explicit TimerDuration(unsigned long interval);
+
     void setDuration(unsigned long interval);
 
     void start();

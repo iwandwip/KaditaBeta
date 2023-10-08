@@ -15,8 +15,14 @@ TimerDuration::TimerDuration() {
     _isRunning = false;
 }
 
+TimerDuration::TimerDuration(unsigned long interval) {
+    _startMillis = 0;
+    _interval = interval;
+    _isRunning = false;
+}
+
 void TimerDuration::setDuration(unsigned long interval) {
-    _interval = interval * 1000;  // convert to milliseconds
+    _interval = interval;
 }
 
 void TimerDuration::start() {
@@ -64,5 +70,5 @@ unsigned long TimerDuration::getSeconds() const {
 }
 
 unsigned long TimerDuration::getDuration() const {
-    return _interval / 1000;  // convert back to seconds
+    return _interval;
 }
