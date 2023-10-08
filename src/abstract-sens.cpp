@@ -90,8 +90,11 @@ void Abstract::reset() {
 #endif
 
 float Abstract::getValue(sens_ret_index_t c) {
+#if defined(EXTENDED_FUNCTION_VTABLE)
     if (!isCalibrate) return templateValue;
     return arrTemplateValue[c];
+#endif
+    return templateValue;
 }
 
 void Abstract::setPins(uint8_t __pin) {

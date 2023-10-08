@@ -16,9 +16,12 @@
 
 class Abstract : public BaseSens {
 private:
-    float arrTemplateValue[6];
     float templateValue;
+#if defined(EXTENDED_FUNCTION_VTABLE)
     uint32_t sensTimer[3];
+#else
+    uint32_t sensTimer[1];
+#endif
 
     bool isCalibrate;
     uint8_t sensorPin;
