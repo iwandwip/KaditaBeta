@@ -12,7 +12,6 @@
 
 #include "Arduino.h"
 #include "sensor-module.h"
-#include "stdint.h"
 
 class Abstract : public BaseSens {
 private:
@@ -26,11 +25,11 @@ private:
     bool isCalibrate;
     uint8_t sensorPin;
 
-    void (*thisCallbackFunc)(void) = nullptr;
+    void (*thisCallbackFunc)() = nullptr;
 
 public:
     Abstract();
-    Abstract(uint8_t __pin, bool enableCalibrate = false);
+    explicit Abstract(uint8_t _pin, bool enableCalibrate = false);
     ~Abstract();
     void init() override;
     void update() override;
@@ -46,8 +45,8 @@ public:
     void count() override;
     void reset() override;
 #endif
-    float getValue(sens_ret_index_t c = SENS_RET_ACT_DATA);
-    void setPins(uint8_t __pin);
+    float getValue(sens_ret_index_t c = SENS_RET_ACT_DATA) const;
+    void setPins(uint8_t _pin);
 };
 
 #endif  // ABSTRACT_SENS_H

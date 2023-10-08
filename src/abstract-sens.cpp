@@ -14,14 +14,12 @@ Abstract::Abstract()
         : isCalibrate(false), sensorPin(A0) {
 }
 
-Abstract::Abstract(uint8_t __pin, bool enableCalibrate) {
-    this->sensorPin = __pin;
+Abstract::Abstract(uint8_t _pin, bool enableCalibrate) {
+    this->sensorPin = _pin;
     isCalibrate = enableCalibrate;
 }
 
-Abstract::~Abstract() {
-
-}
+Abstract::~Abstract() = default;
 
 void Abstract::init() {
     pinMode(sensorPin, INPUT);
@@ -89,7 +87,7 @@ void Abstract::reset() {
 }
 #endif
 
-float Abstract::getValue(sens_ret_index_t c) {
+float Abstract::getValue(sens_ret_index_t c) const {
 #if defined(EXTENDED_FUNCTION_VTABLE)
     if (!isCalibrate) return templateValue;
     return arrTemplateValue[c];
@@ -97,6 +95,6 @@ float Abstract::getValue(sens_ret_index_t c) {
     return templateValue;
 }
 
-void Abstract::setPins(uint8_t __pin) {
-    this->sensorPin = __pin;
+void Abstract::setPins(uint8_t _pin) {
+    this->sensorPin = _pin;
 }
