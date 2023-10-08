@@ -1,2 +1,2 @@
-# clion-kadita
- clion kadita repository
+# KaditaBeta
+ KaditaBeta repo
