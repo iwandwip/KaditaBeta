@@ -102,4 +102,5 @@ float Abstract::getValue(sens_ret_index_t c) {
 void Abstract::setPins(uint8_t __pin) {
     this->sensorPin = __pin;
 }
+
 #pragma clang diagnostic pop

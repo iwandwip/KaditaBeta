@@ -24,17 +24,11 @@ private:
 
 public:
     TimerTask();
-
     explicit TimerTask(const unsigned long &timeout, const bool &micros = false);
-
     void begin(const unsigned long &timeout, const bool &micros = false);
-
     void update(const unsigned long &timeout);
-
     void start();
-
     void reset();
-
     bool triggered(const bool &_reset = true);
 };
 

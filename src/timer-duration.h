@@ -15,27 +15,16 @@
 class TimerDuration {
 public:
     TimerDuration();
-
     explicit TimerDuration(unsigned long interval);
-
     void setDuration(unsigned long interval);
-
     void start();
-
     void stop();
-
     void resume();
-
     bool isExpired() const;
-
     void reset();
-
     unsigned long getHours() const;
-
     unsigned long getMinutes() const;
-
     unsigned long getSeconds() const;
-
     unsigned long getDuration() const;
 
 private:

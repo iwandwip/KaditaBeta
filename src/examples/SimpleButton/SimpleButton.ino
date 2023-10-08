@@ -3,12 +3,12 @@
 DigitalIn button(3);
 
 void setup() {
-  Serial.begin(9600);
+    Serial.begin(9600);
 }
 
 void loop() {
-  if (button.isPressed()) {
-    Serial.print("Button pressed");
-  }
-  delay(1000);
+    if (button.isPressed()) {
+        Serial.print("Button pressed");
+    }
+    delay(1000);
 }

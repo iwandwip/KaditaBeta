@@ -7,7 +7,6 @@
 
 #include "HardwareSerial.h"
 #include "sensor-module.h"
-#include "Arduino.h"
 
 SensorModule::SensorModule()
         : base(nullptr) {
@@ -38,6 +37,7 @@ void SensorModule::update(void (*update)(void)) {
 }
 
 void SensorModule::debug(int _index) {
+#if defined(EXTENDED_FUNCTION_VTABLE)
     if (base == nullptr) return;
     if (_index != -1) base[_index]->debug();
     else {
@@ -45,6 +45,7 @@ void SensorModule::debug(int _index) {
             base[i]->debug();
         }
     }
+#endif
 }
 
 void SensorModule::loop(void (*loop)(void)) {
@@ -55,7 +56,11 @@ void SensorModule::loop(void (*loop)(void)) {
 void SensorModule::addModule(BaseSens *sensModule) {
     BaseSens **newBase = (BaseSens **) realloc(base, (len + 1) * sizeof(BaseSens *));  // Increase length by 1
     if (newBase == nullptr) {
-        while (1) Serial.println("Memory Allocation Failed !");
+        int count = 0;
+        while (count < 99) {
+            Serial.println("Memory Allocation Failed !");
+            count++;
+        }
     }
     base = newBase;
     base[len] = sensModule;  // Assign to correct index

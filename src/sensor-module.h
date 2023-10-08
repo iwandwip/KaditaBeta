@@ -25,28 +25,32 @@ typedef enum {
 
 class BaseSens {
 public:
+    /*pure virtual function*/
     virtual void init() = 0;
-
     virtual void update() = 0;
-
-    virtual void debug() = 0;
-
-    virtual void calibrate() = 0;
-
+#if defined(EXTENDED_FUNCTION_VTABLE)
+    virtual void debug() {
+        /*updated soon*/
+    }
+    virtual void calibrate() {
+        /*updated soon*/
+    }
+#endif
     virtual void getValue(float *output) = 0;
-
     virtual void getValue(int *output) = 0;
-
     virtual void getValue(char *output) = 0;
-
-    virtual void setCallBack(void (*callbackFunc)()) = 0;
-
-    virtual void count() = 0;
-
-    virtual void reset() = 0;
-
+#if defined(EXTENDED_FUNCTION_VTABLE)
+    virtual void setCallBack(void (*callbackFunc)()) {
+        /*updated soon*/
+    }
+    virtual void count() {
+        /*updated soon*/
+    }
+    virtual void reset() {
+        /*updated soon*/
+    }
+#endif
     BaseSens &operator=(const BaseSens &) = default;
-
     BaseSens &operator=(BaseSens &&) = default;
 };
 
@@ -56,33 +60,19 @@ private:
     uint8_t len = 0;
 public:
     SensorModule();
-
     ~SensorModule();
-
     void init(void (*initialize)() = nullptr);
-
     void update(void (*update)() = nullptr);
-
     void debug(int _index = -1);
-
     static void loop(void (*loop)() = nullptr);
-
     void addModule(BaseSens *sensModule);
-
     void removeModule(uint8_t index);
-
     BaseSens *getModule(uint8_t index);
-
     void clearModules();
-
     uint8_t getModuleCount();
-
     void setModule(uint8_t index, BaseSens *sensModule);
-
     void swapModules(uint8_t index1, uint8_t index2);
-
     bool isModulePresent(BaseSens *sensModule);
-
     bool isModulePresent(uint8_t index);
 };
 
