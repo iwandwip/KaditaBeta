@@ -24,8 +24,9 @@ private:
 
     bool isCalibrate;
     uint8_t sensorPin;
-
+#if defined(EXTENDED_FUNCTION_VTABLE)
     void (*thisCallbackFunc)() = nullptr;
+#endif
 
 public:
     Abstract();
