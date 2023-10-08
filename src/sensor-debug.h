@@ -27,34 +27,20 @@ private:
 
 public:
     SensorDebug();
-
     void init(bool isSendToSheet = true);
-
     void addLabel(String _label, bool with_separator = true);
-
     template<typename T>
     void addData(T value, bool with_separator = true);
-
     void sendLabel();
-
     void sendData(uint32_t __t = 1000);
-
     void clearLabel();
-
     void clearData();
-
     void setLabel(String _label);
-
     void setData(String _data);
-
     void setSeparator(char _sep[]);
-
     void setSendDataCallback(void (*sendCallback)(void));
-
     String getLabel();
-
     String getData();
-
     void reset();
 };
 

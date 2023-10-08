@@ -27,33 +27,19 @@ private:
 
 public:
     Abstract();
-
     Abstract(uint8_t __pin, bool enableCalibrate = false);
-
     ~Abstract();
-
     void init() override;
-
     void update() override;
-
     void debug() override;
-
     void calibrate() override;
-
     void getValue(float *output) override;
-
     void getValue(int *output) override;
-
     void getValue(char *output) override;
-
     void setCallBack(void (*callbackFunc)(void)) override;
-
     void count() override;
-
     void reset() override;
-
     float getValue(sens_ret_index_t c = SENS_RET_ACT_DATA);
-
     void setPins(uint8_t __pin);
 };
 

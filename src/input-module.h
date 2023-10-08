@@ -29,25 +29,15 @@ private:
 
 public:
     explicit DigitalIn(int pin);
-
     DigitalIn(int pin, int mode);
-
     void setDebounceTime(unsigned long time);
-
     int getState() const;
-
     int getStateRaw() const;
-
     bool isPressed() const;
-
     bool isReleased() const;
-
     void setCountMode(int mode);
-
     unsigned long getCount() const;
-
     void resetCount();
-
     void update();
 };
 
