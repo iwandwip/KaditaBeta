@@ -22,13 +22,15 @@ private:
     uint32_t sensTimer[1];
 #endif
     uint8_t sensorPin;
+    uint8_t vref;
+    uint8_t resolution;
 #if defined(EXTENDED_FUNCTION_VTABLE)
     void (*thisCallbackFunc)() = nullptr;
 #endif
 
 public:
     LDRSens();
-    explicit LDRSens(uint8_t _pin);
+    explicit LDRSens(uint8_t _pin, uint8_t _vref = 5, uint8_t _resolution = 10);
     ~LDRSens();
     void init() override;
     void update() override;

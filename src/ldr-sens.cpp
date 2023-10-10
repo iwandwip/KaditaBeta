@@ -9,11 +9,13 @@
 #include "Arduino.h"
 
 LDRSens::LDRSens()
-        : sensorPin(A0) {
+        : sensorPin(A0), vref(5), resolution(10) {
 }
 
-LDRSens::LDRSens(uint8_t _pin) {
+LDRSens::LDRSens(uint8_t _pin, uint8_t _vref, uint8_t _resolution) {
     this->sensorPin = _pin;
+    this->vref = _vref;
+    this->resolution = _resolution;
 }
 
 LDRSens::~LDRSens() = default;
@@ -25,7 +27,7 @@ void LDRSens::init() {
 void LDRSens::update() {
     if (millis() - sensTimer[0] >= 500) {
         thisValue = analogRead(sensorPin);
-        thisValue *= (5.0 / 1023.0);
+        thisValue *= (vref / (pow(2, resolution) - 1));
         sensTimer[0] = millis();
     }
 }
