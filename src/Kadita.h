@@ -22,7 +22,7 @@
 #include "modules/input-module.h"
 #include "modules/output-module.h"
 
-#include "timer-duration.h"
-#include "timer-task.h"
+#include "modules/time/timer-duration.h"
+#include "modules/time/timer-task.h"
 
 #endif
