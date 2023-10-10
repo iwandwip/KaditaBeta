@@ -1,5 +1,5 @@
 /*
- *  KaditaIoT.h
+ *  Kadita.h
  *
  *  Kadita lib header
  *  Created on: 2023. 4. 3
@@ -19,7 +19,7 @@
 #include "sensors/aht-sens.h"
 #include "sensors/ldr-sens.h"
 
-// modules 
+// modules
 #include "modules/io/input-module.h"
 #include "modules/io/output-module.h"
 
