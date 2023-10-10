@@ -1,28 +1,21 @@
 /*
- *  aht-sens.h
+ *  ldr-sens.h
  *
- *  aht sensor lib
+ *  ldr sensor lib
  *  Created on: 2023. 4. 3
  */
 
 #pragma once
 
-#ifndef AHT_SENS_H
-#define AHT_SENS_H
+#ifndef LDR_SENS_H
+#define LDR_SENS_H
 
 #include "Arduino.h"
 #include "sensor-module.h"
-#include "Adafruit_Sensor.h"
-#include "Adafruit_AHTX0.h"
 
-#define AHT_SENS_TEMPERATURE 0
-#define AHT_SENS_HUMIDITY 1
-#define AHT_SENS_NUM 2
-
-class AHTSens : public BaseSens {
+class LDRSens : public BaseSens {
 private:
-    Adafruit_AHTX0 *thisClass;
-    float thisValue[AHT_SENS_NUM];
+    float thisValue;
 #if defined(EXTENDED_FUNCTION_VTABLE)
     uint32_t sensTimer[3];
 #else
@@ -34,9 +27,9 @@ private:
 #endif
 
 public:
-    AHTSens();
-    explicit AHTSens(uint8_t _pin);
-    ~AHTSens();
+    LDRSens();
+    explicit LDRSens(uint8_t _pin);
+    ~LDRSens();
     void init() override;
     void update() override;
 #if defined(EXTENDED_FUNCTION_VTABLE)
@@ -44,14 +37,15 @@ public:
     void calibrate() override;
 #endif
     void getValue(float *output) override;
+    void getValue(int *output) override;
+    void getValue(char *output) override;
 #if defined(EXTENDED_FUNCTION_VTABLE)
     void setCallBack(void (*callbackFunc)(void)) override;
     void count() override;
     void reset() override;
 #endif
-    float getValueTemperature() const;
-    float getValueHumidity() const;
+    float getValue() const;
     void setPins(uint8_t _pin);
 };
 
-#endif  // AHT_SENS_H
+#endif  // LDR_SENS_H

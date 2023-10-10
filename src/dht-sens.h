@@ -28,8 +28,6 @@ private:
 #else
     uint32_t sensTimer[1];
 #endif
-
-    bool isCalibrate;
     uint8_t sensorPin;
     uint8_t type;
 #if defined(EXTENDED_FUNCTION_VTABLE)
@@ -38,7 +36,7 @@ private:
 
 public:
     DHTSens();
-    explicit DHTSens(uint8_t _pin, uint8_t _type, bool enableCalibrate = false);
+    explicit DHTSens(uint8_t _pin, uint8_t _type);
     ~DHTSens();
     void init() override;
     void update() override;

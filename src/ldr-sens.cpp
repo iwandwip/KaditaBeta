@@ -1,44 +1,37 @@
 /*
- *  aht-sens.cpp
+ *  ldr-sens.cpp
  *
- *  aht sensor c
+ *  ldr sensor c
  *  Created on: 2023. 4. 3
  */
 
-#include "aht-sens.h"
+#include "ldr-sens.h"
 #include "Arduino.h"
 
-AHTSens::AHTSens()
+LDRSens::LDRSens()
         : sensorPin(A0) {
 }
 
-AHTSens::AHTSens(uint8_t _pin) {
+LDRSens::LDRSens(uint8_t _pin) {
     this->sensorPin = _pin;
 }
 
-AHTSens::~AHTSens() = default;
+LDRSens::~LDRSens() = default;
 
-void AHTSens::init() {
-    thisClass = new Adafruit_AHTX0;
-    if (!(*thisClass).begin())
-        while (1) {
-            delay(10);
-            break;
-        }
+void LDRSens::init() {
+    pinMode(sensorPin, INPUT);
 }
 
-void AHTSens::update() {
+void LDRSens::update() {
     if (millis() - sensTimer[0] >= 500) {
-        sensors_event_t dataBuffer[2];
-        (*thisClass).getEvent(&dataBuffer[1], &dataBuffer[0]);
-        thisValue[0] = dataBuffer[0].temperature;
-        thisValue[1] = dataBuffer[1].relative_humidity;
+        thisValue = analogRead(sensorPin);
+        thisValue *= (5.0 / 1023.0);
         sensTimer[0] = millis();
     }
 }
 
 #if defined(EXTENDED_FUNCTION_VTABLE)
-void AHTSens::debug() {
+void LDRSens::debug() {
     if (millis() - sensTimer[1] >= 500) {
         if (isCalibrate) return;
         Serial.print("| thisValueRaw: ");
@@ -48,7 +41,7 @@ void AHTSens::debug() {
     }
 }
 
-void AHTSens::calibrate() {
+void LDRSens::calibrate() {
     if (millis() - sensTimer[2] >= 500) {
         if (!isCalibrate) return;
         Serial.print("| arrTemplateValueRaw: ");
@@ -65,31 +58,32 @@ void AHTSens::calibrate() {
 }
 #endif
 
-void AHTSens::getValue(float *output) {
-    output[0] = thisValue[0];
-    output[1] = thisValue[1];
+void LDRSens::getValue(float *output) {
+    *output = thisValue;
+}
+
+void LDRSens::getValue(int *output) {
+}
+
+void LDRSens::getValue(char *output) {
 }
 
 #if defined(EXTENDED_FUNCTION_VTABLE)
-void AHTSens::setCallBack(void (*callbackFunc)(void)) {
+void LDRSens::setCallBack(void (*callbackFunc)(void)) {
     thisCallbackFunc = callbackFunc;
 }
 
-void AHTSens::count() {
+void LDRSens::count() {
 }
 
-void AHTSens::reset() {
+void LDRSens::reset() {
 }
 #endif
 
-float AHTSens::getValueTemperature() const {
-    return thisValue[0];
+float LDRSens::getValue() const {
+    return thisValue;
 }
 
-float AHTSens::getValueHumidity() const {
-    return thisValue[1];
-}
-
-void AHTSens::setPins(uint8_t _pin) {
+void LDRSens::setPins(uint8_t _pin) {
     this->sensorPin = _pin;
 }

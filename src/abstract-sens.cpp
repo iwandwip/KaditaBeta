@@ -9,12 +9,11 @@
 #include "Arduino.h"
 
 Abstract::Abstract()
-        : isCalibrate(false), sensorPin(A0) {
+        : sensorPin(A0) {
 }
 
-Abstract::Abstract(uint8_t _pin, bool enableCalibrate) {
+Abstract::Abstract(uint8_t _pin) {
     this->sensorPin = _pin;
-    isCalibrate = enableCalibrate;
 }
 
 Abstract::~Abstract() = default;
@@ -25,10 +24,8 @@ void Abstract::init() {
 
 void Abstract::update() {
     if (millis() - sensTimer[0] >= 500) {
-        if (!isCalibrate) {
-            thisValue = analogRead(sensorPin);
-            thisValue *= (5.0 / 1023.0);
-        }
+        thisValue = analogRead(sensorPin);
+        thisValue *= (5.0 / 1023.0);
         sensTimer[0] = millis();
     }
 }

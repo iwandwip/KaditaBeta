@@ -9,13 +9,12 @@
 #include "Arduino.h"
 
 DHTSens::DHTSens()
-        : isCalibrate(false), sensorPin(A0) {
+        : sensorPin(A0) {
 }
 
-DHTSens::DHTSens(uint8_t _pin, uint8_t _type, bool enableCalibrate) {
+DHTSens::DHTSens(uint8_t _pin, uint8_t _type) {
     this->sensorPin = _pin;
     this->type = _type;
-    isCalibrate = enableCalibrate;
 }
 
 DHTSens::~DHTSens() = default;
@@ -27,10 +26,8 @@ void DHTSens::init() {
 
 void DHTSens::update() {
     if (millis() - sensTimer[0] >= 500) {
-        if (!isCalibrate) {
-            thisValue[0] = (*thisClass).readTemperature();
-            thisValue[1] = (*thisClass).readHumidity();
-        }
+        thisValue[0] = (*thisClass).readTemperature();
+        thisValue[1] = (*thisClass).readHumidity();
         sensTimer[0] = millis();
     }
 }
