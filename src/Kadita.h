@@ -19,8 +19,8 @@
 #include "sensors/aht-sens.h"
 #include "sensors/ldr-sens.h"
 
-#include "input-module.h"
-#include "output-module.h"
+#include "modules/input-module.h"
+#include "modules/output-module.h"
 
 #include "timer-duration.h"
 #include "timer-task.h"
