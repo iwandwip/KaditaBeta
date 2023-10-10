@@ -37,3 +37,4 @@ Read more about using header files in official GCC documentation:
 * Computed Includes
 
 https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html
+https://community.platformio.org/t/change-the-platform-without-creating-a-new-project/3589
