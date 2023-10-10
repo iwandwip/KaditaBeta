@@ -11,7 +11,7 @@
 #define ABSTRACT_SENS_H
 
 #include "Arduino.h"
-#include "sensor-module.h"
+#include "base/sensor-module.h"
 
 class Abstract : public BaseSens {
 private:

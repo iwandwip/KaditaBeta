@@ -11,7 +11,7 @@
 #define AHT_SENS_H
 
 #include "Arduino.h"
-#include "sensor-module.h"
+#include "base/sensor-module.h"
 #include "Adafruit_Sensor.h"
 #include "Adafruit_AHTX0.h"
 

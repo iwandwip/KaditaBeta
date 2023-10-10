@@ -11,7 +11,7 @@
 #define LDR_SENS_H
 
 #include "Arduino.h"
-#include "sensor-module.h"
+#include "base/sensor-module.h"
 
 class LDRSens : public BaseSens {
 private:
