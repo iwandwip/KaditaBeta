@@ -27,7 +27,7 @@ void LDRSens::init() {
 void LDRSens::update() {
     if (millis() - sensTimer[0] >= 500) {
         thisValue = analogRead(sensorPin);
-        thisValue *= (vref / (pow(2, resolution) - 1));
+//        thisValue *= (float) (vref / (pow(2, resolution) - 1));
         sensTimer[0] = millis();
     }
 }
