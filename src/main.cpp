@@ -1,23 +1,13 @@
 #include <Kadita.h>
 
-DHTSens dht(2, DHT22);
-AHTSens aht;
-
-SoftSerial com;
-
-float valueDHT[2], valueAHT[2];
+SoftSerial softCom;
+HardSerial hardSerial;
 
 void setup() {
     Serial.begin(9600);
-    com.begin(2, 3, 9600);
-    dht.init();
-    aht.init();
+    softCom.begin(2, 3, 9600);
+    hardSerial.begin(&Serial);
 }
 
 void loop() {
-    dht.getValue(valueDHT);
-    aht.getValue(valueAHT);
-
-    aht.update();
-    dht.update();
 }

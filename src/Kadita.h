@@ -27,5 +27,6 @@
 #include "modules/time/timer-task.h"
 
 #include "modules/communication/serial/soft-serial.h"
+#include "modules/communication/serial/hard-serial.h"
 
 #endif
