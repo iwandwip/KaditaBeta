@@ -7,44 +7,29 @@
 
 #include "soft-serial.h"
 
-SerialCom::SerialCom() {
+SoftSerial::SoftSerial() {
     clearData();
 }
 
-void SerialCom::begin(SoftwareSerial *_serialPtr, long baud) {
+void SoftSerial::begin(SoftwareSerial *_serialPtr, long baud) {
     serialPtr = _serialPtr;
     serialPtr->begin(baud);
     serialPtr->println();
 }
 
-void SerialCom::addData(const char *newData, const char *separator) {
-    dataSend += newData;
-    dataSend += separator;
-}
-
-void SerialCom::addData(float newData, const char *separator) {
-    dataSend += String(newData);
-    dataSend += separator;
-}
-
-void SerialCom::addData(int newData, const char *separator) {
-    dataSend += String(newData);
-    dataSend += separator;
-}
-
-void SerialCom::clearData() {
+void SoftSerial::clearData() {
     dataSend = "";
 }
 
-void SerialCom::sendData(uint32_t __t) {
-    if (millis() - sendTime >= __t) {
+void SoftSerial::sendData(uint32_t _time) {
+    if (millis() - sendTime >= _time) {
         sendTime = millis();
         serialPtr->println(dataSend);
         // Serial.println(dataSend);
     }
 }
 
-void SerialCom::receive(void (*onReceive)(String)) {
+void SoftSerial::receive(void (*onReceive)(String)) {
     if (onReceive == nullptr) return;
     if (serialPtr->available()) {
         char rxBuffer[250];
@@ -61,15 +46,15 @@ void SerialCom::receive(void (*onReceive)(String)) {
     }
 }
 
-float SerialCom::getData(String data, uint8_t index) {
+float SoftSerial::getData(String data, uint8_t index) {
     return parseStr(data, ";", index).toFloat();
 }
 
-String SerialCom::getStrData(String data, uint8_t index) {
+String SoftSerial::getStrData(String data, uint8_t index) {
     return parseStr(data, ";", index);
 }
 
-String SerialCom::parseStr(String data, char separator[], int index) {
+String SoftSerial::parseStr(String data, char separator[], int index) {
     int found = 0;
     int strIndex[] = {0, -1};
     int maxIndex = data.length() - 1;

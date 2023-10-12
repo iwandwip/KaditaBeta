@@ -13,7 +13,7 @@
 #include "Arduino.h"
 #include "SoftwareSerial.h"
 
-class SerialCom {
+class SoftSerial {
 private:
     SoftwareSerial *serialPtr;
     String dataSend;
@@ -21,13 +21,17 @@ private:
     String parseStr(String data, char separator[], int index);
 
 public:
-    SerialCom();
-    void begin(SoftwareSerial* _serialPtr, long baud = 9600);
-    void addData(const char *newData, const char *separator = ";");
-    void addData(float newData, const char *separator = ";");
-    void addData(int newData, const char *separator = ";");
+    SoftSerial();
+    void begin(SoftwareSerial *_serialPtr, long baud = 9600);
+
+    template<typename T>
+    void addData(T newData, const char *separator = ";") {
+        dataSend += String(newData);
+        dataSend += separator;
+    }
+
     void clearData();
-    void sendData(uint32_t __t = 500);
+    void sendData(uint32_t _time = 500);
     void receive(void (*onReceive)(String) = nullptr);
     float getData(String data, uint8_t index = 0);
     String getStrData(String data, uint8_t index = 0);
