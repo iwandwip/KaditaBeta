@@ -1,5 +1,5 @@
 /*
- *  serial-com.cpp
+ *  soft-serial.cpp
  *
  *  serial communication c
  *  Created on: 2023. 4. 3

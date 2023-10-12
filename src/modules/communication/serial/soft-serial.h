@@ -1,5 +1,5 @@
 /*
- *  serial-com.h
+ *  soft-serial.h
  *
  *  serial communication lib
  *  Created on: 2023. 4. 3
