@@ -11,18 +11,18 @@
 #define SERIAL_COM_H
 
 #include "Arduino.h"
-#include "HardwareSerial.h"
-#include "WString.h"
-#include "stdint.h"
+#include "SoftwareSerial.h"
 
 class SerialCom {
 private:
+    SoftwareSerial *serialPtr;
     String dataSend;
     uint32_t sendTime;
     String parseStr(String data, char separator[], int index);
 
 public:
     SerialCom();
+    void begin(SoftwareSerial* _serialPtr, long baud = 9600);
     void addData(const char *newData, const char *separator = ";");
     void addData(float newData, const char *separator = ";");
     void addData(int newData, const char *separator = ";");

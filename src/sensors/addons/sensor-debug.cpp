@@ -10,7 +10,7 @@
 #include "Arduino.h"
 
 SensorDebug::SensorDebug()
-        : label("LABEL"), data("DATA"), labelCount(0), dataCount(0), send2Sheet(true), separator(",") {
+        : label("LABEL"), data("DATA"), separator(","), labelCount(0), dataCount(0), send2Sheet(true) {
 }
 
 void SensorDebug::init(bool isSendToSheet) {

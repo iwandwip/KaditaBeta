@@ -7,16 +7,14 @@
 
 #include "soft-serial.h"
 
-#include "SoftwareSerial.h"
-
-#define USING_SERIAL espSerial
-
-SoftwareSerial USING_SERIAL(3, 2);
-
 SerialCom::SerialCom() {
-    dataSend = "";
-    USING_SERIAL.begin(9600);
-    USING_SERIAL.println();
+    clearData();
+}
+
+void SerialCom::begin(SoftwareSerial *_serialPtr, long baud) {
+    serialPtr = _serialPtr;
+    serialPtr->begin(baud);
+    serialPtr->println();
 }
 
 void SerialCom::addData(const char *newData, const char *separator) {
@@ -41,20 +39,20 @@ void SerialCom::clearData() {
 void SerialCom::sendData(uint32_t __t) {
     if (millis() - sendTime >= __t) {
         sendTime = millis();
-        USING_SERIAL.println(dataSend);
+        serialPtr->println(dataSend);
         // Serial.println(dataSend);
     }
 }
 
 void SerialCom::receive(void (*onReceive)(String)) {
     if (onReceive == nullptr) return;
-    if (USING_SERIAL.available()) {
+    if (serialPtr->available()) {
         char rxBuffer[250];
         uint8_t rxBufferPtr = 0;
-        rxBuffer[rxBufferPtr++] = USING_SERIAL.read();
+        rxBuffer[rxBufferPtr++] = serialPtr->read();
         while (1) {
-            if (USING_SERIAL.available()) {
-                rxBuffer[rxBufferPtr++] = USING_SERIAL.read();
+            if (serialPtr->available()) {
+                rxBuffer[rxBufferPtr++] = serialPtr->read();
                 if (rxBuffer[rxBufferPtr - 1] == '\n') break;
             }
         }
