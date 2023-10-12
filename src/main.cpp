@@ -9,7 +9,7 @@ float valueDHT[2], valueAHT[2];
 
 void setup() {
     Serial.begin(9600);
-    com.begin(new SoftwareSerial(2, 3), 9600);
+    com.begin(2, 3, 9600);
     dht.init();
     aht.init();
 }

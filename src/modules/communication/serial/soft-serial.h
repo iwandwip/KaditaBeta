@@ -23,6 +23,7 @@ private:
 public:
     SoftSerial();
     void begin(SoftwareSerial *_serialPtr, long baud = 9600);
+    void begin(uint8_t rxPin, uint8_t txPin, long baud = 9600);
 
     template<typename T>
     void addData(T newData, const char *separator = ";") {
