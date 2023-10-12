@@ -7,8 +7,8 @@
 
 #pragma once
 
-#ifndef SERIAL_COM_H
-#define SERIAL_COM_H
+#ifndef SOFT_SERIAL_COM_H
+#define SOFT_SERIAL_COM_H
 
 #include "Arduino.h"
 #include "SoftwareSerial.h"
