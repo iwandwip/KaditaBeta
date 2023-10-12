@@ -22,7 +22,7 @@ private:
 
 public:
     HardSerial();
-    void begin(HardwareSerial *_serialPtr, long baud = 9600);
+    void begin(HardwareSerial *_serialPtr = &Serial, long baud = 9600);
 
     template<typename T>
     void addData(T newData, const char *separator = ";") {
