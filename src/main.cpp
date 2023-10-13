@@ -1,4 +1,5 @@
 #include <Kadita.h>
+#include "PCF8574.h"
 
 SoftSerial softCom;
 HardSerial hardCom;
