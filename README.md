@@ -1,2 +1,2 @@
 # KaditaBeta
- KaditaBeta repo
+Repository for Kadita Framework Testing
