@@ -32,7 +32,7 @@ public:
     DigitalIn(int pin, int mode);
     void setDebounceTime(unsigned long time);
     int getState() const;
-    int getStateRaw() const;
+    virtual int getStateRaw() const;
     bool isPressed() const;
     bool isReleased() const;
     void setCountMode(int mode);

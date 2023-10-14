@@ -18,7 +18,7 @@ DigitalIn::DigitalIn(int pin, int mode) {
 
     pinMode(btnPin, mode);
 
-    previousSteadyState = digitalRead(btnPin);
+    previousSteadyState = getStateRaw();
     lastSteadyState = previousSteadyState;
     lastFlickerableState = previousSteadyState;
 
@@ -64,7 +64,7 @@ void DigitalIn::resetCount() {
 }
 
 void DigitalIn::update() {
-    int currentState = digitalRead(btnPin);
+    int currentState = getStateRaw();
     unsigned long currentTime = millis();
 
     if (currentState != lastFlickerableState) {
