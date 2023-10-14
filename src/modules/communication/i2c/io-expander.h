@@ -23,14 +23,6 @@ private:
 public:
     IOExpander() {
     }
-
-    ~IOExpander() {
-
-    }
-
-    void setMode() {
-
-    }
 };
 
 #endif  // KADITA_IO_EXPANDER_H
