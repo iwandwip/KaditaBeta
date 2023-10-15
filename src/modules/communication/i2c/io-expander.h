@@ -13,16 +13,10 @@
 #include "../../io/output-module.h"
 #include "PCF8574.h"
 
-#define COUNT_FALLING   0
-#define COUNT_RISING    1
-#define COUNT_BOTH      2
-
-class IOExpander {
+class IOExpander : public PCF8574 {
 private:
-    PCF8574* i2cPtr;
+    using PCF8574::PCF8574;
 public:
-    IOExpander() {
-    }
 };
 
 #endif  // KADITA_IO_EXPANDER_H
