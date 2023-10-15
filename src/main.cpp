@@ -8,7 +8,8 @@ void setup() {
     io.pinMode(P2, OUTPUT);
     io.pinMode(P3, INPUT);
     io.pinMode(P4, INPUT);
-    if (!io.begin()) Serial.println("Failed");
+    if (!io.begin())
+        Serial.println("Failed");
 }
 
 void loop() {
