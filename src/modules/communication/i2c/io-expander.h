@@ -1,7 +1,7 @@
 /*  
- *  input-module.h
+ *  io-expander.h
  *
- *  input module header
+ *  io expander module header
  *  Created on: 2023. 4. 3
  */
 
