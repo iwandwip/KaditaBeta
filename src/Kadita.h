@@ -28,5 +28,7 @@
 
 #include "modules/communication/serial/soft-serial.h"
 #include "modules/communication/serial/hard-serial.h"
+#include "modules/communication/i2c/i2c-scanner.h"
+#include "modules/communication/i2c/io-expander.h"
 
 #endif
