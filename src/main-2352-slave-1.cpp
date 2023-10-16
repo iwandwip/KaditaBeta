@@ -1,3 +1,13 @@
+/*
+ *  project-automatic-gate-barrier
+ *
+ *  project number: 2352
+ *  Created on: 2023. 4. 3
+ */
+
+#define AUTOMATIC_GATE_BARRIER_SLAVE_1
+#ifdef AUTOMATIC_GATE_BARRIER_SLAVE_1
+
 #include <Kadita.h>
 
 /*macros*/
@@ -58,3 +68,5 @@ void debug() {
     Serial.print(ldrValue[LDR_RIGHT]);
     Serial.println();
 }
+
+#endif // AUTOMATIC_GATE_BARRIER_SLAVE_1

@@ -1,3 +1,13 @@
+/*
+ *  project-solar-tracker
+ *
+ *  project number: 2351
+ *  Created on: 2023. 4. 3
+ */
+
+//#define SOLAR_TRACKER
+#ifdef SOLAR_TRACKER
+
 #include <Kadita.h>
 
 /*macros*/
@@ -58,3 +68,5 @@ void debug() {
     Serial.print(ldrValue[LDR_RIGHT]);
     Serial.println();
 }
+
+#endif // SOLAR_TRACKER
