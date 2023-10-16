@@ -9,8 +9,8 @@
 #define KADITA_IO_EXPANDER_H
 
 #include "Arduino.h"
-#include "../../io/input-module.h"
-#include "../../io/output-module.h"
+#include "../../../io/input-module.h"
+#include "../../../io/output-module.h"
 #include "PCF8574.h"
 
 class IOExpander : public PCF8574 {

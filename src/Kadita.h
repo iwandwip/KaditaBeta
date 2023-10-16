@@ -26,9 +26,9 @@
 #include "modules/time/timer-duration.h"
 #include "modules/time/timer-task.h"
 
-#include "modules/communication/serial/soft-serial.h"
-#include "modules/communication/serial/hard-serial.h"
-#include "modules/communication/i2c/i2c-scanner.h"
-#include "modules/communication/i2c/io-expander.h"
+#include "modules/communication/wired/serial/soft-serial.h"
+#include "modules/communication/wired/serial/hard-serial.h"
+#include "modules/communication/wired/i2c/i2c-scanner.h"
+#include "modules/communication/wired/i2c/io-expander.h"
 
 #endif
