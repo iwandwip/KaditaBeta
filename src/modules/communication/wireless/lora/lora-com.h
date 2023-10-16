@@ -11,8 +11,6 @@
 #define LORA_COM_H
 
 #include "Arduino.h"
-#include "HardwareSerial.h"
-
 #include "SPI.h"
 #include "LoRa.h"
 

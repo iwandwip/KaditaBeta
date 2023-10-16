@@ -20,15 +20,21 @@
 #include "sensors/ldr-sens.h"
 
 // modules
+#include "modules/communication/wired/i2c/i2c-scanner.h"
+#include "modules/communication/wired/i2c/io-expander.h"
+
+#include "modules/communication/wired/serial/soft-serial.h"
+#include "modules/communication/wired/serial/hard-serial.h"
+
+#include "modules/communication/wireless/lora/lora-com.h"
+
+#include "modules/driver/bts7960/bts7960.h"
+
 #include "modules/io/input-module.h"
 #include "modules/io/output-module.h"
 
 #include "modules/time/timer-duration.h"
 #include "modules/time/timer-task.h"
 
-#include "modules/communication/wired/serial/soft-serial.h"
-#include "modules/communication/wired/serial/hard-serial.h"
-#include "modules/communication/wired/i2c/i2c-scanner.h"
-#include "modules/communication/wired/i2c/io-expander.h"
 
 #endif
