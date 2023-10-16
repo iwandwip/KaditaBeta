@@ -26,8 +26,8 @@ void LoRaModule::clearData() {
     data = NONE;
 }
 
-void LoRaModule::sendData(uint32_t __time) {
-    if (millis() - sendTime >= __time) {
+void LoRaModule::sendData(uint32_t _time) {
+    if (millis() - sendTime >= _time) {
         LoRa.beginPacket();
         LoRa.print(data);
         LoRa.endPacket();  // true = async
