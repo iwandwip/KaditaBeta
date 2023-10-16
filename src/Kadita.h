@@ -1,7 +1,7 @@
 /*
  *  Kadita.h
  *
- *  Kadita lib header
+ *  Kadita index lib
  *  Created on: 2023. 4. 3
  */
 
