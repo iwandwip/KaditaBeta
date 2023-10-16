@@ -7,11 +7,11 @@
 #define LDR_RIGHT   3
 #define LDR_NUM     4
 
-/*function prototype*/
+/* function prototype */
 void sensorRoutine();
 void debug();
 
-/*class instance*/
+/* class instance */
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 SensorModule sensor;
@@ -22,7 +22,7 @@ DigitalOut buzzer(2);
 DigitalOut ledRed(11);
 DigitalOut ledGreen(12);
 
-/*variables*/
+/* variables */
 float ldrValue[LDR_NUM];
 
 void setup() {

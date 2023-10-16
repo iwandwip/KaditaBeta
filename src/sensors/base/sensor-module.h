@@ -37,15 +37,21 @@ public:
     }
 #endif
 
-    virtual void getValue(float *output) {/*updated soon*/}
+    virtual void getValue(float *output) {
+        /*updated soon*/
+    }
 
-    virtual void getValue(int *output) {/*updated soon*/}
+    virtual void getValue(int *output) {
+        /*updated soon*/
+    }
 
-    virtual void getValue(char *output) {/*updated soon*/}
+    virtual void getValue(char *output) {
+        /*updated soon*/
+    }
 
 #if defined(EXTENDED_FUNCTION_VTABLE)
     virtual void setCallBack(void (*callbackFunc)()) {
-        /*updated soon*/
+        /* updated soon*/
     }
     virtual void count() {
         /*updated soon*/
