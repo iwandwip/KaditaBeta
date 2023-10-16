@@ -12,7 +12,15 @@ void sensorRoutine();
 void debug();
 
 /*class instance*/
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
 SensorModule sensor;
+BTS7960 driverA(3, 4, 5, 6);
+BTS7960 driverB(7, 8, 9, 10);
+
+DigitalOut buzzer(2);
+DigitalOut ledRed(11);
+DigitalOut ledGreen(12);
 
 /*variables*/
 float ldrValue[LDR_NUM];
@@ -24,6 +32,8 @@ void setup() {
     sensor.addModule(new LDRSens(A2));
     sensor.addModule(new LDRSens(A3));
     sensor.init();
+    lcd.init();
+    lcd.backlight();
 }
 
 void loop() {
