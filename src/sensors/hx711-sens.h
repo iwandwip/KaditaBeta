@@ -14,11 +14,9 @@
 #include "base/sensor-module.h"
 #include "HX711.h"
 
-class HX711Sens : public BaseSens {
+class HX711Sens : public BaseSens, public HX711 {
 private:
-    HX711 *thisClass;
     float thisValue;
-    bool sleep;
 #if defined(EXTENDED_FUNCTION_VTABLE)
     uint32_t sensTimer[3];
 #else
@@ -29,11 +27,11 @@ private:
 #if defined(EXTENDED_FUNCTION_VTABLE)
     void (*thisCallbackFunc)() = nullptr;
 #endif
+    using HX711::HX711;
 
 public:
     HX711Sens();
     explicit HX711Sens(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin);
-    ~HX711Sens();
     void init() override;
     void update() override;
 #if defined(EXTENDED_FUNCTION_VTABLE)
@@ -50,7 +48,6 @@ public:
 #endif
     float getValue() const;
     void setPins(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin);
-    void tare();
 };
 
 #endif  // HX711_SENS_H

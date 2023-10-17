@@ -15,8 +15,9 @@
 // custom external sensor: will be updated soon
 #include "sensors/base/sensor-module.h"
 #include "sensors/abstract-sens.h"
-#include "sensors/dht-sens.h"
 #include "sensors/aht-sens.h"
+#include "sensors/dht-sens.h"
+#include "sensors/hx711-sens.h"
 #include "sensors/ldr-sens.h"
 
 // modules

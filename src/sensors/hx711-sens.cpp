@@ -9,24 +9,18 @@
 #include "Arduino.h"
 
 HX711Sens::HX711Sens()
-        : thisClass(nullptr),
-          thisValue(0.0),
-          sleep(false),
+        : thisValue(0.0),
           sensTimer{0},
           sensorDOUTPin(2),
           sensorSCKPin(3) {
 }
 
 HX711Sens::HX711Sens(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin)
-        : thisClass(nullptr),
-          thisValue(0.0),
-          sleep(false),
+        : thisValue(0.0),
           sensTimer{0} {
     this->sensorDOUTPin = _sensorDOUTPin;
     this->sensorSCKPin = _sensorSCKPin;
 }
-
-HX711Sens::~HX711Sens() = default;
 
 void HX711Sens::init() {
 
@@ -71,6 +65,7 @@ void HX711Sens::getValue(float *output) {
 }
 
 void HX711Sens::getValue(int *output) {
+
 }
 
 void HX711Sens::getValue(char *output) {
@@ -95,8 +90,4 @@ float HX711Sens::getValue() const {
 void HX711Sens::setPins(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin) {
     this->sensorDOUTPin = _sensorDOUTPin;
     this->sensorSCKPin = _sensorSCKPin;
-}
-
-void HX711Sens::tare() {
-    thisClass->tare();
 }
