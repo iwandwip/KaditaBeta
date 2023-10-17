@@ -17,14 +17,21 @@ void sensorRoutine();
 void debug();
 
 /* class instance */
-DigitalOut buzzer(2);
-DigitalOut ledRed(11);
-DigitalOut ledGreen(12);
+HX711Sens loadCell(3, 4);
+
+LoRaModule lora;
+
+DigitalOut buzzer(A0);
+DigitalOut ledRed(A1);
+DigitalOut ledGreen(A3);
+DigitalOut ledYellow(A2);
 
 /* variables */
 
 void setup() {
     Serial.begin(9600);
+    loadCell.init();
+    lora.init();
 }
 
 void loop() {
