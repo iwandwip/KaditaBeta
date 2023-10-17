@@ -17,7 +17,6 @@
 class HX711Sens : public BaseSens, public HX711 {
 private:
     float thisValue;
-    bool sleep;
 #if defined(EXTENDED_FUNCTION_VTABLE)
     uint32_t sensTimer[3];
 #else
