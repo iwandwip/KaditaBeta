@@ -1,2 +1,2 @@
 # KaditaBeta
-Repository for Kadita Testing
+Dummy Repository for Kadita Testing
