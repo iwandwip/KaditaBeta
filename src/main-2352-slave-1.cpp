@@ -11,9 +11,9 @@
 #include <Kadita.h>
 
 /*macros*/
+#define DEVICE_ADDRESS 0xAA
 
 /* function prototype */
-void sensorRoutine();
 void debug();
 
 /* class instance */
@@ -27,23 +27,33 @@ DigitalOut ledGreen(A3);
 DigitalOut ledYellow(A2);
 
 /* variables */
+float weight = 0.0;
 
 void setup() {
     Serial.begin(9600);
     loadCell.init();
     lora.init();
+    ledRed.on();
+    ledGreen.on();
+    ledYellow.on();
 }
 
 void loop() {
-    sensorRoutine();
+    loadCell.update();
+    weight = loadCell.getValue();
+
+    lora.clearData();
+    lora.addData(DEVICE_ADDRESS);
+    lora.addData(weight);
+    lora.sendData();
+
     debug();
 }
 
-void sensorRoutine() {
-
-}
-
 void debug() {
+    Serial.print("| weight: ");
+    Serial.print(weight);
+    Serial.println();
 }
 
 #endif // AUTOMATIC_GATE_BARRIER_SLAVE_1
