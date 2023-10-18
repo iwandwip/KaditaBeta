@@ -9,6 +9,7 @@
 #ifdef AUTOMATIC_GATE_BARRIER_MASTER
 
 #include <Kadita.h>
+#include <Servo.h>
 
 /*macros*/
 #define DEVICE_ADDRESS 0xAA
