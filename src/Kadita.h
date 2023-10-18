@@ -39,5 +39,6 @@
 
 // external lib
 #include "LiquidCrystal_I2C.h"
+#include "Servo.h"
 
 #endif

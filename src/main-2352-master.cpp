@@ -17,6 +17,7 @@
 void debug();
 
 /* class instance */
+Servo servoA, servoB;
 
 LoRaModule lora;
 
@@ -29,6 +30,8 @@ DigitalOut ledYellow(A2);
 
 void setup() {
     Serial.begin(9600);
+    servoA.attach(8);
+    servoB.attach(9);
     lora.init();
     ledRed.on();
     ledGreen.on();
