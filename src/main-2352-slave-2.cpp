@@ -5,8 +5,8 @@
  *  Created on: 2023. 4. 3
  */
 
-//#define AUTOMATIC_GATE_BARRIER_SLAVE_1
-#ifdef AUTOMATIC_GATE_BARRIER_SLAVE_1
+//#define AUTOMATIC_GATE_BARRIER_SLAVE_2
+#ifdef AUTOMATIC_GATE_BARRIER_SLAVE_2
 
 #include <Kadita.h>
 
@@ -56,4 +56,4 @@ void debug() {
     Serial.println();
 }
 
-#endif // AUTOMATIC_GATE_BARRIER_SLAVE_1
+#endif // AUTOMATIC_GATE_BARRIER_SLAVE_2
