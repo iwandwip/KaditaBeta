@@ -5,7 +5,7 @@
  *  Created on: 2023. 4. 3
  */
 
-#define AUTOMATIC_GATE_BARRIER_MASTER
+//#define AUTOMATIC_GATE_BARRIER_MASTER
 #ifdef AUTOMATIC_GATE_BARRIER_MASTER
 
 #include <Kadita.h>

@@ -28,6 +28,7 @@ public:
     /*pure virtual function*/
     virtual void init() = 0;
     virtual void update() = 0;
+
 #if defined(EXTENDED_FUNCTION_VTABLE)
     virtual void debug() {
         /*updated soon*/
@@ -37,17 +38,9 @@ public:
     }
 #endif
 
-    virtual void getValue(float *output) {
-        /*updated soon*/
-    }
-
-    virtual void getValue(int *output) {
-        /*updated soon*/
-    }
-
-    virtual void getValue(char *output) {
-        /*updated soon*/
-    }
+    virtual void getValue(float *output) = 0;
+    virtual void getValue(int *output) = 0;
+    virtual void getValue(char *output) = 0;
 
 #if defined(EXTENDED_FUNCTION_VTABLE)
     virtual void setCallBack(void (*callbackFunc)()) {
@@ -60,6 +53,7 @@ public:
         /*updated soon*/
     }
 #endif
+
     BaseSens &operator=(const BaseSens &) = default;
     BaseSens &operator=(BaseSens &&) = default;
 };
