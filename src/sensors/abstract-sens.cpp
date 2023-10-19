@@ -9,10 +9,14 @@
 #include "Arduino.h"
 
 Abstract::Abstract()
-        : sensorPin(A0) {
+        : sensValue(0.0),
+          sensTimer(0),
+          sensorPin(A0) {
 }
 
-Abstract::Abstract(uint8_t _pin) {
+Abstract::Abstract(uint8_t _pin)
+        : sensValue(0.0),
+          sensTimer(0) {
     this->sensorPin = _pin;
 }
 
@@ -23,43 +27,15 @@ void Abstract::init() {
 }
 
 void Abstract::update() {
-    if (millis() - sensTimer[0] >= 500) {
-        thisValue = analogRead(sensorPin);
-        thisValue *= (5.0 / 1023.0);
-        sensTimer[0] = millis();
+    if (millis() - sensTimer >= 500) {
+        sensValue = analogRead(sensorPin);
+        sensValue *= (5.0 / 1023.0);
+        sensTimer = millis();
     }
 }
-
-#if defined(EXTENDED_FUNCTION_VTABLE)
-void Abstract::debug() {
-    if (millis() - sensTimer[1] >= 500) {
-        if (isCalibrate) return;
-        Serial.print("| thisValueRaw: ");
-        Serial.print(thisValue);
-        Serial.println();
-        sensTimer[1] = millis();
-    }
-}
-
-void Abstract::calibrate() {
-    if (millis() - sensTimer[2] >= 500) {
-        if (!isCalibrate) return;
-        Serial.print("| arrTemplateValueRaw: ");
-        Serial.print(arrTemplateValue[SENS_RET_RAW_DATA]);
-        Serial.print("| arrTemplateValueAct: ");
-        Serial.print(arrTemplateValue[SENS_RET_ACT_DATA]);
-        Serial.print("| arrTemplateValueAvg: ");
-        Serial.print(arrTemplateValue[SENS_RET_AVG_DATA]);
-        Serial.print("| arrTemplateValueFiltered: ");
-        Serial.print(arrTemplateValue[SENS_RET_FILTERED_DATA]);
-        Serial.println();
-        sensTimer[2] = millis();
-    }
-}
-#endif
 
 void Abstract::getValue(float *output) {
-    *output = thisValue;
+    *output = sensValue;
 }
 
 void Abstract::getValue(int *output) {
@@ -68,20 +44,8 @@ void Abstract::getValue(int *output) {
 void Abstract::getValue(char *output) {
 }
 
-#if defined(EXTENDED_FUNCTION_VTABLE)
-void Abstract::setCallBack(void (*callbackFunc)(void)) {
-    thisCallbackFunc = callbackFunc;
-}
-
-void Abstract::count() {
-}
-
-void Abstract::reset() {
-}
-#endif
-
 float Abstract::getValue() const {
-    return thisValue;
+    return sensValue;
 }
 
 void Abstract::setPins(uint8_t _pin) {

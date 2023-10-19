@@ -36,25 +36,8 @@ void SensorModule::update(void (*update)(void)) {
     }
 }
 
-void SensorModule::debug(int _index) {
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    if (base == nullptr) return;
-    if (_index != -1) base[_index]->debug();
-    else {
-        for (uint8_t i = 0; i < len; i++) {
-            base[i]->debug();
-        }
-    }
-#endif
-}
-
-void SensorModule::loop(void (*loop)(void)) {
-    if (loop == nullptr) return;
-    loop();
-}
-
 void SensorModule::addModule(BaseSens *sensModule) {
-    BaseSens **newBase = (BaseSens **) realloc(base, (len + 1) * sizeof(BaseSens *));  // Increase length by 1
+    BaseSens **newBase = (BaseSens **) realloc(base, (len + 1) * sizeof(BaseSens *));  // increase length by 1
     if (newBase == nullptr) {
         int count = 0;
         while (count < 99) {
@@ -63,7 +46,7 @@ void SensorModule::addModule(BaseSens *sensModule) {
         }
     }
     base = newBase;
-    base[len] = sensModule;  // Assign to correct index
+    base[len] = sensModule;  // assign to correct index
     len++;
 }
 
