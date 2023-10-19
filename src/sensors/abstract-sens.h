@@ -16,9 +16,9 @@
 class Abstract : public BaseSens {
 private:
     float sensValue;
-    uint32_t sensTimer;
     uint8_t sensorPin;
-    void (*sensCallbackFunc)() = nullptr;
+    uint32_t sensTimer;
+    void (*sensCallbackFunc)();
 
 public:
     Abstract();

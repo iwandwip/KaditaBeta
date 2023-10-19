@@ -10,13 +10,15 @@
 
 Abstract::Abstract()
         : sensValue(0.0),
+          sensorPin(A0),
           sensTimer(0),
-          sensorPin(A0) {
+          sensCallbackFunc(nullptr) {
 }
 
 Abstract::Abstract(uint8_t _pin)
         : sensValue(0.0),
-          sensTimer(0) {
+          sensTimer(0),
+          sensCallbackFunc(nullptr) {
     this->sensorPin = _pin;
 }
 

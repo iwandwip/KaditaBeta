@@ -28,6 +28,7 @@ public:
     /*pure virtual function*/
     virtual void init() = 0;
     virtual void update() = 0;
+
     virtual void getValue(float *output) = 0;
     virtual void getValue(int *output) = 0;
     virtual void getValue(char *output) = 0;
