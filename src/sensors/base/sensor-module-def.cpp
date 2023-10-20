@@ -18,3 +18,7 @@ void BaseSens::getValue(int *output) {
 void BaseSens::getValue(char *output) {
     /*not implemented yet*/
 }
+
+void BaseSens::process() {
+    /*not implemented yet*/
+}

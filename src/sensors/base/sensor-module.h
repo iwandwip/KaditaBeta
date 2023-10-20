@@ -35,7 +35,7 @@ public:
     virtual void getValue(char *output);
 
     /*additional function*/
-    virtual void process() {}
+    virtual void process();
 
     BaseSens &operator=(const BaseSens &) = default;
     BaseSens &operator=(BaseSens &&) = default;
