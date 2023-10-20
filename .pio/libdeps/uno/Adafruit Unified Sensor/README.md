@@ -107,7 +107,7 @@ typedef struct
     int32_t  type;
     float    max_value;
     float    min_value;
-    float    resolution;
+    float    sensorResolution;
     int32_t  min_delay;
 } sensor_t;
 ```
@@ -120,7 +120,7 @@ The individual fields are intended to be used as follows:
 - **type**: The sensor type, based on **sensors\_type\_t** in sensors.h
 - **max\_value**: The maximum value that this sensor can return (in the appropriate SI unit)
 - **min\_value**: The minimum value that this sensor can return (in the appropriate SI unit)
-- **resolution**: The smallest difference between two values that this sensor can report (in the appropriate SI unit)
+- **sensorResolution**: The smallest difference between two values that this sensor can report (in the appropriate SI unit)
 - **min\_delay**: The minimum delay in microseconds between two sensor events, or '0' if there is no constant sensor rate
 
 ## Sensor Data/Events (`sensors_event_t`)
@@ -265,7 +265,7 @@ Similarly, we can get the basic technical capabilities of this sensor with the f
  Serial.print  ("Unique ID:    "); Serial.println(sensor.sensor_id);
  Serial.print  ("Max Value:    "); Serial.print(sensor.max_value); Serial.println(" lux");
  Serial.print  ("Min Value:    "); Serial.print(sensor.min_value); Serial.println(" lux");
- Serial.print  ("Resolution:   "); Serial.print(sensor.resolution); Serial.println(" lux");  
+ Serial.print  ("Resolution:   "); Serial.print(sensor.sensorResolution); Serial.println(" lux");  
  Serial.println("------------------------------------");
  Serial.println("");
 ```

@@ -21,10 +21,10 @@
 
 class MAX31865Sens : public BaseSens, public Adafruit_MAX31865 {
 private:
-    float sensValue;
-    float rtdNominal;
-    float refResistor;
-    uint32_t sensTimer;
+    float sensorValue;
+    float sensorRtdNominal;
+    float sensorRefResistor;
+    uint32_t sensorTimer;
     using Adafruit_MAX31865::Adafruit_MAX31865;
 
 public:
@@ -36,10 +36,10 @@ public:
                           float _rtdNominal = MAX_31865_PT100_RNOMINAL,
                           float _refResistor = MAX_31865_PT100_RREF)
             : Adafruit_MAX31865(spiCs, spiMosi, spiMiso, spiClk),
-              sensValue(0.0),
-              rtdNominal(_rtdNominal),
-              refResistor(_refResistor),
-              sensTimer(0) {
+              sensorValue(0.0),
+              sensorRtdNominal(_rtdNominal),
+              sensorRefResistor(_refResistor),
+              sensorTimer(0) {
         this->begin(wire);
     }
 

@@ -15,18 +15,18 @@ void MAX31865Sens::init() {
 }
 
 void MAX31865Sens::update() {
-    if (millis() - sensTimer >= 500) {
-        sensValue = this->temperature(rtdNominal, refResistor);
-        sensTimer = millis();
+    if (millis() - sensorTimer >= 500) {
+        sensorValue = this->temperature(sensorRtdNominal, sensorRefResistor);
+        sensorTimer = millis();
     }
 }
 
 void MAX31865Sens::getValue(float *output) {
-    *output = sensValue;
+    *output = sensorValue;
 }
 
 float MAX31865Sens::getValueTemperature() const {
-    return sensValue;
+    return sensorValue;
 }
 
 void MAX31865Sens::setPins(uint8_t _pin) {

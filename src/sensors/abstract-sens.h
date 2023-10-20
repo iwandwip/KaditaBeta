@@ -15,10 +15,13 @@
 
 class Abstract : public BaseSens {
 private:
+    /*variables*/
     void *sensorClass;
     float sensorValue;
     uint8_t sensorPin;
     uint32_t sensorTimer;
+
+    /*optional object*/
     void (*sensorCallbackFunc)();
 
 public:

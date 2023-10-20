@@ -15,18 +15,11 @@
 
 class LDRSens : public BaseSens {
 private:
-    float thisValue;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    uint32_t sensTimer[3];
-#else
-    uint32_t sensTimer[1];
-#endif
+    float sensorValue;
+    uint32_t sensorTimer;
     uint8_t sensorPin;
-    uint8_t vref;
-    uint8_t resolution;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void (*thisCallbackFunc)() = nullptr;
-#endif
+    uint8_t sensorVRef;
+    uint8_t sensorResolution;
 
 public:
     LDRSens();
@@ -34,16 +27,7 @@ public:
     ~LDRSens();
     void init() override;
     void update() override;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void debug() override;
-    void calibrate() override;
-#endif
     void getValue(float *output) override;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void setCallBack(void (*callbackFunc)(void)) override;
-    void count() override;
-    void reset() override;
-#endif
     float getValueAdc() const;
     void setPins(uint8_t _pin);
 };

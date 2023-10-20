@@ -21,18 +21,11 @@
 
 class DHTSens : public BaseSens {
 private:
-    DHT *thisClass;
-    float thisValue[DHT_SENS_NUM];
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    uint32_t sensTimer[3];
-#else
-    uint32_t sensTimer[1];
-#endif
+    DHT *sensorClass;
+    float sensorValue[DHT_SENS_NUM];
+    uint32_t sensorTimer;
     uint8_t sensorPin;
-    uint8_t type;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void (*thisCallbackFunc)() = nullptr;
-#endif
+    uint8_t sensorType;
 
 public:
     DHTSens();
@@ -40,16 +33,7 @@ public:
     ~DHTSens();
     void init() override;
     void update() override;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void debug() override;
-    void calibrate() override;
-#endif
     void getValue(float *output) override;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void setCallBack(void (*callbackFunc)(void)) override;
-    void count() override;
-    void reset() override;
-#endif
     float getValueTemperature() const;
     float getValueHumidity() const;
     void setPins(uint8_t _pin);

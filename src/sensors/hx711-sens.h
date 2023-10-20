@@ -16,17 +16,10 @@
 
 class HX711Sens : public BaseSens, public HX711 {
 private:
-    float thisValue;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    uint32_t sensTimer[3];
-#else
-    uint32_t sensTimer[2];
-#endif
+    float sensorValue;
+    uint32_t sensorTimer[2];
     uint8_t sensorDOUTPin;
     uint8_t sensorSCKPin;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void (*thisCallbackFunc)() = nullptr;
-#endif
     using HX711::HX711;
 
 public:
@@ -34,18 +27,9 @@ public:
     explicit HX711Sens(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin);
     void init() override;
     void update() override;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void debug() override;
-    void calibrate() override;
-#endif
     void getValue(float *output) override;
     void getValue(int *output) override;
     void getValue(char *output) override;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void setCallBack(void (*callbackFunc)(void)) override;
-    void count() override;
-    void reset() override;
-#endif
     float getValue() const;
     void setPins(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin);
 };
