@@ -20,16 +20,16 @@ SensorModule::~SensorModule() {
     }
 }
 
-void SensorModule::init(void (*initialize)(void)) {
-    if (initialize != nullptr) initialize();
+void SensorModule::init(void (*initializeCallback)(void)) {
+    if (initializeCallback != nullptr) initializeCallback();
     if (base == nullptr) return;
     for (uint8_t i = 0; i < len; i++) {
         base[i]->init();
     }
 }
 
-void SensorModule::update(void (*update)(void)) {
-    if (update != nullptr) update();
+void SensorModule::update(void (*updateCallback)(void)) {
+    if (updateCallback != nullptr) updateCallback();
     if (base == nullptr) return;
     for (uint8_t i = 0; i < len; i++) {
         base[i]->update();

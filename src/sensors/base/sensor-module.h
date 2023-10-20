@@ -49,8 +49,8 @@ private:
 public:
     SensorModule();
     ~SensorModule();
-    void init(void (*initialize)() = nullptr);
-    void update(void (*update)() = nullptr);
+    void init(void (*initializeCallback)() = nullptr);
+    void update(void (*updateCallback)() = nullptr);
 
     void addModule(BaseSens *sensModule);
     void removeModule(uint8_t index);
@@ -64,6 +64,5 @@ public:
     bool isModulePresent(BaseSens *sensModule);
     bool isModulePresent(uint8_t index);
 };
-
 
 #endif  // SENSOR_MODULE_H
