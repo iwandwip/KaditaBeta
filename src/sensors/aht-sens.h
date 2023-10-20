@@ -21,17 +21,10 @@
 
 class AHTSens : public BaseSens {
 private:
-    Adafruit_AHTX0 *thisClass;
-    float thisValue[AHT_SENS_NUM];
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    uint32_t sensTimer[3];
-#else
-    uint32_t sensTimer[1];
-#endif
+    Adafruit_AHTX0 *sensorClass;
+    float sensorValue[AHT_SENS_NUM];
     uint8_t sensorPin;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void (*thisCallbackFunc)() = nullptr;
-#endif
+    uint32_t sensorTimer;
 
 public:
     AHTSens();
@@ -39,16 +32,7 @@ public:
     ~AHTSens();
     void init() override;
     void update() override;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void debug() override;
-    void calibrate() override;
-#endif
     void getValue(float *output) override;
-#if defined(EXTENDED_FUNCTION_VTABLE)
-    void setCallBack(void (*callbackFunc)(void)) override;
-    void count() override;
-    void reset() override;
-#endif
     float getValueTemperature() const;
     float getValueHumidity() const;
     void setPins(uint8_t _pin);

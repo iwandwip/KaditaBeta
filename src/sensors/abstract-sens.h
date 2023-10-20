@@ -15,10 +15,11 @@
 
 class Abstract : public BaseSens {
 private:
-    float sensValue;
+    void *sensorClass;
+    float sensorValue;
     uint8_t sensorPin;
-    uint32_t sensTimer;
-    void (*sensCallbackFunc)();
+    uint32_t sensorTimer;
+    void (*sensorCallbackFunc)();
 
 public:
     Abstract();
@@ -27,9 +28,7 @@ public:
     void init() override;
     void update() override;
     void getValue(float *output) override;
-    void getValue(int *output) override;
-    void getValue(char *output) override;
-    float getValue() const;
+    float getValueAbstract() const;
     void setPins(uint8_t _pin);
 };
 

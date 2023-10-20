@@ -30,13 +30,14 @@ public:
     virtual void update() = 0;
 
     /*virtual function*/
-    virtual void getValue(float *output) {/*not implemented yet*/}
+    virtual void getValue(float *output) {}
 
-    virtual void getValue(int *output) {/*not implemented yet*/}
+    virtual void getValue(int *output) {}
 
-    virtual void getValue(char *output) {/*not implemented yet*/}
+    virtual void getValue(char *output) {}
 
-    virtual void process() {/*not implemented yet*/}
+    /*additional function*/
+    virtual void process() {}
 
     BaseSens &operator=(const BaseSens &) = default;
     BaseSens &operator=(BaseSens &&) = default;

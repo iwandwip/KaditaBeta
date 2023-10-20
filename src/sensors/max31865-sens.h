@@ -33,12 +33,12 @@ public:
                           int8_t spiMiso,
                           int8_t spiClk,
                           max31865_numwires wire = MAX31865_2WIRE,
-                          float RTDNominal = MAX_31865_PT100_RNOMINAL,
-                          float refResistor = MAX_31865_PT100_RREF)
+                          float _rtdNominal = MAX_31865_PT100_RNOMINAL,
+                          float _refResistor = MAX_31865_PT100_RREF)
             : Adafruit_MAX31865(spiCs, spiMosi, spiMiso, spiClk),
               sensValue(0.0),
-              rtdNominal(RTDNominal),
-              refResistor(refResistor),
+              rtdNominal(_rtdNominal),
+              refResistor(_refResistor),
               sensTimer(0) {
         this->begin(wire);
     }

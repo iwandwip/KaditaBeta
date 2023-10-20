@@ -9,17 +9,19 @@
 #include "Arduino.h"
 
 Abstract::Abstract()
-        : sensValue(0.0),
+        : sensorClass(nullptr),
+          sensorValue(0.0),
           sensorPin(A0),
-          sensTimer(0),
-          sensCallbackFunc(nullptr) {
+          sensorTimer(0),
+          sensorCallbackFunc(nullptr) {
 }
 
 Abstract::Abstract(uint8_t _pin)
-        : sensValue(0.0),
-          sensTimer(0),
-          sensCallbackFunc(nullptr) {
-    this->sensorPin = _pin;
+        : sensorClass(nullptr),
+          sensorValue(0.0),
+          sensorPin(_pin),
+          sensorTimer(0),
+          sensorCallbackFunc(nullptr) {
 }
 
 Abstract::~Abstract() = default;
@@ -29,27 +31,21 @@ void Abstract::init() {
 }
 
 void Abstract::update() {
-    if (millis() - sensTimer >= 500) {
-        sensValue = analogRead(sensorPin);
-        sensValue *= (5.0 / 1023.0);
-        sensTimer = millis();
+    if (millis() - sensorTimer >= 500) {
+        sensorValue = analogRead(sensorPin);
+        sensorValue *= (5.0 / 1023.0);
+        sensorTimer = millis();
     }
 }
 
 void Abstract::getValue(float *output) {
-    *output = sensValue;
+    *output = sensorValue;
 }
 
-void Abstract::getValue(int *output) {
-}
-
-void Abstract::getValue(char *output) {
-}
-
-float Abstract::getValue() const {
-    return sensValue;
+float Abstract::getValueAbstract() const {
+    return sensorValue;
 }
 
 void Abstract::setPins(uint8_t _pin) {
-    this->sensorPin = _pin;
+    sensorPin = _pin;
 }
