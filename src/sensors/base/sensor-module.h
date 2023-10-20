@@ -30,11 +30,9 @@ public:
     virtual void update() = 0;
 
     /*virtual function*/
-    virtual void getValue(float *output) {}
-
-    virtual void getValue(int *output) {}
-
-    virtual void getValue(char *output) {}
+    virtual void getValue(float *output);
+    virtual void getValue(int *output);
+    virtual void getValue(char *output);
 
     /*additional function*/
     virtual void process() {}

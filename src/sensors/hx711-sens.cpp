@@ -61,7 +61,7 @@ void HX711Sens::getValue(int *output) {
 void HX711Sens::getValue(char *output) {
 }
 
-float HX711Sens::getValue() const {
+float HX711Sens::getValueWeight() const {
     return sensorValue;
 }
 

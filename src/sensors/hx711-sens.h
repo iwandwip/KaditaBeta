@@ -30,7 +30,7 @@ public:
     void getValue(float *output) override;
     void getValue(int *output) override;
     void getValue(char *output) override;
-    float getValue() const;
+    float getValueWeight() const;
     void setPins(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin);
 };
 
