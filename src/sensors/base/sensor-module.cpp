@@ -42,6 +42,7 @@ void SensorModule::addModule(BaseSens *sensModule) {
         int count = 0;
         while (count < 99) {
             Serial.println("Memory Allocation Failed !");
+            delay(1000);
             count++;
         }
     }
@@ -63,7 +64,11 @@ void SensorModule::removeModule(uint8_t index) {
     }
 }
 
-BaseSens *SensorModule::getModule(uint8_t index) {
+BaseSens &SensorModule::getModule(uint8_t index) {
+    return *(base[index]);
+}
+
+BaseSens *SensorModule::getModulePtr(uint8_t index) {
     if (base == nullptr || index >= len) return nullptr;
     return base[index];
 }

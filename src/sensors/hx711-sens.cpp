@@ -55,7 +55,7 @@ void HX711Sens::debug() {
     if (millis() - sensTimer[1] >= 500) {
         if (isCalibrate) return;
         Serial.print("| thisValueRaw: ");
-        Serial.print(thisValue);
+        Serial.print(sensValue);
         Serial.println();
         sensTimer[1] = millis();
     }

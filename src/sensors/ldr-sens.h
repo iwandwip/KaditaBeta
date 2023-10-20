@@ -39,14 +39,12 @@ public:
     void calibrate() override;
 #endif
     void getValue(float *output) override;
-    void getValue(int *output) override;
-    void getValue(char *output) override;
 #if defined(EXTENDED_FUNCTION_VTABLE)
     void setCallBack(void (*callbackFunc)(void)) override;
     void count() override;
     void reset() override;
 #endif
-    float getValue() const;
+    float getValueAdc() const;
     void setPins(uint8_t _pin);
 };
 

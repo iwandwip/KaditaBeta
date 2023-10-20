@@ -29,14 +29,14 @@ public:
     virtual void init() = 0;
     virtual void update() = 0;
 
-    virtual void getValue(float *output) = 0;
-    virtual void getValue(int *output) = 0;
-    virtual void getValue(char *output) = 0;
-
     /*virtual function*/
-    virtual void process() {
-        /*not implemented yet*/
-    }
+    virtual void getValue(float *output) {/*not implemented yet*/}
+
+    virtual void getValue(int *output) {/*not implemented yet*/}
+
+    virtual void getValue(char *output) {/*not implemented yet*/}
+
+    virtual void process() {/*not implemented yet*/}
 
     BaseSens &operator=(const BaseSens &) = default;
     BaseSens &operator=(BaseSens &&) = default;
@@ -51,10 +51,13 @@ public:
     ~SensorModule();
     void init(void (*initialize)() = nullptr);
     void update(void (*update)() = nullptr);
+
     void addModule(BaseSens *sensModule);
     void removeModule(uint8_t index);
-    BaseSens *getModule(uint8_t index);
+    BaseSens &getModule(uint8_t index);
+    BaseSens *getModulePtr(uint8_t index);
     void clearModules();
+
     uint8_t getModuleCount();
     void setModule(uint8_t index, BaseSens *sensModule);
     void swapModules(uint8_t index1, uint8_t index2);

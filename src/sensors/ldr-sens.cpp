@@ -27,7 +27,7 @@ void LDRSens::init() {
 void LDRSens::update() {
     if (millis() - sensTimer[0] >= 500) {
         thisValue = analogRead(sensorPin);
-//        thisValue *= (float) (vref / (pow(2, resolution) - 1)); // toVolt
+//        sensValue *= (float) (vref / (pow(2, resolution) - 1)); // toVolt
         sensTimer[0] = millis();
     }
 }
@@ -37,7 +37,7 @@ void LDRSens::debug() {
     if (millis() - sensTimer[1] >= 500) {
         if (isCalibrate) return;
         Serial.print("| thisValueRaw: ");
-        Serial.print(thisValue);
+        Serial.print(sensValue);
         Serial.println();
         sensTimer[1] = millis();
     }
@@ -64,12 +64,6 @@ void LDRSens::getValue(float *output) {
     *output = thisValue;
 }
 
-void LDRSens::getValue(int *output) {
-}
-
-void LDRSens::getValue(char *output) {
-}
-
 #if defined(EXTENDED_FUNCTION_VTABLE)
 void LDRSens::setCallBack(void (*callbackFunc)(void)) {
     thisCallbackFunc = callbackFunc;
@@ -82,7 +76,7 @@ void LDRSens::reset() {
 }
 #endif
 
-float LDRSens::getValue() const {
+float LDRSens::getValueAdc() const {
     return thisValue;
 }
 
