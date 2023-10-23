@@ -1,4 +1,4 @@
-#define MAIN_TESTING_KADITA
+//#define MAIN_TESTING_KADITA
 #ifdef MAIN_TESTING_KADITA
 
 #include <Kadita.h>

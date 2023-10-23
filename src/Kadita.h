@@ -39,6 +39,6 @@
 #include "modules/time/timer-task.h"
 
 // external lib
-#include "LiquidCrystal_I2C.h"
+//#include "LiquidCrystal_I2C.h"
 
 #endif

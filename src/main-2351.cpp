@@ -5,10 +5,11 @@
  *  Created on: 2023. 4. 3
  */
 
-//#define SOLAR_TRACKER
+#define SOLAR_TRACKER
 #ifdef SOLAR_TRACKER
 
 #include <Kadita.h>
+#include <LiquidCrystal_I2C.h>
 
 /*macros*/
 #define LDR_UP      0
@@ -53,7 +54,7 @@ void loop() {
 
 void sensorRoutine() {
     for (uint8_t i = 0; i < LDR_NUM; i++) {
-        sensor.getModule(i)->getValue(&ldrValue[i]);
+        sensor.getModule(i).getValue(&ldrValue[i]);
     }
 }
 
