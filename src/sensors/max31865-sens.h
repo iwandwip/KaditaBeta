@@ -28,21 +28,7 @@ private:
     using Adafruit_MAX31865::Adafruit_MAX31865;
 
 public:
-    explicit MAX31865Sens(int8_t spiCs,
-                          int8_t spiMosi,
-                          int8_t spiMiso,
-                          int8_t spiClk,
-                          max31865_numwires wire = MAX31865_2WIRE,
-                          float _rtdNominal = MAX_31865_PT100_RNOMINAL,
-                          float _refResistor = MAX_31865_PT100_RREF)
-            : Adafruit_MAX31865(spiCs, spiMosi, spiMiso, spiClk),
-              sensorValue(0.0),
-              sensorRtdNominal(_rtdNominal),
-              sensorRefResistor(_refResistor),
-              sensorTimer(0) {
-        this->begin(wire);
-    }
-
+    explicit MAX31865Sens(int8_t spiCs, int8_t spiMosi, int8_t spiMiso, int8_t spiClk, max31865_numwires wire = MAX31865_2WIRE, float _rtdNominal = MAX_31865_PT100_RNOMINAL, float _refResistor = MAX_31865_PT100_RREF);
     ~MAX31865Sens();
     void init() override;
     void update() override;
