@@ -21,6 +21,7 @@
 #include "sensors/hx711-sens.h"
 #include "sensors/ldr-sens.h"
 #include "sensors/max31865-sens.h"
+#include "sensors/voltage-sens.h"
 
 // modules
 #include "modules/communication/wired/i2c/i2c-scanner.h"
