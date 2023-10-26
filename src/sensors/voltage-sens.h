@@ -16,17 +16,18 @@
 class VoltageSens : public BaseSens {
 private:
     /*variables*/
-    void *sensorClass;
     float sensorValue;
     uint8_t sensorPin;
     uint32_t sensorTimer;
 
-    /*optional object*/
-    void (*sensorCallbackFunc)();
+    float sensorRes1;
+    float sensorRes2;
+    float sensorRefVoltage;
+    float sensorResolution;
 
 public:
     VoltageSens();
-    explicit VoltageSens(uint8_t _pin);
+    explicit VoltageSens(uint8_t _pin, float _res1 = 30000.0, float _res2 = 7500.0, float _ref_voltage = 5.0, float _resolution = 1024.0);
     ~VoltageSens();
     void init() override;
     void update() override;

@@ -27,7 +27,7 @@ private:
 public:
     DS18B20Sens();
     explicit DS18B20Sens(uint8_t _pin);
-    explicit DS18B20Sens(OneWire* _wire);
+    explicit DS18B20Sens(OneWire *_wire);
     ~DS18B20Sens();
     void init() override;
     void update() override;

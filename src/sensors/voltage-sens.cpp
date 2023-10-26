@@ -9,19 +9,23 @@
 #include "Arduino.h"
 
 VoltageSens::VoltageSens()
-        : sensorClass(nullptr),
-          sensorValue(0.0),
+        : sensorValue(0.0),
           sensorPin(A0),
           sensorTimer(0),
-          sensorCallbackFunc(nullptr) {
+          sensorRes1(30000.0),
+          sensorRes2(7500.0),
+          sensorRefVoltage(5.0),
+          sensorResolution(1024.0) {
 }
 
-VoltageSens::VoltageSens(uint8_t _pin)
-        : sensorClass(nullptr),
-          sensorValue(0.0),
+VoltageSens::VoltageSens(uint8_t _pin, float _res1, float _res2, float _ref_voltage, float _resolution)
+        : sensorValue(0.0),
           sensorPin(_pin),
           sensorTimer(0),
-          sensorCallbackFunc(nullptr) {
+          sensorRes1(_res1),
+          sensorRes2(_res2),
+          sensorRefVoltage(_ref_voltage),
+          sensorResolution(_resolution) {
 }
 
 VoltageSens::~VoltageSens() = default;
@@ -33,7 +37,8 @@ void VoltageSens::init() {
 void VoltageSens::update() {
     if (millis() - sensorTimer >= 500) {
         sensorValue = analogRead(sensorPin);
-        sensorValue *= (5.0 / 1023.0);
+        sensorValue = (sensorValue * sensorRefVoltage) / sensorResolution;
+        sensorValue = sensorValue / (sensorRes2 / (sensorRes1 + sensorRes2));
         sensorTimer = millis();
     }
 }

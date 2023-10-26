@@ -31,13 +31,12 @@ DS18B20Sens::DS18B20Sens(OneWire *_wire)
 DS18B20Sens::~DS18B20Sens() = default;
 
 void DS18B20Sens::init() {
-    pinMode(sensorPin, INPUT);
+    DallasTemperature::begin();
 }
 
 void DS18B20Sens::update() {
-    if (millis() - sensorTimer >= 500) {
-        sensorValue = analogRead(sensorPin);
-        sensorValue *= (5.0 / 1023.0);
+    if (millis() - sensorTimer >= 3000) {
+        sensorValue = DallasTemperature::getTempCByIndex(0);
         sensorTimer = millis();
     }
 }
