@@ -22,6 +22,7 @@
 #include "sensors/hx711-sens.h"
 #include "sensors/ldr-sens.h"
 #include "sensors/max31865-sens.h"
+#include "sensors/ultrasonic-sens.h"
 #include "sensors/voltage-sens.h"
 
 // modules
