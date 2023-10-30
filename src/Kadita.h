@@ -19,6 +19,7 @@
 #include "sensors/bme280-sens.h"
 #include "sensors/dht-sens.h"
 #include "sensors/ds18b20-sens.h"
+#include "sensors/flowmeter-sens.h"
 #include "sensors/hx711-sens.h"
 #include "sensors/ldr-sens.h"
 #include "sensors/max6675-sens.h"
