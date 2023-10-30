@@ -19,6 +19,7 @@ enum flow_meter_index_t {
     FLOW_METER_CURRENT_VOLUME = 1,
     FLOW_METER_TOTAL_RATE = 2,
     FLOW_METER_TOTAL_VOLUME = 3,
+    FLOW_METER_NUM_VALUE = 4
 };
 
 class FlowmeterSens : public BaseSens {
