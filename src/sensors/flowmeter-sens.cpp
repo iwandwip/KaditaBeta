@@ -24,8 +24,8 @@ void FlowmeterSens::init() {
 }
 
 void FlowmeterSens::update() {
-    if (millis() - sensorTimer >= 1000) {
-        sensorClass->tick(1000);
+    if (millis() - sensorTimer >= FLOW_METER_PERIOD) {
+        sensorClass->tick(FLOW_METER_PERIOD);
         sensorValue[FLOW_METER_CURRENT_RATE] = (float) sensorClass->getCurrentFlowrate();
         sensorValue[FLOW_METER_CURRENT_VOLUME] = (float) sensorClass->getCurrentVolume();
         sensorValue[FLOW_METER_TOTAL_RATE] = (float) sensorClass->getTotalFlowrate();

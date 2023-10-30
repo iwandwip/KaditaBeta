@@ -14,6 +14,8 @@
 #include "base/sensor-module.h"
 #include "FlowMeter.h"
 
+#define FLOW_METER_PERIOD 1000
+
 enum flow_meter_index_t {
     FLOW_METER_CURRENT_RATE = 0,
     FLOW_METER_CURRENT_VOLUME = 1,
@@ -28,7 +30,7 @@ private:
     FlowMeter *sensorClass;
     FlowSensorProperties sensorProperties;
 
-    float sensorValue[4];
+    float sensorValue[FLOW_METER_NUM_VALUE];
     uint8_t sensorPin;
     uint32_t sensorTimer;
 
