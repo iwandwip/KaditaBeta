@@ -207,6 +207,7 @@ TDSSens::~TDSSens() = default;
 
 void TDSSens::init() {
     GravityTDS::begin();
+    *sensorTemp = 25.0;
 }
 
 void TDSSens::update() {
