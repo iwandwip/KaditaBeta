@@ -24,6 +24,7 @@
 #include "sensors/ldr-sens.h"
 #include "sensors/max6675-sens.h"
 #include "sensors/max31865-sens.h"
+#include "sensors/tds-sens.h"
 #include "sensors/ultrasonic-sens.h"
 #include "sensors/voltage-sens.h"
 
