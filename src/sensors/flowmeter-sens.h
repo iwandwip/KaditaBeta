@@ -79,7 +79,7 @@ public:
      * <=>                   | Substitute p / t for f in order to allow for different measurement intervals
      * K = (p / t) / Q       | units: ((1/s)/(l/min)) = (1/s) / (l/min)
      * <=>                   | Solve for Q:
-     * Q = (p / t) / K       | untis: l/min = 1/s / (1/s / (l/min))
+     * Q = (p / t) / K       | units: l/min = 1/s / (1/s / (l/min))
      * <=>                   | Volume in l:
      * V = Q / 60            | units: l = (l/min) / (min)
      *
