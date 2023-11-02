@@ -33,6 +33,7 @@ public:
     virtual void getValue(float *output);
     virtual void getValue(int *output);
     virtual void getValue(char *output);
+    virtual void getValue(String *output);
 
     /*additional function*/
     virtual void process();

@@ -19,6 +19,10 @@ void BaseSens::getValue(char *output) {
     /*not implemented yet*/
 }
 
+void BaseSens::getValue(String *output) {
+    /*not implemented yet*/
+}
+
 void BaseSens::process() {
     /*not implemented yet*/
 }
