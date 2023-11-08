@@ -15,13 +15,6 @@ AHTSens::AHTSens()
           sensorTimer(0) {
 }
 
-AHTSens::AHTSens(uint8_t _pin)
-        : sensorClass(nullptr),
-          sensorValue{0, 0},
-          sensorPin(_pin),
-          sensorTimer(0) {
-}
-
 AHTSens::~AHTSens() = default;
 
 void AHTSens::init() {

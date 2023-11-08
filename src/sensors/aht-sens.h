@@ -28,7 +28,6 @@ private:
 
 public:
     AHTSens();
-    explicit AHTSens(uint8_t _pin);
     ~AHTSens();
     void init() override;
     void update() override;

@@ -13,12 +13,12 @@ BME280Sens::BME280Sens()
           sensorTimer(0) {
 }
 
-BME280Sens::BME280Sens(uint8_t _cs)
+BME280Sens::BME280Sens(int8_t _cs)
         : Adafruit_BME280(_cs),
           sensorTimer(0) {
 }
 
-BME280Sens::BME280Sens(uint8_t _cs, uint8_t _mosi, uint8_t _miso, uint8_t _sck)
+BME280Sens::BME280Sens(int8_t _cs, int8_t _mosi, int8_t _miso, int8_t _sck)
         : Adafruit_BME280(_cs, _mosi, _miso, _sck),
           sensorTimer(0) {
 }

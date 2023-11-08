@@ -31,8 +31,8 @@ private:
 
 public:
     explicit BME280Sens();
-    explicit BME280Sens(uint8_t _cs);
-    explicit BME280Sens(uint8_t _cs, uint8_t _mosi, uint8_t _miso, uint8_t _sck);
+    explicit BME280Sens(int8_t _cs);
+    explicit BME280Sens(int8_t _cs, int8_t _mosi, int8_t _miso, int8_t _sck);
     ~BME280Sens();
     void init() override;
     void update() override;
