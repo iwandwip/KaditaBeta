@@ -21,6 +21,7 @@
 #include "sensors/ds18b20-sens.h"
 #include "sensors/flowmeter-sens.h"
 #include "sensors/hx711-sens.h"
+#include "sensors/ina219-sens.h"
 #include "sensors/ldr-sens.h"
 #include "sensors/max6675-sens.h"
 #include "sensors/max31865-sens.h"
