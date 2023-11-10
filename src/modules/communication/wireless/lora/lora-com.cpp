@@ -37,6 +37,18 @@ void LoRaModule::sendData(uint32_t _time) {
     }
 }
 
+void LoRaModule::sendDataCb(uint32_t _time, void (*callback)()) {
+    if (millis() - sendTime >= _time) {
+        LoRa.beginPacket();
+        LoRa.print(data);
+        LoRa.endPacket();  // true = async
+        callback();
+        // LoRa.receive();
+        // Serial.println(data);
+        sendTime = millis();
+    }
+}
+
 void LoRaModule::receive(void (*onReceive)(String)) {
     if (onReceive == nullptr) return;
     int packetSize = LoRa.parsePacket();

@@ -49,6 +49,7 @@ public:
 
     void clearData();
     void sendData(uint32_t _time = 500);
+    void sendDataCb(uint32_t _time = 500, void (*callback)() = nullptr);
     void receive(void (*onReceive)(String) = nullptr);
     float getData(String data, uint8_t index = 0);
     String getStrData(String data, uint8_t index = 0);
