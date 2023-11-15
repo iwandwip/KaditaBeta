@@ -29,7 +29,13 @@
 #define EEPROM_read(address, p)  {int i = 0; byte *pp = (byte*)&(p);for(; i < sizeof(p); i++) pp[i]=EEPROM.read(address+i);}
 
 GravityTDS::GravityTDS() {
-    this->pin = A1;
+#if defined(ESP8266)
+    this->pin = 2;
+#elif defined(ESP32)
+    this->pin = 2;
+#else
+    this->pin = 2;
+#endif
     this->temperature = 25.0;
     this->aref = 5.0;
     this->adcRange = 1024.0;

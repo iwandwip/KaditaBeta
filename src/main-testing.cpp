@@ -1,7 +1,9 @@
-//#define MAIN_TESTING_KADITA
+#define MAIN_TESTING_KADITA
 #ifdef MAIN_TESTING_KADITA
 
 #include <Kadita.h>
+
+IOExpander pcfA(0x39);
 
 SensorModule sensor;
 float value;

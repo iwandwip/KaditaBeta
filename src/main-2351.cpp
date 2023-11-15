@@ -5,7 +5,7 @@
  *  Created on: 2023. 4. 3
  */
 
-#define SOLAR_TRACKER
+//#define SOLAR_TRACKER
 #ifdef SOLAR_TRACKER
 
 #include <Kadita.h>

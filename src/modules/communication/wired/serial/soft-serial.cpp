@@ -7,6 +7,10 @@
 
 #include "soft-serial.h"
 
+#if defined(ESP8266)
+#elif defined(ESP32)
+#else
+
 SoftSerial::SoftSerial() {
     clearData();
 }
@@ -73,3 +77,5 @@ String SoftSerial::parseStr(String data, char separator[], int index) {
     }
     return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
+
+#endif

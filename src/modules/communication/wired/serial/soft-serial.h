@@ -10,6 +10,10 @@
 #ifndef SOFT_SERIAL_COM_H
 #define SOFT_SERIAL_COM_H
 
+#if defined(ESP8266)
+#elif defined(ESP32)
+#else
+
 #include "Arduino.h"
 #include "SoftwareSerial.h"
 
@@ -37,5 +41,7 @@ public:
     float getData(String data, uint8_t index = 0);
     String getStrData(String data, uint8_t index = 0);
 };
+
+#endif
 
 #endif

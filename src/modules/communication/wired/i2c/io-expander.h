@@ -15,8 +15,9 @@
 
 class IOExpander : public PCF8574 {
 private:
-    using PCF8574::PCF8574;
+    uint8_t addr;
 public:
+    using PCF8574::PCF8574;
 };
 
 #endif  // KADITA_IO_EXPANDER_H
