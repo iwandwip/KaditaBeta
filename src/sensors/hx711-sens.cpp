@@ -43,11 +43,11 @@ void HX711Sens::update() {
         }
         sensorTimer[0] = millis();
     }
-    if (millis() - sensorTimer[1] >= 5000) {
-        this->power_down();
-        sensorTimer[1] = millis();
-    }
-    this->power_up();
+//    if (millis() - sensorTimer[1] >= 5000) {
+//        this->power_down();
+//        sensorTimer[1] = millis();
+//    }
+//    this->power_up();
 }
 
 void HX711Sens::getValue(float *output) {
