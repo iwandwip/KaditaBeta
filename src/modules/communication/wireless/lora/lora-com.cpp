@@ -13,20 +13,37 @@ LoRaModule::LoRaModule() {
 LoRaModule::~LoRaModule() {
 }
 
-bool LoRaModule::init(long frequency) {
+int LoRaModule::init(long frequency) {
     return LoRa.begin(frequency);
 }
 
-bool LoRaModule::init(uint8_t ss, uint8_t reset, uint8_t dio0, long frequency) {
+int LoRaModule::init(uint8_t ss, uint8_t reset, uint8_t dio0, long frequency) {
     LoRa.setPins(ss, reset, dio0);
     return LoRa.begin(frequency);
+}
+
+void LoRaModule::end() {
+    LoRa.end();
 }
 
 void LoRaModule::clearData() {
     data = NONE;
 }
 
-void LoRaModule::sendData(uint32_t _time) {
+void LoRaModule::sendData() {
+        LoRa.beginPacket();
+        LoRa.print(data);
+        LoRa.endPacket();
+}
+
+void LoRaModule::sendDataCb(void (*callback)()) {
+        LoRa.beginPacket();
+        LoRa.print(data);
+        LoRa.endPacket();  // true = async
+        callback();
+}
+
+void LoRaModule::sendDataAsync(uint32_t _time) {
     if (millis() - sendTime >= _time) {
         LoRa.beginPacket();
         LoRa.print(data);
@@ -37,7 +54,7 @@ void LoRaModule::sendData(uint32_t _time) {
     }
 }
 
-void LoRaModule::sendDataCb(uint32_t _time, void (*callback)()) {
+void LoRaModule::sendDataAsyncCb(uint32_t _time, void (*callback)()) {
     if (millis() - sendTime >= _time) {
         LoRa.beginPacket();
         LoRa.print(data);
@@ -59,6 +76,14 @@ void LoRaModule::receive(void (*onReceive)(String)) {
         }
         onReceive(data);
     }
+}
+
+void LoRaModule::sleep() {
+    LoRa.sleep();
+}
+
+void LoRaModule::idle() {
+    LoRa.idle();
 }
 
 float LoRaModule::getData(String data, uint8_t index) {

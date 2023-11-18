@@ -38,8 +38,9 @@ private:
 public:
     LoRaModule();
     ~LoRaModule();
-    bool init(long frequency = 915E6);
-    bool init(uint8_t ss, uint8_t reset, uint8_t dio0, long frequency = 915E6);
+    int init(long frequency = 915E6);
+    int init(uint8_t ss, uint8_t reset, uint8_t dio0, long frequency = 915E6);
+    void end();
 
     template<typename T>
     void addData(T value) {
@@ -48,9 +49,13 @@ public:
     }
 
     void clearData();
-    void sendData(uint32_t _time = 500);
-    void sendDataCb(uint32_t _time = 500, void (*callback)() = nullptr);
+    void sendData();
+    void sendDataCb(void (*callback)() = nullptr);
+    void sendDataAsync(uint32_t _time = 500);
+    void sendDataAsyncCb(uint32_t _time = 500, void (*callback)() = nullptr);
     void receive(void (*onReceive)(String) = nullptr);
+    void sleep();
+    void idle();
     float getData(String data, uint8_t index = 0);
     String getStrData(String data, uint8_t index = 0);
 };

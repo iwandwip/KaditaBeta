@@ -23,6 +23,7 @@ private:
     bool _offDelayState;
     bool _state;
     bool _reverse;
+    unsigned long _toggleTime;
 
 public:
     DigitalOut();
@@ -33,6 +34,7 @@ public:
     void set(bool state);
     void toggle();
     void toggleInit(unsigned long delay_time = 100, int num = 1);
+    void toggleAsync(unsigned long delay_time = 100);
     void onDelay(unsigned long delay_time);
     void offDelay(unsigned long delay_time);
     void update();
