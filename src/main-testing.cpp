@@ -5,6 +5,10 @@
 
 IOExpander pcfA(0x39);
 
+DOTMatrix dot = DOTMatrix(MD_MAX72XX::FC16_HW, 21, 4);
+
+MD_MAX72XX::PAROLA_HW;
+
 SensorModule sensor;
 float value;
 

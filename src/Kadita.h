@@ -36,6 +36,8 @@
 #include "modules/communication/wired/serial/soft-serial.h"
 #include "modules/communication/wired/serial/hard-serial.h"
 
+#include "modules/communication/wired/spi/dot-matrix.h"
+
 #include "modules/communication/wireless/lora/lora-com.h"
 
 #include "modules/driver/bts7960/bts7960.h"
