@@ -21,11 +21,22 @@ void HardSerial::clearData() {
     dataSend = "";
 }
 
-void HardSerial::sendData(uint32_t _time) {
+void HardSerial::sendData() {
+    serialPtr->println(dataSend);
+}
+
+void HardSerial::sendDataAsync(uint32_t _time) {
     if (millis() - sendTime >= _time) {
         sendTime = millis();
         serialPtr->println(dataSend);
-        // Serial.println(dataSend);
+    }
+}
+
+void HardSerial::sendDataAsyncCb(uint32_t _time, void (*onReceive)()) {
+    if (millis() - sendTime >= _time) {
+        sendTime = millis();
+        serialPtr->println(dataSend);
+        onReceive();
     }
 }
 
