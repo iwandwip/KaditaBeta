@@ -25,6 +25,11 @@ void HardSerial::sendData() {
     serialPtr->println(dataSend);
 }
 
+void HardSerial::sendDataCb(void (*onReceive)()) {
+    serialPtr->println(dataSend);
+    onReceive();
+}
+
 void HardSerial::sendDataAsync(uint32_t _time) {
     if (millis() - sendTime >= _time) {
         sendTime = millis();

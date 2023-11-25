@@ -35,6 +35,11 @@ void SoftSerial::sendData() {
     serialPtr->println(dataSend);
 }
 
+void SoftSerial::sendDataCb(void (*onReceive)()) {
+    serialPtr->println(dataSend);
+    onReceive();
+}
+
 void SoftSerial::sendDataAsync(uint32_t _time) {
     if (millis() - sendTime >= _time) {
         sendTime = millis();

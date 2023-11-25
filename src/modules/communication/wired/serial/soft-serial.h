@@ -37,6 +37,7 @@ public:
 
     void clearData();
     void sendData();
+    void sendDataCb(void (*onReceive)());
     void sendDataAsync(uint32_t _time = 500);
     void sendDataAsyncCb(uint32_t _time = 500, void (*onReceive)() = nullptr);
     void receive(void (*onReceive)(String));
