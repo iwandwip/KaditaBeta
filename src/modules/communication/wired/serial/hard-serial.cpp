@@ -53,7 +53,9 @@ void HardSerial::receive(void (*onReceive)(String)) {
             }
         }
         rxBuffer[rxBufferPtr] = 0;
-        onReceive(String(rxBuffer));
+        String dataCb = String(rxBuffer);
+        dataCb.replace("\n", "");
+        onReceive(dataCb);
     }
 }
 
