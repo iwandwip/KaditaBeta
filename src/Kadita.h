@@ -33,8 +33,9 @@
 #include "modules/communication/wired/i2c/i2c-scanner.h"
 #include "modules/communication/wired/i2c/io-expander.h"
 
-#include "modules/communication/wired/serial/soft-serial.h"
 #include "modules/communication/wired/serial/hard-serial.h"
+#include "modules/communication/wired/serial/soft-serial.h"
+#include "modules/communication/wired/serial/swap-serial.h"
 
 #include "modules/communication/wired/spi/dot-matrix.h"
 
