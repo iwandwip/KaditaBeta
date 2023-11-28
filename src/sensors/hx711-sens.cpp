@@ -24,16 +24,6 @@ HX711Sens::HX711Sens(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin)
 
 void HX711Sens::init() {
     this->begin(this->sensorDOUTPin, this->sensorSCKPin);
-    this->read();
-    this->read_average(20);
-    this->get_value(5);
-    this->get_units(5);
-    this->set_scale(2280.f);
-    this->tare();
-    this->read();
-    this->read_average(20);
-    this->get_value(5);
-    this->get_units(5);
 }
 
 void HX711Sens::update() {
@@ -43,6 +33,7 @@ void HX711Sens::update() {
         }
         sensorTimer[0] = millis();
     }
+
 //    if (millis() - sensorTimer[1] >= 5000) {
 //        this->power_down();
 //        sensorTimer[1] = millis();
@@ -59,6 +50,53 @@ void HX711Sens::getValue(int *output) {
 }
 
 void HX711Sens::getValue(char *output) {
+}
+
+float HX711Sens::getCalibrateFactorInit(float weight) {
+    float calibrationFactor = 0.0;
+    if (this->is_ready()) {
+        this->set_scale();
+        Serial.println("Tare... remove any weights from the scale.");
+        delay(5000);
+        this->tare();
+        Serial.println("Tare done...");
+        Serial.print("Place a known weight on the scale...");
+        delay(5000);
+        float reading = this->get_units(10);
+        Serial.print("| reading: ");
+        Serial.print(reading);
+        Serial.print("| result: ");
+        Serial.print(reading / weight);
+        Serial.println();
+        delay(5000);
+    }
+    return calibrationFactor;
+}
+
+bool HX711Sens::isReady() {
+    return this->is_ready();
+}
+
+void HX711Sens::setScaleDelay(long time, float scale) {
+    this->set_scale(scale);
+    delay(time);
+}
+
+void HX711Sens::setScale(float scale) {
+    this->set_scale(scale);
+}
+
+void HX711Sens::tareDelay(long time) {
+    this->tare();
+    delay(time);
+}
+
+float HX711Sens::getUnits(byte time) {
+    return this->get_units(time);
+}
+
+float HX711Sens::getCalibrateFactor(float units, float weight) {
+    return units / weight;
 }
 
 float HX711Sens::getValueWeight() const {

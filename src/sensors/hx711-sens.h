@@ -30,6 +30,13 @@ public:
     void getValue(float *output) override;
     void getValue(int *output) override;
     void getValue(char *output) override;
+    float getCalibrateFactorInit(float weight);
+    bool isReady();
+    void setScaleDelay(long time, float scale = 1.f);
+    void setScale(float scale = 1.f);
+    void tareDelay(long time);
+    float getUnits(byte times = 1);
+    float getCalibrateFactor(float units, float weight);
     float getValueWeight() const;
     void setPins(uint8_t _sensorDOUTPin, uint8_t _sensorSCKPin);
 };
