@@ -10,6 +10,17 @@
 #ifndef SWAP_SERIAL_COM_H
 #define SWAP_SERIAL_COM_H
 
+/* GPIO TABLE
+ * GPIO	FUNCTION	GPIO	FUNCTION
+ * GPIO32	RX/TX	GPIO15	RX/TX
+ * GPIO33	RX/TX	GPIO21	RX/TX
+ * GPIO25	RX/TX	GPIO22	RX/TX
+ * GPIO26	RX/TX	GPIO17	RX/TX
+ * GPIO27	RX/TX	GPIO16	RX/TX
+ * GPIO14	RX/TX
+ * GPIO13	RX/TX
+ */
+
 #if defined(ESP8266) || defined(ESP32)
 
 #include "Arduino.h"
@@ -27,8 +38,8 @@ public:
     void begin(HardwareSerial *_serialPtr = &Serial2,
                long baud = 9600,
                SerialConfig cfg = SERIAL_8N1,
-               uint8_t rxPin = 13,
-               uint8_t txPin = 15);
+               uint8_t rxPin = 15,
+               uint8_t txPin = 14);
 
     template<typename T>
     void addData(T newData, const char *separator = ";") {
