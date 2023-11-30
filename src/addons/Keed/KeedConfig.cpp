@@ -7,14 +7,14 @@
 
 #include "Keed.h"
 
-KeedConfiguration::KeedConfiguration() {
+KeedConfiguration::KeedConfiguration()
+        : version_num(0), channel_num(0), _success(nullptr) {}
 
-}
-
-cfg_error_t KeedConfiguration::initialize() {
+cfg_error_t KeedConfiguration::initialize(void (*success)(void)) {
     for (int i = 0; i < ADDRESS_CONFIG_PIN_NUM; i++) {
         pinMode(version_address_pin_t[i], INPUT_PULLUP);
     }
+    if (success != nullptr) success();
     return INITIALIZE_OK;
 }
 
@@ -53,4 +53,21 @@ uint8_t KeedConfiguration::getVersion() const {
 
 uint8_t KeedConfiguration::getChannel() const {
     return channel_num;
+}
+
+uint8_t KeedConfiguration::getVersionInfo() const {
+    return (version_num == MINSYS_V1)
+           ? 1 : (version_num == MINSYS_V2)
+                 ? 2 : (version_num == MINSYS_V3)
+                       ? 3 : 0;
+}
+
+uint8_t KeedConfiguration::getIoExpanderNum() const {
+    uint8_t io_expander_num = 0;
+    for (int i = 0; i <= 64; i += 8) {
+        if (channel_num > i && !(channel_num % 2)) {
+            io_expander_num++;
+        }
+    }
+    return io_expander_num;
 }

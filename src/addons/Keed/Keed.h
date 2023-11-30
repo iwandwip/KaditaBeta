@@ -15,14 +15,14 @@
 
 class KeedWelcomingLight {
 private:
+    uint8_t ioLen;
+    IOExpander **ioBase;
+
+    void addIoExpander(IOExpander *ioExpander);
 public:
-    KeedWelcomingLight() {
-
-    }
-
-    cfg_error_t init(uint8_t channel, uint8_t version) {
-        return INITIALIZE_ERROR;
-    }
+    KeedWelcomingLight();
+    ~KeedWelcomingLight();
+    cfg_error_t init(uint8_t io_expander_num, uint8_t version);
 };
 
 #endif // KEED_H
