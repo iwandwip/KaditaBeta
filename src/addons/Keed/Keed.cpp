@@ -12,16 +12,18 @@ KeedWelcomingLight::KeedWelcomingLight()
 
 KeedWelcomingLight::~KeedWelcomingLight() {
     free(ioBase);
+    ioBase = nullptr;
 }
 
 cfg_error_t KeedWelcomingLight::init(uint8_t io_expander_num, uint8_t version) {
-    switch (io_expander_num) {
-        case 2:
-            break;
-        case 3:
-            break;
-        default:
-            break;
+    for (int i = 0; i < io_expander_num; i++) {
+        addIoExpander(new IOExpander(i2c_address_arr_t[i]));
+    }
+    for (int i = 0; i < ioLen; ++i) {
+        for (int j = 0; j < IO_EXPANDER_PIN_NUM; ++j) {
+            ioBase[i]->pinMode(j, OUTPUT);
+        }
+        if (!ioBase[i]->begin()) return INITIALIZE_ERROR;
     }
     return INITIALIZE_OK;
 }
