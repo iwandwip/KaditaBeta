@@ -16,11 +16,19 @@
 #define ADDRESS_CONFIG_PIN_NUM 5
 
 typedef enum {
-    I2C_ADDRESS_ERROR = -1,
-    VERSION_ADDRESS_ERROR = -2,
-    CHANNEL_NUM_ERROR = -3,
-    CONFIG_ERROR = -4,
-    SYSTEM_VERSION_ERROR = -5,
+    I2C_ADDRESS_OK = 1,
+    VERSION_ADDRESS_OK = 2,
+    CHANNEL_NUM_OK = 3,
+    CONFIG_OK = 4,
+    SYSTEM_VERSION_OK = 5,
+    INITIALIZE_OK = 6,
+
+    I2C_ADDRESS_ERROR = 255,
+    VERSION_ADDRESS_ERROR = 254,
+    CHANNEL_NUM_ERROR = 253,
+    CONFIG_ERROR = 252,
+    SYSTEM_VERSION_ERROR = 251,
+    INITIALIZE_ERROR = 250,
 } config_error_t;
 
 typedef enum {
@@ -38,9 +46,9 @@ typedef enum {
 } i2c_address_t;
 
 typedef enum {
-    MINSYS_V1 = 0x003E8, // version 1.0
-    MINSYS_V2 = 0x007D0, // version 2.0
-    MINSYS_V3 = 0x00BB8, // version 3.0
+    MINSYS_V1 = 0x0009B, // version 1.0
+    MINSYS_V2 = 0x000A6, // version 2.0
+    MINSYS_V3 = 0x000B1, // version 3.0
 } system_version_t;
 
 const uint8_t version_address_pin_t[ADDRESS_CONFIG_PIN_NUM] = {0x0001B, 0x0001A, 0x00019, 0x00021, 0x00020};
@@ -64,13 +72,22 @@ const uint8_t version_channel_t[TOTAL_VERSION_NUM] =
         };
 
 
-class KeedWelcomingLight {
+class KeedConfiguration {
 private:
+    uint8_t version_num;
     uint8_t channel_num;
 public:
-    int initialize();
-    uint8_t getChannel();
-    int checkVersion(uint8_t ch);
+    config_error_t initialize();
+    config_error_t readChannel();
+    config_error_t readVersion(uint8_t ch);
+
+    uint8_t getVersion() const {
+        return version_num;
+    }
+
+    uint8_t getChannel() const {
+        return channel_num;
+    }
 };
 
 #endif // KEED_H
