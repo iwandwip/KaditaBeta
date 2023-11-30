@@ -1,4 +1,5 @@
-.pio/build/esp32doit-devkit-v1/src/main.cpp.o: src/main.cpp src/Kadita.h \
+.pio/build/esp32doit-devkit-v1/src/main.cpp.o: src/main.cpp src/Keed.h \
+ src/Kadita.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
