@@ -177,4 +177,5 @@
  .pio/libdeps/esp32doit-devkit-v1/LoRa/src/LoRa.h \
  src/modules/driver/bts7960/bts7960.h src/modules/io/input-module.h \
  src/modules/time/timer-duration.h src/modules/time/timer-task.h \
- src/addons/Keed/Keed.h src/addons/Keed/KeedConfig.h
+ src/addons/Keed/Keed.h src/addons/Keed/KeedConfig.h \
+ src/addons/Keed/KeedDef.h

@@ -5,7 +5,7 @@
  *  Created on: 2023. 4. 3
  */
 
-#include "Keed.h"
+#include "KeedConfig.h"
 
 KeedConfiguration::KeedConfiguration()
         : version_num(0), channel_num(0), _success(nullptr) {}
