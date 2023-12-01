@@ -35,13 +35,7 @@ cfg_error_t KeedConfiguration::readChannel() {
 
 cfg_error_t KeedConfiguration::readVersion() {
     if ((channel_num >= 0x00002 && channel_num <= 0x00010) || (channel_num >= 0x00012 && channel_num <= 0x00018) || (channel_num >= 0x0001A && channel_num <= 0x00040)) {
-        if (channel_num >= 0x00002 && channel_num <= 0x00010) {
-            version_num = MINSYS_V1;
-        } else if (channel_num >= 0x00012 && channel_num <= 0x00018) {
-            version_num = MINSYS_V2;
-        } else {
-            version_num = MINSYS_V3;
-        }
+        version_num = (channel_num >= 0x00002 && channel_num <= 0x00010) ? MINSYS_V1 : (channel_num >= 0x00012 && channel_num <= 0x00018) ? MINSYS_V2 : MINSYS_V3;
         return SYSTEM_VERSION_OK;
     }
     return SYSTEM_VERSION_ERROR;
