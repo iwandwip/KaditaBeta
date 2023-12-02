@@ -11,6 +11,7 @@
 #define KEED_H
 
 #include "KeedBase.h"
+#include "Keed8Channel.h"
 #include "Keed16Channel.h"
 
 class KeedWelcomingLight {
@@ -25,6 +26,7 @@ private:
 
     void addIoExpander(IOExpander *ioExpander);
     bool beginExpander();
+    KeedBase* switchChannel();
 
 public:
     KeedWelcomingLight();

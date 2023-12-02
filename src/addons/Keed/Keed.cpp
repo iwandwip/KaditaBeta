@@ -28,13 +28,11 @@ cfg_error_t KeedWelcomingLight::init(uint8_t io_expander_num, uint8_t channel, u
     ioVersion = version;
 
     if (!beginExpander()) return INITIALIZE_ERROR;
-    switch (ioChannel) {
-        case 16: keedBase = new Keed16Channel();
-            break;
-        default: break;
+    else {
+        showInfo();
+        keedBase = switchChannel();
+        return INITIALIZE_OK;
     }
-    showInfo();
-    return INITIALIZE_OK;
 }
 
 void KeedWelcomingLight::runWelcomingLight() {
@@ -67,6 +65,14 @@ bool KeedWelcomingLight::beginExpander() {
     return true;
 }
 
+KeedBase *KeedWelcomingLight::switchChannel() {
+    switch (ioChannel) {
+        case 8: return new Keed8Channel();
+        case 16: return new Keed16Channel();
+        default: break;
+    }
+}
+
 IOExpander *KeedWelcomingLight::getIoExpander(uint8_t index) {
     return ioBase[index];
 }
@@ -80,7 +86,7 @@ IOExpander &KeedWelcomingLight::getIoExpanderRef(uint8_t index) {
 }
 
 void KeedWelcomingLight::showInfo() {
-    KEED_DEBUG_PRINTER("IOEXNUM => " + String(2));
+    KEED_DEBUG_PRINTER("IOEXNUM => " + String(ioNum));
     KEED_DEBUG_PRINTER("CHANNEL => " + String(ioChannel));
     KEED_DEBUG_PRINTER("VERSION => " + String(ioVersion));
 }
