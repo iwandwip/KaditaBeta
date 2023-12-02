@@ -16,9 +16,10 @@ class Keed16Channel : public KeedBase {
 private:
     IOExpander **ioBase;
     uint8_t ioNum;
-    uint32_t chTimer;
+    uint32_t ioTimer;
     uint8_t sequence;
     void (Keed16Channel::*taskTemp)();
+    void (Keed16Channel::*sequences[4])();
 
     void blink(uint32_t _delay);
     void snake(uint32_t _delay);

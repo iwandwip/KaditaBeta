@@ -8,8 +8,9 @@
 #include "Keed16Channel.h"
 
 Keed16Channel::Keed16Channel()
-        : chTimer(0),
-          sequence(0) {}
+        : ioBase(nullptr), ioNum(0), ioTimer(0), sequence(0), taskTemp(nullptr),
+          sequences{&Keed16Channel::taskSequence0, &Keed16Channel::taskSequence1,
+                    &Keed16Channel::taskSequence2, &Keed16Channel::taskSequence3} {}
 
 void Keed16Channel::init() {
 
@@ -22,24 +23,19 @@ void Keed16Channel::update() {
 void Keed16Channel::run(IOExpander **_ioBase, uint8_t _ioNum) {
     ioBase = _ioBase;
     ioNum = _ioNum;
-    taskTemp = getSequence(sequence);
+    taskTemp = sequences[sequence];
     (this->*taskTemp)();
+    KEED_DEBUG_PRINTER(sequence);
     if (sequence < 3) sequence++;
     else sequence = 0;
 }
 
 void (Keed16Channel::*Keed16Channel::getSequence(uint8_t index))() {
-    switch (index) {
-        case 0: return &Keed16Channel::taskSequence0;
-        case 1: return &Keed16Channel::taskSequence1;
-        case 2: return &Keed16Channel::taskSequence2;
-        case 3: return &Keed16Channel::taskSequence3;
-    }
-    return nullptr;
+    return sequences[index];
 }
 
 void Keed16Channel::taskSequence0() {
-    for (int i = 20; i >= 8; i -= 4) {
+    for (int i = 100; i >= 8; i -= 4) {
         blink(i);
     }
 }
@@ -57,9 +53,10 @@ void Keed16Channel::taskSequence2() {
 }
 
 void Keed16Channel::taskSequence3() {
-    for (int i = 20; i >= 8; i -= 4) {
-        snake(i);
-        snakeReverse(i);
+    for (int i = 100; i >= 8; i -= 4) {
+        snake(4);
+        blink(i);
+        snakeReverse(4);
     }
 }
 
