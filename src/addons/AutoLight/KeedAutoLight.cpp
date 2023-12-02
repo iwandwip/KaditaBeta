@@ -35,7 +35,7 @@ cfg_error_t KeedAutoLight::init(uint8_t io_expander_num, uint8_t channel, uint8_
     }
 }
 
-void KeedAutoLight::runWelcomingLight() {
+void KeedAutoLight::runAutoLight() {
     keedBase->run(ioBase, ioNum);
 }
 
@@ -68,8 +68,8 @@ bool KeedAutoLight::beginExpander() {
 KeedBase *KeedAutoLight::switchChannel() {
     switch (ioChannel) {
         case 16: return new Keed16Channel();
-        default: break;
     }
+    return nullptr;
 }
 
 IOExpander *KeedAutoLight::getIoExpander(uint8_t index) {

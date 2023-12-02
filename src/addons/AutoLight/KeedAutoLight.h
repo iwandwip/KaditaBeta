@@ -31,7 +31,7 @@ public:
     ~KeedAutoLight();
     cfg_error_t init(uint8_t io_expander_num, uint8_t channel, uint8_t version);
 
-    void runWelcomingLight();
+    void runAutoLight();
     void showInfo();
 
     IOExpander *getIoExpander(uint8_t index);
