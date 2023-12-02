@@ -17,6 +17,16 @@
 #define IO_EXPANDER_ADDRESS_NUM 8
 #define IO_EXPANDER_PIN_NUM 8
 
+#define KEED_DEBUG_PRINT(X) Serial.print(X)
+#define KEED_DEBUG_PRINTLN(X) Serial.println(X)
+#define KEED_DEBUG_PRINTER(X)                       \
+    Serial.print("[INFO] [");                       \
+    Serial.print(random(10000000, 99999999), DEC);  \
+    Serial.print(".");                              \
+    Serial.print(random(10000000, 99999999), DEC);  \
+    Serial.print("]: ");                            \
+    Serial.println(X)
+
 typedef enum {
     I2C_ADDRESS_OK = 1,
     VERSION_ADDRESS_OK = 2,
@@ -35,8 +45,8 @@ typedef enum {
 
 typedef enum {
     // version 1.0
-    I2CCOM_8N0 = 0x00020,
-    I2CCOM_8N1 = 0x00021,
+    I2CCOM_8N0 = 0x00024, // 0x00020
+    I2CCOM_8N1 = 0x00020, // 0x00021
     // version 2.0
     I2CCOM_8N2 = 0x00022,
     // version 3.0

@@ -11,41 +11,39 @@ KeedWelcomingLight::KeedWelcomingLight()
         : ioBase(nullptr),
           ioLen(0),
           ioChannel(0),
-          ioVersion(0) {}
+          ioVersion(0),
+          ioNum(0),
+          keedBase(nullptr) {}
 
 KeedWelcomingLight::~KeedWelcomingLight() {
     free(ioBase);
+    free(keedBase);
     ioBase = nullptr;
+    keedBase = nullptr;
 }
 
 cfg_error_t KeedWelcomingLight::init(uint8_t io_expander_num, uint8_t channel, uint8_t version) {
-    for (int i = 0; i < io_expander_num; i++) {
-        addIoExpander(new IOExpander(i2c_address_arr_t[i]));
-    }
-    for (int i = 0; i < ioLen; i++) {
-        for (int j = 0; j < IO_EXPANDER_PIN_NUM; j++) {
-            ioBase[i]->pinMode(j, OUTPUT);
-        }
-        if (!ioBase[i]->begin()) return INITIALIZE_ERROR;
-    }
+    ioNum = io_expander_num;
     ioChannel = channel;
     ioVersion = version;
+
+    if (!beginExpander()) return INITIALIZE_ERROR;
+    switch (ioChannel) {
+        case 16: keedBase = new Keed16Channel();
+            break;
+        default: break;
+    }
+    showInfo();
     return INITIALIZE_OK;
 }
 
 void KeedWelcomingLight::runWelcomingLight() {
-    switch (ioChannel) {
-        case 16:
-            break;
-        default:
-            break;
-    }
+    keedBase->run(ioBase, ioNum);
 }
 
 void KeedWelcomingLight::addIoExpander(IOExpander *ioExpander) {
     IOExpander **newIoBase = (IOExpander **) realloc(ioBase, (ioLen + 1) * sizeof(IOExpander *));
     if (newIoBase == nullptr) {
-        Serial.println("Memory Allocation Failed !");
         return;
     }
     ioBase = newIoBase;
@@ -53,10 +51,36 @@ void KeedWelcomingLight::addIoExpander(IOExpander *ioExpander) {
     ioLen++;
 }
 
+bool KeedWelcomingLight::beginExpander() {
+    for (int i = 0; i < ioNum; i++) {
+        addIoExpander(new IOExpander(i2c_address_arr_t[i]));
+    }
+    for (int i = 0; i < ioLen; i++) {
+        for (int j = 0; j < IO_EXPANDER_PIN_NUM; j++) {
+            ioBase[i]->pinMode(j, OUTPUT);
+        }
+        if (!ioBase[i]->begin()) return false;
+        for (int j = 0; j < IO_EXPANDER_PIN_NUM; j++) {
+            ioBase[i]->digitalWrite(j, HIGH);
+        }
+    }
+    return true;
+}
+
 IOExpander *KeedWelcomingLight::getIoExpander(uint8_t index) {
     return ioBase[index];
 }
 
+IOExpander **KeedWelcomingLight::getIoExpanderPtr() {
+    return ioBase;
+}
+
 IOExpander &KeedWelcomingLight::getIoExpanderRef(uint8_t index) {
     return *(ioBase[index]);
+}
+
+void KeedWelcomingLight::showInfo() {
+    KEED_DEBUG_PRINTER("IOEXNUM => " + String(2));
+    KEED_DEBUG_PRINTER("CHANNEL => " + String(ioChannel));
+    KEED_DEBUG_PRINTER("VERSION => " + String(ioVersion));
 }

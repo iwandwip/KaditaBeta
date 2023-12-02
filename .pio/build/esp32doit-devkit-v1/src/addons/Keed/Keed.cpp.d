@@ -1,5 +1,6 @@
 .pio/build/esp32doit-devkit-v1/src/addons/Keed/Keed.cpp.o: \
- src/addons/Keed/Keed.cpp src/addons/Keed/Keed.h src/Kadita.h \
+ src/addons/Keed/Keed.cpp src/addons/Keed/Keed.h \
+ src/addons/Keed/KeedBase.h src/addons/Keed/KeedConfig.h src/Kadita.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
@@ -178,4 +179,4 @@
  .pio/libdeps/esp32doit-devkit-v1/LoRa/src/LoRa.h \
  src/modules/driver/bts7960/bts7960.h src/modules/io/input-module.h \
  src/modules/time/timer-duration.h src/modules/time/timer-task.h \
- src/addons/Keed/KeedConfig.h src/addons/Keed/KeedDef.h
+ src/addons/Keed/KeedDef.h src/addons/Keed/Keed16Channel.h
