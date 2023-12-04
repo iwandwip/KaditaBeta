@@ -17,9 +17,11 @@ class KeedConfiguration {
 private:
     uint8_t version_num;
     uint8_t channel_num;
+    uint8_t *pin_ptr;
     void (*_success)();
+
 public:
-    KeedConfiguration();
+    explicit KeedConfiguration(uint8_t *_pin = nullptr);
     cfg_error_t initialize(void (*success)() = nullptr);
     cfg_error_t readChannel();
     cfg_error_t readVersion();
@@ -28,6 +30,8 @@ public:
     uint8_t getChannel() const;
     uint8_t getVersionInfo() const;
     uint8_t getIoExpanderNum() const;
+    uint8_t* getPins() const;
+    bool isUsingExpander() const;
 };
 
 #endif // KEED_CONFIG_H

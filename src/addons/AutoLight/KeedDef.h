@@ -61,6 +61,8 @@ typedef enum {
     MINSYS_V1 = 0x0009B, // version 1.0
     MINSYS_V2 = 0x000A6, // version 2.0
     MINSYS_V3 = 0x000B1, // version 3.0
+    MINSYS_V1_EXT = 0x000BC, // version 1.0-ext-6
+    MINSYS_V2_EXT = 0x000C7, // version 2.0-ext-8
 } system_version_t;
 
 const uint8_t i2c_address_arr_t[IO_EXPANDER_ADDRESS_NUM] = {

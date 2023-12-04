@@ -13,7 +13,8 @@ KeedAutoLight::KeedAutoLight()
           ioChannel(0),
           ioVersion(0),
           ioNum(0),
-          keedBase(nullptr) {}
+          keedBase(nullptr),
+          pinPtr(nullptr) {}
 
 KeedAutoLight::~KeedAutoLight() {
     free(ioBase);
@@ -22,17 +23,14 @@ KeedAutoLight::~KeedAutoLight() {
     keedBase = nullptr;
 }
 
-cfg_error_t KeedAutoLight::init(uint8_t io_expander_num, uint8_t channel, uint8_t version) {
+cfg_error_t KeedAutoLight::init(uint8_t io_expander_num, uint8_t channel, uint8_t version, uint8_t *pin_ptr) {
     ioNum = io_expander_num;
     ioChannel = channel;
     ioVersion = version;
-
     if (!beginExpander()) return INITIALIZE_ERROR;
-    else {
-        showInfo();
-        keedBase = switchChannel();
-        return INITIALIZE_OK;
-    }
+    showInfo();
+    keedBase = switchChannel();
+    return INITIALIZE_OK;
 }
 
 void KeedAutoLight::runAutoLight() {
@@ -82,6 +80,10 @@ IOExpander **KeedAutoLight::getIoExpanderPtr() {
 
 IOExpander &KeedAutoLight::getIoExpanderRef(uint8_t index) {
     return *(ioBase[index]);
+}
+
+bool KeedAutoLight::isUsingExpander() const {
+    return ioNum != 0;
 }
 
 void KeedAutoLight::showInfo() {
