@@ -8,13 +8,9 @@
 #include "KeedAutoLight.h"
 
 KeedAutoLight::KeedAutoLight()
-        : ioBase(nullptr),
-          ioLen(0),
-          ioChannel(0),
-          ioVersion(0),
-          ioNum(0),
-          keedBase(nullptr),
-          pinPtr(nullptr) {}
+        : cfg{0, 0, 0, nullptr, 0},
+          ioBase(nullptr),
+          keedBase(nullptr) {}
 
 KeedAutoLight::~KeedAutoLight() {
     free(ioBase);
@@ -23,18 +19,20 @@ KeedAutoLight::~KeedAutoLight() {
     keedBase = nullptr;
 }
 
-cfg_error_t KeedAutoLight::init(uint8_t io_expander_num, uint8_t channel, uint8_t version, uint8_t *pin_ptr) {
-    ioNum = io_expander_num;
-    ioChannel = channel;
-    ioVersion = version;
-    if (!beginExpander()) return INITIALIZE_ERROR;
+cfg_error_t KeedAutoLight::init(configuration_t _cfg) {
+    cfg = _cfg;
+    if (isUsingExpander()) {
+        if (!beginExpander()) return INITIALIZE_ERROR;
+        keedBase = switchChannel();
+    } else {
+
+    }
     showInfo();
-    keedBase = switchChannel();
     return INITIALIZE_OK;
 }
 
 void KeedAutoLight::runAutoLight() {
-    keedBase->run(ioBase, ioNum);
+    if (isUsingExpander()) keedBase->run(ioBase, cfg.io_size);
 }
 
 void KeedAutoLight::addIoExpander(IOExpander *ioExpander) {
@@ -48,7 +46,7 @@ void KeedAutoLight::addIoExpander(IOExpander *ioExpander) {
 }
 
 bool KeedAutoLight::beginExpander() {
-    for (int i = 0; i < ioNum; i++) {
+    for (int i = 0; i < cfg.io_size; i++) {
         addIoExpander(new IOExpander(i2c_address_arr_t[i]));
     }
     for (int i = 0; i < ioLen; i++) {
@@ -64,7 +62,7 @@ bool KeedAutoLight::beginExpander() {
 }
 
 KeedBase *KeedAutoLight::switchChannel() {
-    switch (ioChannel) {
+    switch (cfg.channel) {
         case 16: return new Keed16Channel();
     }
     return nullptr;
@@ -83,11 +81,11 @@ IOExpander &KeedAutoLight::getIoExpanderRef(uint8_t index) {
 }
 
 bool KeedAutoLight::isUsingExpander() const {
-    return ioNum != 0;
+    return cfg.io_size != 0 && cfg.pin_ptr == nullptr;
 }
 
 void KeedAutoLight::showInfo() {
-    KEED_DEBUG_PRINTER("IOEXNUM => " + String(ioNum));
-    KEED_DEBUG_PRINTER("CHANNEL => " + String(ioChannel));
-    KEED_DEBUG_PRINTER("VERSION => " + String(ioVersion));
+    KEED_DEBUG_PRINTER("IOEXNUM => " + String(cfg.io_size));
+    KEED_DEBUG_PRINTER("CHANNEL => " + String(cfg.channel));
+    KEED_DEBUG_PRINTER("VERSION => " + String(cfg.version));
 }
