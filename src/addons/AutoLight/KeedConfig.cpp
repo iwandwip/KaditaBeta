@@ -7,20 +7,17 @@
 
 #include "KeedConfig.h"
 
-KeedConfiguration::KeedConfiguration() {
-    cfg.version = 0;
-    cfg.channel = 0;
-    cfg.io_size = 0;
-    cfg.pin_ptr = nullptr;
-    cfg.pin_size = 0;
+KeedConfiguration::KeedConfiguration(bool _debug)
+        : debug(_debug) {
 }
 
-cfg_error_t KeedConfiguration::initialize(void (*success_cb)(void)) {
-    if (success_cb != nullptr) success_cb();
+cfg_error_t KeedConfiguration::initialize(void (*init_callback)(void)) {
+    if (init_callback != nullptr) init_callback();
     return INITIALIZE_OK;
 }
 
 cfg_error_t KeedConfiguration::readChannel() {
+    if (debug) return CHANNEL_NUM_OK;
     if (isUsingExpander()) {
         for (int i = 0; i < ADDRESS_CONFIG_PIN_NUM; i++) {
             pinMode(version_address_pin_t[i], INPUT_PULLUP);
@@ -48,6 +45,7 @@ cfg_error_t KeedConfiguration::readChannel() {
 }
 
 cfg_error_t KeedConfiguration::readVersion() {
+    if (debug) return SYSTEM_VERSION_OK;
     if (isUsingExpander()) {
         if ((cfg.channel >= 0x00002 && cfg.channel <= 0x00010)
             || (cfg.channel >= 0x00012 && cfg.channel <= 0x00018)
@@ -74,4 +72,15 @@ bool KeedConfiguration::isUsingExpander() const {
 
 configuration_t KeedConfiguration::getConfig() const {
     return cfg;
+}
+
+void configuration_t::setPins(int size, ...) {
+    va_list args;
+    va_start(args, size);
+    pin_size = size;
+    pin_ptr = new uint8_t[size];
+    for (int i = 0; i < size; i++) {
+        pin_ptr[i] = static_cast<uint8_t>(va_arg(args, int));
+    }
+    va_end(args);
 }

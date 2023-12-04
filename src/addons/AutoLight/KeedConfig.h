@@ -13,21 +13,23 @@
 #include "Kadita.h"
 #include "KeedDef.h"
 
-typedef struct {
-    uint8_t version;
-    uint8_t channel;
-    uint8_t io_size;
-    uint8_t *pin_ptr;
-    uint8_t pin_size;
-} configuration_t;
+struct configuration_t {
+    uint8_t version = 0;
+    uint8_t channel = 0;
+    uint8_t io_size = 0;
+    uint8_t *pin_ptr = nullptr;
+    uint8_t pin_size = 0;
+    void setPins(int size, ...);
+};
 
 class KeedConfiguration {
 private:
     configuration_t cfg;
+    bool debug;
 
 public:
-    explicit KeedConfiguration();
-    cfg_error_t initialize(void (*success_cb)() = nullptr);
+    explicit KeedConfiguration(bool _debug = false);
+    cfg_error_t initialize(void (*init_callback)() = nullptr);
     cfg_error_t readChannel();
     cfg_error_t readVersion();
 

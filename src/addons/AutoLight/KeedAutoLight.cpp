@@ -92,8 +92,8 @@ void KeedAutoLight::showInfo() {
     Serial.print(cfg.io_size);
     Serial.print("| isUsingExpander(): ");
     Serial.print(isUsingExpander());
-//    Serial.print("| pin_ptr: ");
-//    Serial.print(cfg.pin_ptr);
+    Serial.print("| pin_ptr: ");
+    Serial.print(cfg.pin_ptr == nullptr ? "NULL" : "NOT NULL");
     Serial.print("| pin_size: ");
     Serial.print(cfg.pin_size);
     Serial.println();
