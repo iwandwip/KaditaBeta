@@ -25,7 +25,6 @@ void Keed16Channel::run(IOExpander **_ioBase, uint8_t _ioNum) {
     ioNum = _ioNum;
     taskTemp = sequences[sequence];
     (this->*taskTemp)();
-    KEED_DEBUG_PRINTER(sequence);
     if (sequence < 3) sequence++;
     else sequence = 0;
 }

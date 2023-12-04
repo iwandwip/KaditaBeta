@@ -7,22 +7,24 @@
 
 #include "KeedConfig.h"
 
-KeedConfiguration::KeedConfiguration()
-        : cfg{0, 0, 0, nullptr, 0} {
+KeedConfiguration::KeedConfiguration() {
+    cfg.version = 0;
+    cfg.channel = 0;
+    cfg.io_size = 0;
+    cfg.pin_ptr = nullptr;
+    cfg.pin_size = 0;
 }
 
 cfg_error_t KeedConfiguration::initialize(void (*success_cb)(void)) {
-    if (isUsingExpander()) {
-        for (int i = 0; i < ADDRESS_CONFIG_PIN_NUM; i++) {
-            pinMode(version_address_pin_t[i], INPUT_PULLUP);
-        }
-    }
     if (success_cb != nullptr) success_cb();
     return INITIALIZE_OK;
 }
 
 cfg_error_t KeedConfiguration::readChannel() {
     if (isUsingExpander()) {
+        for (int i = 0; i < ADDRESS_CONFIG_PIN_NUM; i++) {
+            pinMode(version_address_pin_t[i], INPUT_PULLUP);
+        }
         int bin_value = 0;
         for (int i = 0; i < ADDRESS_CONFIG_PIN_NUM; i++) {
             bin_value = (bin_value << 1) | digitalRead(version_address_pin_t[i]); // int bin_value = (value_pin[0] << 4) | (value_pin[1] << 3) | (value_pin[2] << 2) | (value_pin[3] << 1) | value_pin[4];

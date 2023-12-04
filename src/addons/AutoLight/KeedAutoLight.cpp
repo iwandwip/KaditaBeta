@@ -8,8 +8,7 @@
 #include "KeedAutoLight.h"
 
 KeedAutoLight::KeedAutoLight()
-        : cfg{0, 0, 0, nullptr, 0},
-          ioBase(nullptr),
+        : ioBase(nullptr),
           keedBase(nullptr) {}
 
 KeedAutoLight::~KeedAutoLight() {
@@ -27,7 +26,7 @@ cfg_error_t KeedAutoLight::init(configuration_t _cfg) {
     } else {
 
     }
-    showInfo();
+//    showInfo();
     return INITIALIZE_OK;
 }
 
@@ -81,11 +80,21 @@ IOExpander &KeedAutoLight::getIoExpanderRef(uint8_t index) {
 }
 
 bool KeedAutoLight::isUsingExpander() const {
-    return cfg.io_size != 0 && cfg.pin_ptr == nullptr;
+    return cfg.pin_ptr == nullptr && cfg.pin_size == 0;
 }
 
 void KeedAutoLight::showInfo() {
-    KEED_DEBUG_PRINTER("IOEXNUM => " + String(cfg.io_size));
-    KEED_DEBUG_PRINTER("CHANNEL => " + String(cfg.channel));
-    KEED_DEBUG_PRINTER("VERSION => " + String(cfg.version));
+    Serial.print("| version: ");
+    Serial.print(cfg.version);
+    Serial.print("| channel: ");
+    Serial.print(cfg.channel);
+    Serial.print("| io_size: ");
+    Serial.print(cfg.io_size);
+    Serial.print("| isUsingExpander(): ");
+    Serial.print(isUsingExpander());
+//    Serial.print("| pin_ptr: ");
+//    Serial.print(cfg.pin_ptr);
+    Serial.print("| pin_size: ");
+    Serial.print(cfg.pin_size);
+    Serial.println();
 }
