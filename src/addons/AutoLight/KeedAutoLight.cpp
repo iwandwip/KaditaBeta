@@ -22,16 +22,18 @@ cfg_error_t KeedAutoLight::init(configuration_t _cfg) {
     cfg = _cfg;
     if (isUsingExpander()) {
         if (!beginExpander()) return INITIALIZE_ERROR;
-        keedBase = switchChannel();
-    } else {
-
     }
-//    showInfo();
+    keedBase = switchChannel();
+    if (keedBase != nullptr) {
+        keedBase->init();
+    }
     return INITIALIZE_OK;
 }
 
 void KeedAutoLight::runAutoLight() {
+    if (keedBase == nullptr) return;
     if (isUsingExpander()) keedBase->run(ioBase, cfg.io_size);
+    else keedBase->run(cfg);
 }
 
 void KeedAutoLight::addIoExpander(IOExpander *ioExpander) {
@@ -61,8 +63,14 @@ bool KeedAutoLight::beginExpander() {
 }
 
 KeedBase *KeedAutoLight::switchChannel() {
-    switch (cfg.channel) {
-        case 16: return new Keed16Channel();
+    if (isUsingExpander()) {
+        switch (cfg.channel) {
+            case 16: return new Keed16Channel();
+        }
+    } else {
+        switch (cfg.pin_size) {
+            case 6: return new Keed6ChannelExt();
+        }
     }
     return nullptr;
 }

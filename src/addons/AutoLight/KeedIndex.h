@@ -11,5 +11,6 @@
 #define KEED_INDEX_H
 
 #include "Keed16Channel.h"
+#include "Keed6ChannelExt.h"
 
 #endif // KEED_INDEX_H

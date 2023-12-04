@@ -39,7 +39,11 @@ cfg_error_t KeedConfiguration::readChannel() {
             }
         }
     } else {
-
+        for (uint8_t i = 0; i < cfg.pin_size; i++) {
+            pinMode(cfg.pin_ptr[i], OUTPUT);
+            digitalWrite(cfg.pin_ptr[i], LOW);
+        }
+        return CHANNEL_NUM_OK;
     }
     return CHANNEL_NUM_ERROR;
 }

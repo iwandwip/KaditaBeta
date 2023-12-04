@@ -29,6 +29,7 @@ public:
     virtual void init() = 0;
     virtual void update() = 0;
     virtual void run(IOExpander **ioBase, uint8_t ioNum) = 0;
+    virtual void run(configuration_t _cfg) = 0;
 
     KeedBase &operator=(const KeedBase &) = default;
     KeedBase &operator=(KeedBase &&) = default;

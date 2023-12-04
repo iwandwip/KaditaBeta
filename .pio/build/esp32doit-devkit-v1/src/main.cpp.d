@@ -180,4 +180,4 @@
  src/addons/AutoLight.h src/addons/AutoLight/KeedAutoLight.h \
  src/addons/AutoLight/KeedIndex.h src/addons/AutoLight/Keed16Channel.h \
  src/addons/AutoLight/KeedBase.h src/addons/AutoLight/KeedConfig.h \
- src/addons/AutoLight/KeedDef.h
+ src/addons/AutoLight/KeedDef.h src/addons/AutoLight/Keed6ChannelExt.h

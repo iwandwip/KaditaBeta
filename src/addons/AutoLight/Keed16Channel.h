@@ -18,6 +18,7 @@ private:
     uint8_t ioNum;
     uint32_t ioTimer;
     uint8_t sequence;
+    configuration_t cfg;
     void (Keed16Channel::*taskTemp)();
     void (Keed16Channel::*sequences[4])();
 
@@ -29,6 +30,7 @@ public:
     void init() override;
     void update() override;
     void run(IOExpander **_ioBase, uint8_t _ioNum) override;
+    void run(configuration_t _cfg) override;
 
     void (Keed16Channel::*getSequence(uint8_t index))();
     void taskSequence0();

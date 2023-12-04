@@ -17,16 +17,20 @@ void Keed16Channel::init() {
 }
 
 void Keed16Channel::update() {
-
+    taskTemp = sequences[sequence];
+    (this->*taskTemp)();
+    if (sequence < 3) sequence++;
+    else sequence = 0;
 }
 
 void Keed16Channel::run(IOExpander **_ioBase, uint8_t _ioNum) {
     ioBase = _ioBase;
     ioNum = _ioNum;
-    taskTemp = sequences[sequence];
-    (this->*taskTemp)();
-    if (sequence < 3) sequence++;
-    else sequence = 0;
+    update();
+}
+
+void Keed16Channel::run(configuration_t _cfg) {
+    update();
 }
 
 void (Keed16Channel::*Keed16Channel::getSequence(uint8_t index))() {
