@@ -25,6 +25,10 @@ private:
     void blink(uint32_t _delay);
     void snake(uint32_t _delay);
     void snakeReverse(uint32_t _delay);
+    void set(uint8_t _pin, uint8_t  _state);
+    void off();
+    void on();
+
 public:
     Keed6ChannelExt();
     void init() override;
