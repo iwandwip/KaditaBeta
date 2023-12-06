@@ -13,7 +13,12 @@ Keed6ChannelExt::Keed6ChannelExt()
                     &Keed6ChannelExt::taskSequence2, &Keed6ChannelExt::taskSequence3} {}
 
 void Keed6ChannelExt::init() {
-
+#if defined(ESP8266)
+#elif defined(ESP32)
+#else // avr & etc
+    pinMode(isr.pin, INPUT_PULLUP);
+    attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, FALLING);
+#endif
 }
 
 void Keed6ChannelExt::update() {
@@ -30,6 +35,18 @@ void Keed6ChannelExt::run(IOExpander **_ioBase, uint8_t _ioNum) {
 void Keed6ChannelExt::run(configuration_t _cfg) {
     cfg = _cfg;
     update();
+}
+
+void Keed6ChannelExt::setInterruptConfig(interrupt_t _cfg) {
+    isr = _cfg;
+}
+
+void Keed6ChannelExt::changeModes() {
+    if (millis() - ioTimer >= 250) {
+        isr.num++;
+        isr.pressed = true;
+        ioTimer = millis();
+    }
 }
 
 void (Keed6ChannelExt::*Keed6ChannelExt::getSequence(uint8_t index))() {

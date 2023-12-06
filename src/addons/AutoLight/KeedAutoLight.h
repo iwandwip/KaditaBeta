@@ -34,6 +34,9 @@ public:
     IOExpander *getIoExpander(uint8_t index);
     IOExpander &getIoExpanderRef(uint8_t index);
     IOExpander **getIoExpanderPtr();
+
+    KeedBase *getChannelClassPtr();
+    KeedBase &getChannelClass();
 };
 
 #endif // KEED_AUTO_LIGHT_H

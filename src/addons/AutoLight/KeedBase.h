@@ -12,17 +12,13 @@
 
 #include "KeedConfig.h"
 
-typedef enum {
-    IO_EXPANDER_0,
-    IO_EXPANDER_1,
-    IO_EXPANDER_2,
-    IO_EXPANDER_3,
-    IO_EXPANDER_4,
-    IO_EXPANDER_5,
-    IO_EXPANDER_6,
-    IO_EXPANDER_7,
-    IO_EXPANDER_NUM
-} io_expander_index_t;
+struct interrupt_t {
+    volatile uint8_t pin = 0;
+    volatile uint32_t num = 0;
+    volatile bool pressed = false;
+    void (*isrCallback)() = nullptr;
+    void attachInterrupt(uint8_t _pin, void (*_callback)());
+};
 
 class KeedBase {
 public:
@@ -30,6 +26,9 @@ public:
     virtual void update() = 0;
     virtual void run(IOExpander **ioBase, uint8_t ioNum) = 0;
     virtual void run(configuration_t _cfg) = 0;
+
+    virtual void setInterruptConfig(interrupt_t _cfg);
+    virtual void changeModes();
 
     KeedBase &operator=(const KeedBase &) = default;
     KeedBase &operator=(KeedBase &&) = default;

@@ -58,6 +58,18 @@ typedef enum {
 } i2c_address_t;
 
 typedef enum {
+    IO_EXPANDER_0,
+    IO_EXPANDER_1,
+    IO_EXPANDER_2,
+    IO_EXPANDER_3,
+    IO_EXPANDER_4,
+    IO_EXPANDER_5,
+    IO_EXPANDER_6,
+    IO_EXPANDER_7,
+    IO_EXPANDER_NUM
+} io_expander_index_t;
+
+typedef enum {
     MINSYS_V1 = 0x0009B, // version 1.0
     MINSYS_V2 = 0x000A6, // version 2.0
     MINSYS_V3 = 0x000B1, // version 3.0

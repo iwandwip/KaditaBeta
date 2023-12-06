@@ -75,20 +75,28 @@ KeedBase *KeedAutoLight::switchChannel() {
     return nullptr;
 }
 
-IOExpander *KeedAutoLight::getIoExpander(uint8_t index) {
-    return ioBase[index];
+bool KeedAutoLight::isUsingExpander() const {
+    return cfg.pin_ptr == nullptr && cfg.pin_size == 0;
 }
 
-IOExpander **KeedAutoLight::getIoExpanderPtr() {
-    return ioBase;
+IOExpander *KeedAutoLight::getIoExpander(uint8_t index) {
+    return ioBase[index];
 }
 
 IOExpander &KeedAutoLight::getIoExpanderRef(uint8_t index) {
     return *(ioBase[index]);
 }
 
-bool KeedAutoLight::isUsingExpander() const {
-    return cfg.pin_ptr == nullptr && cfg.pin_size == 0;
+IOExpander **KeedAutoLight::getIoExpanderPtr() {
+    return ioBase;
+}
+
+KeedBase *KeedAutoLight::getChannelClassPtr() {
+    return keedBase;
+}
+
+KeedBase &KeedAutoLight::getChannelClass() {
+    return *(keedBase);
 }
 
 void KeedAutoLight::showInfo() {
