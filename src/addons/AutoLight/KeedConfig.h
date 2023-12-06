@@ -10,7 +10,7 @@
 #ifndef KEED_CONFIG_H
 #define KEED_CONFIG_H
 
-#include "Kadita.h"
+#include "modules/communication/wired/i2c/io-expander.h"
 #include "KeedDef.h"
 
 struct configuration_t {

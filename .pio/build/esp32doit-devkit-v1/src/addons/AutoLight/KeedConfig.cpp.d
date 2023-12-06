@@ -1,6 +1,6 @@
 .pio/build/esp32doit-devkit-v1/src/addons/AutoLight/KeedConfig.cpp.o: \
  src/addons/AutoLight/KeedConfig.cpp src/addons/AutoLight/KeedConfig.h \
- src/Kadita.h \
+ src/modules/communication/wired/i2c/io-expander.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
@@ -133,50 +133,9 @@
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_hw_support/include/soc/esp32/spiram.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/io_pin_remap.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
- src/sensors/base/sensor-module.h \
- C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h \
- C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src/SPI.h \
- C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-spi.h \
- src/sensors/abstract-sens.h src/sensors/aht-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/Adafruit\ Unified\ Sensor/Adafruit_Sensor.h \
- C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/Print.h \
- .pio/libdeps/esp32doit-devkit-v1/Adafruit\ AHTX0/Adafruit_AHTX0.h \
- .pio/libdeps/esp32doit-devkit-v1/Adafruit\ BusIO/Adafruit_BusIO_Register.h \
- .pio/libdeps/esp32doit-devkit-v1/Adafruit\ BusIO/Adafruit_I2CDevice.h \
- C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
- C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
- .pio/libdeps/esp32doit-devkit-v1/Adafruit\ BusIO/Adafruit_SPIDevice.h \
- src/sensors/bme280-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/Adafruit\ BME280\ Library/Adafruit_BME280.h \
- src/sensors/dht-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/DHT\ sensor\ library/DHT.h \
- src/sensors/ds18b20-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/DallasTemperature/DallasTemperature.h \
- .pio/libdeps/esp32doit-devkit-v1/OneWire@src-7394625c00c7ad4e547cedddf6448675/OneWire.h \
- .pio/libdeps/esp32doit-devkit-v1/OneWire@src-7394625c00c7ad4e547cedddf6448675/util/OneWire_direct_regtype.h \
- src/sensors/flowmeter-sens.h src/sensors/hx711-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/HX711/src/HX711.h \
- src/sensors/ina219-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/Adafruit\ INA219/Adafruit_INA219.h \
- src/sensors/ldr-sens.h src/sensors/max6675-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/MAX6675\ library/max6675.h \
- src/sensors/max31865-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/Adafruit\ MAX31865\ library/Adafruit_MAX31865.h \
- src/sensors/tds-sens.h src/sensors/ultrasonic-sens.h \
- .pio/libdeps/esp32doit-devkit-v1/NewPing/src/NewPing.h \
- src/sensors/voltage-sens.h \
- src/modules/communication/wired/i2c/i2c-scanner.h \
- src/modules/communication/wired/i2c/io-expander.h \
  src/modules/communication/wired/i2c/../../../io/input-module.h \
  src/modules/communication/wired/i2c/../../../io/output-module.h \
  .pio/libdeps/esp32doit-devkit-v1/PCF8574\ library/PCF8574.h \
- src/modules/communication/wired/serial/hard-serial.h \
- src/modules/communication/wired/serial/soft-serial.h \
- src/modules/communication/wired/serial/swap-serial.h \
- src/modules/communication/wired/spi/dot-matrix.h \
- .pio/libdeps/esp32doit-devkit-v1/MD_MAX72XX/src/MD_MAX72xx.h \
- src/modules/communication/wireless/lora/lora-com.h \
- .pio/libdeps/esp32doit-devkit-v1/LoRa/src/LoRa.h \
- src/modules/driver/bts7960/bts7960.h src/modules/io/input-module.h \
- src/modules/time/timer-duration.h src/modules/time/timer-task.h \
+ C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
+ C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
  src/addons/AutoLight/KeedDef.h
