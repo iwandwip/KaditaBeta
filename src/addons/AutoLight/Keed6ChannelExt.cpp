@@ -39,7 +39,7 @@ void (Keed6ChannelExt::*Keed6ChannelExt::getSequence(uint8_t index))() {
 void Keed6ChannelExt::taskSequence0() {
     // sequence 0
     {
-        for (int i; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 15; ++j) {
                 blink(30);
             }
@@ -236,24 +236,24 @@ void Keed6ChannelExt::taskSequence0() {
     off();
     delay(1000);
     // sequence 10
-//    for (int k = 60; k >= 20; k -= 20) {
-//        for (int i = 0; i < 6; i++) {
-//            digitalWrite(cfg.pin_ptr[i], LOW);
-//            delay(30);
-//        }
-//        for (int i = 0; i < 6; i++) {
-//            digitalWrite(cfg.pin_ptr[i], HIGH);
-//            delay(30);
-//        }
-//        for (int j = 6; j > 0; j--) {
-//            digitalWrite(cfg.pin_ptr[j] - 1, LOW);
-//            delay(30);
-//        }
-//        for (int j = 6; j > 0; j--) {
-//            digitalWrite(cfg.pin_ptr[j] - 1, HIGH);
-//            delay(30);
-//        }
-//    }
+    for (int k = 40; k >= 20; k -= 4) {
+        for (int i = 0; i < 6; i++) {
+            digitalWrite(cfg.pin_ptr[i], LOW);
+            delay(k);
+        }
+        for (int i = 0; i < 6; i++) {
+            digitalWrite(cfg.pin_ptr[i], HIGH);
+            delay(k);
+        }
+        for (int j = 6; j > 0; j--) {
+            digitalWrite(cfg.pin_ptr[j - 1], LOW);
+            delay(k);
+        }
+        for (int j = 6; j > 0; j--) {
+            digitalWrite(cfg.pin_ptr[j - 1], HIGH);
+            delay(k);
+        }
+    }
 }
 
 void Keed6ChannelExt::taskSequence1() {
@@ -329,4 +329,3 @@ void Keed6ChannelExt::on() {
         digitalWrite(cfg.pin_ptr[i], LOW);
     }
 }
-
