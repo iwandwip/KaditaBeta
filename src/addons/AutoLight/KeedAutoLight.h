@@ -26,10 +26,14 @@ private:
 public:
     KeedAutoLight();
     ~KeedAutoLight();
-    cfg_error_t init(configuration_t _cfg);
+    cfg_error_t setChannel(configuration_t _cfg);
+    cfg_error_t init();
 
     void runAutoLight();
     void showInfo();
+
+    void setInterruptConfig(interrupt_t _cfg);
+    void changeModes();
 
     IOExpander *getIoExpander(uint8_t index);
     IOExpander &getIoExpanderRef(uint8_t index);

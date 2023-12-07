@@ -24,6 +24,7 @@ private:
     void (Keed6ChannelExt::*taskTemp)();
     void (Keed6ChannelExt::*sequences[4])();
 
+    void sleep(uint32_t _delay);
     void blink(uint32_t _delay);
     void snake(uint32_t _delay);
     void snakeReverse(uint32_t _delay);

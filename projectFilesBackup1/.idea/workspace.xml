@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="clion-kadita" targetName="PlatformIO" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4ef13727-0ff5-4fe5-bb8a-9f883b5db854" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.pio/build/project.checksum" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/project.checksum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/.sconsign39.dblite" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/.sconsign39.dblite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/CDC.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/CDC.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial0.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial0.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial1.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial1.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial2.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial2.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial3.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/HardwareSerial3.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/IPAddress.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/IPAddress.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/PluggableUSB.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/PluggableUSB.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/Print.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/Print.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/Stream.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/Stream.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/Tone.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/Tone.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/USBCore.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/USBCore.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/WInterrupts.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/WInterrupts.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/WMath.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/WMath.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/WString.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/WString.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/abi.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/abi.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/hooks.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/hooks.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/new.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/new.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring_analog.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring_analog.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring_digital.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring_digital.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring_pulse.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring_pulse.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring_shift.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/FrameworkArduino/wiring_shift.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/firmware.elf" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/firmware.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/firmware.hex" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/firmware.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib046/PCF8574 library/PCF8574.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib046/PCF8574 library/PCF8574.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib046/libPCF8574 library.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib046/libPCF8574 library.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib16c/DallasTemperature/DallasTemperature.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib16c/DallasTemperature/DallasTemperature.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib16c/libDallasTemperature.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib16c/libDallasTemperature.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib1bf/NewPing/NewPing.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib1bf/NewPing/NewPing.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib1bf/libNewPing.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib1bf/libNewPing.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib2c1/HX711/HX711.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib2c1/HX711/HX711.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib2c1/libHX711.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib2c1/libHX711.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib2dd/LiquidCrystal_I2C/LiquidCrystal_I2C.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib2dd/LiquidCrystal_I2C/LiquidCrystal_I2C.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib2dd/libLiquidCrystal_I2C.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib2dd/libLiquidCrystal_I2C.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/avr/Servo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/avr/Servo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/mbed/Servo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/mbed/Servo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/megaavr/Servo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/megaavr/Servo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/nrf52/Servo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/nrf52/Servo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/renesas/Servo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/renesas/Servo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/sam/Servo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/sam/Servo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/samd/Servo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/samd/Servo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/stm32f4/Servo.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/Servo/stm32f4/Servo.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib43c/libServo.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib43c/libServo.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib443/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib443/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib443/libAdafruit Unified Sensor.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib443/libAdafruit Unified Sensor.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib4a9/DHT sensor library/DHT.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib4a9/DHT sensor library/DHT.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib4a9/DHT sensor library/DHT_U.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib4a9/DHT sensor library/DHT_U.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib4a9/libDHT sensor library.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib4a9/libDHT sensor library.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib5c3/Adafruit BME280 Library/Adafruit_BME280.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib5c3/Adafruit BME280 Library/Adafruit_BME280.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib5c3/libAdafruit BME280 Library.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib5c3/libAdafruit BME280 Library.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib66b/SoftwareSerial/SoftwareSerial.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib66b/SoftwareSerial/SoftwareSerial.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib66b/libSoftwareSerial.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib66b/libSoftwareSerial.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib6bc/Adafruit INA219/Adafruit_INA219.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib6bc/Adafruit INA219/Adafruit_INA219.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib6bc/libAdafruit INA219.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib6bc/libAdafruit INA219.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib793/MD_MAX72XX/MD_MAX72xx.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib793/MD_MAX72XX/MD_MAX72xx.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib793/MD_MAX72XX/MD_MAX72xx_buf.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib793/MD_MAX72XX/MD_MAX72xx_buf.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib793/MD_MAX72XX/MD_MAX72xx_font.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib793/MD_MAX72XX/MD_MAX72xx_font.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib793/MD_MAX72XX/MD_MAX72xx_pix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib793/MD_MAX72XX/MD_MAX72xx_pix.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib793/libMD_MAX72XX.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib793/libMD_MAX72XX.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib816/Adafruit NeoPixel/Adafruit_NeoPixel.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib816/Adafruit NeoPixel/Adafruit_NeoPixel.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib816/Adafruit NeoPixel/esp.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib816/Adafruit NeoPixel/esp.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib816/Adafruit NeoPixel/esp8266.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib816/Adafruit NeoPixel/esp8266.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib816/Adafruit NeoPixel/kendyte_k210.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib816/Adafruit NeoPixel/kendyte_k210.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib816/libAdafruit NeoPixel.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib816/libAdafruit NeoPixel.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib86a/Wire/Wire.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib86a/Wire/Wire.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib86a/Wire/utility/twi.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib86a/Wire/utility/twi.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib86a/libWire.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib86a/libWire.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib8be/Adafruit SSD1306/Adafruit_SSD1306.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib8be/Adafruit SSD1306/Adafruit_SSD1306.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib8be/libAdafruit SSD1306.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib8be/libAdafruit SSD1306.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib8de/FlowMeter/FlowMeter.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib8de/FlowMeter/FlowMeter.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib8de/libFlowMeter.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib8de/libFlowMeter.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib941/Adafruit SH110X/Adafruit_SH1106G.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib941/Adafruit SH110X/Adafruit_SH1106G.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib941/Adafruit SH110X/Adafruit_SH1107.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib941/Adafruit SH110X/Adafruit_SH1107.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib941/Adafruit SH110X/Adafruit_SH110X.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib941/Adafruit SH110X/Adafruit_SH110X.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib941/libAdafruit SH110X.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib941/libAdafruit SH110X.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib9a3/MAX6675 library/max6675.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib9a3/MAX6675 library/max6675.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib9a3/libMAX6675 library.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib9a3/libMAX6675 library.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib9bf/Adafruit AHTX0/Adafruit_AHTX0.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib9bf/Adafruit AHTX0/Adafruit_AHTX0.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/lib9bf/libAdafruit AHTX0.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/lib9bf/libAdafruit AHTX0.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libFrameworkArduino.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libFrameworkArduino.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/liba9f/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/liba9f/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/liba9f/Adafruit BusIO/Adafruit_I2CDevice.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/liba9f/Adafruit BusIO/Adafruit_I2CDevice.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/liba9f/Adafruit BusIO/Adafruit_SPIDevice.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/liba9f/Adafruit BusIO/Adafruit_SPIDevice.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/liba9f/libAdafruit BusIO.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/liba9f/libAdafruit BusIO.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libb21/OneWire@src-7394625c00c7ad4e547cedddf6448675/OneWire.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libb21/OneWire@src-7394625c00c7ad4e547cedddf6448675/OneWire.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libb21/libOneWire@src-7394625c00c7ad4e547cedddf6448675.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libb21/libOneWire@src-7394625c00c7ad4e547cedddf6448675.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libb55/SPI/SPI.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libb55/SPI/SPI.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libb55/libSPI.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libb55/libSPI.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libb84/Adafruit MAX31865 library/Adafruit_MAX31865.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libb84/Adafruit MAX31865 library/Adafruit_MAX31865.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libb84/libAdafruit MAX31865 library.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libb84/libAdafruit MAX31865 library.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libbc2/LoRa/LoRa.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libbc2/LoRa/LoRa.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libbc2/libLoRa.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libbc2/libLoRa.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libf10/Adafruit GFX Library/Adafruit_GFX.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libf10/Adafruit GFX Library/Adafruit_GFX.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libf10/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libf10/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libf10/Adafruit GFX Library/Adafruit_SPITFT.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libf10/Adafruit GFX Library/Adafruit_SPITFT.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libf10/Adafruit GFX Library/glcdfont.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libf10/Adafruit GFX Library/glcdfont.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/libf10/libAdafruit GFX Library.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/libf10/libAdafruit GFX Library.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/Kadita.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/Kadita.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/Keed16Channel.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/Keed16Channel.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/Keed6ChannelExt.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/Keed6ChannelExt.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/KeedAutoLight.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/KeedAutoLight.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/KeedBase.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/KeedConfig.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/addons/AutoLight/KeedConfig.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/i2c/i2c-scanner.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/i2c/i2c-scanner.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/i2c/io-expander.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/i2c/io-expander.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/serial/hard-serial.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/serial/hard-serial.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/serial/soft-serial.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/serial/soft-serial.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/serial/swap-serial.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/serial/swap-serial.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/spi/dot-matrix.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wired/spi/dot-matrix.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wireless/lora/lora-com.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/communication/wireless/lora/lora-com.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/driver/bts7960/bts7960.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/driver/bts7960/bts7960.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/io/input-module.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/io/input-module.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/io/output-module.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/io/output-module.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/time/timer-duration.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/time/timer-duration.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/modules/time/timer-task.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/modules/time/timer-task.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/abstract-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/abstract-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/addons/sensor-debug.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/addons/sensor-debug.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/addons/sensor-filter.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/addons/sensor-filter.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/aht-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/aht-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/base/sensor-module-def.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/base/sensor-module-def.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/base/sensor-module.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/base/sensor-module.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/bme280-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/bme280-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/dht-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/dht-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/ds18b20-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/ds18b20-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/flowmeter-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/flowmeter-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/hx711-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/hx711-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/ina219-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/ina219-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/ldr-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/ldr-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/max31865-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/max31865-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/max6675-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/max6675-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/tds-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/tds-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/ultrasonic-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/ultrasonic-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/uno/src/sensors/voltage-sens.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/uno/src/sensors/voltage-sens.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/addons/AutoLight/Keed6ChannelExt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/addons/AutoLight/Keed6ChannelExt.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/addons/AutoLight/KeedAutoLight.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/addons/AutoLight/KeedAutoLight.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/addons/AutoLight/KeedAutoLight.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/addons/AutoLight/KeedAutoLight.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/addons/AutoLight/KeedBase.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/addons/AutoLight/KeedBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/addons/AutoLight/KeedBase.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+    <option name="clangWarnings" value="-Wno-unused-variable,-Wno-infinite-recursion,-Wno-array-bounds,-Werror=implicit-function-declaration,-Wshadow,-Wno-shadow-field-in-constructor-modified,-Wno-shadow-ivar,-Wuninitialized,-Wunused-label,-Wunused-lambda-capture,-Wno-delete-abstract-non-virtual-dtor" />
+  </component>
+  <component name="EmbeddedSvdWindowState">
+    <option name="columnWidths">
+      <list>
+        <option value="212" />
+        <option value="92" />
+        <option value="1052" />
+      </list>
+    </option>
+    <option name="columnOrder">
+      <list>
+        <option value="Name" />
+        <option value="Value" />
+        <option value="Description" />
+      </list>
+    </option>
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="uno" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-gpio.h" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PlatformioLocalSettings">
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="clion-kadita" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="clion-kadita" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2VvxN97XxpFjMGGNNvSFkxS5gvp" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ToolWindowPlatformIO.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/User/source/caktin_ws/clion-kadita/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C/C++&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\User\source\caktin_ws\clion-kadita\src" />
+      <recent name="D:\User\source\caktin_ws\clion-kadita\sketch" />
+      <recent name="D:\User\source\caktin_ws\clion-kadita\src\modules\communication\i2c\io" />
+      <recent name="D:\User\source\caktin_ws\clion-kadita\src\extras" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\User\source\caktin_ws\clion-kadita\src" />
+      <recent name="D:\User\source\caktin_ws\clion-kadita\src\Keed" />
+      <recent name="D:\User\source\caktin_ws\clion-kadita\src\addons" />
+      <recent name="D:\User\source\caktin_ws\clion-kadita\src\modules\communication\wired" />
+      <recent name="D:\User\source\caktin_ws\clion-kadita\src\modules\communication\i2c" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="clion-kadita" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4ef13727-0ff5-4fe5-bb8a-9f883b5db854" name="Changes" comment="" />
+      <created>1695730312490</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695730312490</updated>
+      <workItem from="1695730313569" duration="7658000" />
+      <workItem from="1695827766372" duration="10817000" />
+      <workItem from="1695845450300" duration="4368000" />
+      <workItem from="1695980277712" duration="3298000" />
+      <workItem from="1696153398878" duration="813000" />
+      <workItem from="1696156753720" duration="2658000" />
+      <workItem from="1696159853640" duration="25000" />
+      <workItem from="1696160053956" duration="9262000" />
+      <workItem from="1696228744164" duration="170000" />
+      <workItem from="1696260489017" duration="601000" />
+      <workItem from="1696327496278" duration="15098000" />
+      <workItem from="1696492133029" duration="1982000" />
+      <workItem from="1696685884683" duration="1094000" />
+      <workItem from="1696738905126" duration="24380000" />
+      <workItem from="1696867653692" duration="5214000" />
+      <workItem from="1696907007766" duration="1077000" />
+      <workItem from="1696937691116" duration="14102000" />
+      <workItem from="1697111143801" duration="17730000" />
+      <workItem from="1697198194555" duration="3856000" />
+      <workItem from="1697274418038" duration="13898000" />
+      <workItem from="1697344010931" duration="1818000" />
+      <workItem from="1697351727999" duration="2913000" />
+      <workItem from="1697415450931" duration="29499000" />
+      <workItem from="1697534455601" duration="6949000" />
+      <workItem from="1697630826004" duration="4105000" />
+      <workItem from="1697684832164" duration="3000" />
+      <workItem from="1697718994101" duration="213000" />
+      <workItem from="1697720066811" duration="36842000" />
+      <workItem from="1697813683802" duration="691000" />
+      <workItem from="1698048784675" duration="2875000" />
+      <workItem from="1698066389881" duration="10661000" />
+      <workItem from="1698141819124" duration="1322000" />
+      <workItem from="1698315966002" duration="927000" />
+      <workItem from="1698336957305" duration="8532000" />
+      <workItem from="1698619616827" duration="3483000" />
+      <workItem from="1698640376693" duration="9935000" />
+      <workItem from="1698672343432" duration="2024000" />
+      <workItem from="1698717656855" duration="4553000" />
+      <workItem from="1698754179700" duration="4709000" />
+      <workItem from="1698781926559" duration="1273000" />
+      <workItem from="1698848171508" duration="1240000" />
+      <workItem from="1698899627052" duration="507000" />
+      <workItem from="1698909973762" duration="1577000" />
+      <workItem from="1698926827865" duration="8218000" />
+      <workItem from="1698975062229" duration="639000" />
+      <workItem from="1699140594411" duration="21495000" />
+      <workItem from="1699452747528" duration="2479000" />
+      <workItem from="1699530791353" duration="1402000" />
+      <workItem from="1699582949331" duration="325000" />
+      <workItem from="1699595714299" duration="12101000" />
+      <workItem from="1699614437311" duration="6475000" />
+      <workItem from="1699623529633" duration="642000" />
+      <workItem from="1699625032662" duration="3774000" />
+      <workItem from="1699631226783" duration="4324000" />
+      <workItem from="1699826303029" duration="610000" />
+      <workItem from="1699867489349" duration="4372000" />
+      <workItem from="1699980968955" duration="6000" />
+      <workItem from="1700095440682" duration="52000" />
+      <workItem from="1700095524441" duration="33000" />
+      <workItem from="1700097016001" duration="9000" />
+      <workItem from="1700097648605" duration="671000" />
+      <workItem from="1700188751103" duration="2612000" />
+      <workItem from="1700195074428" duration="1764000" />
+      <workItem from="1700274466915" duration="14036000" />
+      <workItem from="1700835870202" duration="4057000" />
+      <workItem from="1701052380124" duration="1422000" />
+      <workItem from="1701067428655" duration="1945000" />
+      <workItem from="1701076570076" duration="112000" />
+      <workItem from="1701105384382" duration="5451000" />
+      <workItem from="1701147984011" duration="216000" />
+      <workItem from="1701154246401" duration="12927000" />
+      <workItem from="1701266773618" duration="4248000" />
+      <workItem from="1701276577118" duration="29893000" />
+      <workItem from="1701349109977" duration="7546000" />
+      <workItem from="1701359936104" duration="1964000" />
+      <workItem from="1701393289119" duration="43000000" />
+      <workItem from="1701644288741" duration="47704000" />
+      <workItem from="1701774095690" duration="167000" />
+      <workItem from="1701774273260" duration="2898000" />
+      <workItem from="1701866784298" duration="10411000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

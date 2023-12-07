@@ -13,11 +13,15 @@
 #include "KeedConfig.h"
 
 struct interrupt_t {
-    volatile uint8_t pin = 0;
+    uint8_t pin = 0;
     volatile uint32_t num = 0;
     volatile bool pressed = false;
     void (*isrCallback)() = nullptr;
-    void attachInterrupt(uint8_t _pin, void (*_callback)());
+
+    void attachInterrupt(uint8_t _pin, void (*_callback)()) {
+        pin = _pin;
+        isrCallback = _callback;
+    }
 };
 
 class KeedBase {
@@ -27,8 +31,13 @@ public:
     virtual void run(IOExpander **ioBase, uint8_t ioNum) = 0;
     virtual void run(configuration_t _cfg) = 0;
 
-    virtual void setInterruptConfig(interrupt_t _cfg);
-    virtual void changeModes();
+    virtual void setInterruptConfig(interrupt_t _cfg) {
+        /*not implemented yet*/
+    }
+
+    virtual void changeModes() {
+        /*not implemented yet*/
+    }
 
     KeedBase &operator=(const KeedBase &) = default;
     KeedBase &operator=(KeedBase &&) = default;

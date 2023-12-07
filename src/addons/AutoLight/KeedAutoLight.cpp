@@ -18,15 +18,19 @@ KeedAutoLight::~KeedAutoLight() {
     keedBase = nullptr;
 }
 
-cfg_error_t KeedAutoLight::init(configuration_t _cfg) {
+cfg_error_t KeedAutoLight::setChannel(configuration_t _cfg) {
     cfg = _cfg;
     if (isUsingExpander()) {
         if (!beginExpander()) return INITIALIZE_ERROR;
     }
     keedBase = switchChannel();
-    if (keedBase != nullptr) {
-        keedBase->init();
-    }
+    if (keedBase == nullptr) return INITIALIZE_ERROR;
+    return INITIALIZE_OK;
+}
+
+cfg_error_t KeedAutoLight::init() {
+    if (keedBase == nullptr) return INITIALIZE_ERROR;
+    keedBase->init();
     return INITIALIZE_OK;
 }
 
@@ -34,6 +38,14 @@ void KeedAutoLight::runAutoLight() {
     if (keedBase == nullptr) return;
     if (isUsingExpander()) keedBase->run(ioBase, cfg.io_size);
     else keedBase->run(cfg);
+}
+
+void KeedAutoLight::setInterruptConfig(interrupt_t _cfg) {
+    keedBase->setInterruptConfig(_cfg);
+}
+
+void KeedAutoLight::changeModes() {
+    keedBase->changeModes();
 }
 
 void KeedAutoLight::addIoExpander(IOExpander *ioExpander) {
