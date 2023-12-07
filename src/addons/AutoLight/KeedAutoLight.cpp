@@ -48,6 +48,10 @@ void KeedAutoLight::changeModes() {
     keedBase->changeModes();
 }
 
+void KeedAutoLight::setBaseDelay(uint32_t _time) {
+    keedBase->setBaseDelay(_time);
+}
+
 void KeedAutoLight::addIoExpander(IOExpander *ioExpander) {
     IOExpander **newIoBase = (IOExpander **) realloc(ioBase, (ioLen + 1) * sizeof(IOExpander *));
     if (newIoBase == nullptr) {

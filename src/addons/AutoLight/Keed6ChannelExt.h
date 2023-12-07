@@ -18,6 +18,7 @@ private:
     uint8_t ioNum;
     uint8_t sequence;
     uint32_t ioTimer;
+    uint32_t isrTimer;
 
     interrupt_t isr;
     configuration_t cfg;
@@ -43,12 +44,13 @@ public:
 
     void setInterruptConfig(interrupt_t _cfg) override;
     void changeModes() override;
+    void setBaseDelay(uint32_t _time) override;
 
     void (Keed6ChannelExt::*getSequence(uint8_t index))();
-    void taskSequence0();
     void taskSequence1();
     void taskSequence2();
-    void taskSequence3();
+    void taskSequenceOFF();
+    void taskSequenceON();
 };
 
 #endif // KEED_6_CHANNEL_EXT_H

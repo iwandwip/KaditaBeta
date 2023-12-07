@@ -8,16 +8,16 @@
 #include "Keed6ChannelExt.h"
 
 Keed6ChannelExt::Keed6ChannelExt()
-        : sequence(0), taskTemp(nullptr),
-          sequences{&Keed6ChannelExt::taskSequence0, &Keed6ChannelExt::taskSequence1,
-                    &Keed6ChannelExt::taskSequence2, &Keed6ChannelExt::taskSequence3} {}
+        : sequence(0), ioTimer(40), taskTemp(nullptr),
+          sequences{&Keed6ChannelExt::taskSequenceOFF, &Keed6ChannelExt::taskSequence1,
+                    &Keed6ChannelExt::taskSequence2, &Keed6ChannelExt::taskSequenceON} {}
 
 void Keed6ChannelExt::init() {
     pinMode(isr.pin, INPUT_PULLUP);
 #if defined(ESP8266)
 #elif defined(ESP32)
 #else
-    attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, FALLING);
+    attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, RISING);
 #endif
     taskTemp = sequences[sequence];
 }
@@ -41,136 +41,145 @@ void Keed6ChannelExt::setInterruptConfig(interrupt_t _cfg) {
 }
 
 void Keed6ChannelExt::changeModes() {
-    if (millis() - ioTimer >= 250) {
+    if (millis() - isrTimer >= 250) {
         sequence = (sequence < 3) ? sequence + 1 : 0;
         taskTemp = sequences[sequence];
+        Serial.println("| pressed: " + String(sequence));
         isr.num++;
         isr.pressed = true;
-        ioTimer = millis();
+        isrTimer = millis();
     }
+}
+
+void Keed6ChannelExt::setBaseDelay(uint32_t _time) {
+    ioTimer = _time;
 }
 
 void (Keed6ChannelExt::*Keed6ChannelExt::getSequence(uint8_t index))() {
     return sequences[index];
 }
 
-void Keed6ChannelExt::taskSequence0() {
+void Keed6ChannelExt::taskSequence1() {
     // sequence 0
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 15; ++j) {
-            blink(30); // 30
+    {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 15; ++j) {
+                blink(ioTimer);
+            }
+            sleep(500);
         }
-        sleep(1000);
+        off();
     }
-    off();
     // sequence 1
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 3; j++) {
-            set(cfg.pin_ptr[j], LOW);
+    {
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 3; j++) {
+                set(cfg.pin_ptr[j], LOW);
+            }
+            sleep(ioTimer);
+            for (int j = 0; j < 3; j++) {
+                set(cfg.pin_ptr[j], HIGH);
+            }
+            sleep(ioTimer);
         }
-        sleep(30);
-        for (int j = 0; j < 3; j++) {
-            set(cfg.pin_ptr[j], HIGH);
+        sleep(50);
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 3; j < 6; j++) {
+                set(cfg.pin_ptr[j], LOW);
+            }
+            sleep(ioTimer);
+            for (int j = 3; j < 6; j++) {
+                set(cfg.pin_ptr[j], HIGH);
+            }
+            sleep(ioTimer);
         }
-        sleep(30);
+        sleep(50);
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 3; j++) {
+                set(cfg.pin_ptr[j], LOW);
+            }
+            sleep(ioTimer);
+            for (int j = 0; j < 3; j++) {
+                set(cfg.pin_ptr[j], HIGH);
+            }
+            sleep(ioTimer);
+        }
+        // sleep(50);
+        sleep(500);
+        off();
     }
-    sleep(90);
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 3; j < 6; j++) {
-            set(cfg.pin_ptr[j], LOW);
-        }
-        sleep(30);
-        for (int j = 3; j < 6; j++) {
-            set(cfg.pin_ptr[j], HIGH);
-        }
-        sleep(30);
-    }
-    sleep(90);
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 3; j++) {
-            set(cfg.pin_ptr[j], LOW);
-        }
-        sleep(30);
-        for (int j = 0; j < 3; j++) {
-            set(cfg.pin_ptr[j], HIGH);
-        }
-        sleep(30);
-    }
-    sleep(90);
-    sleep(1000);
-    off();
     // sequence 2
     for (int i = 0; i < 4; ++i) {
         for (int j = 3; j < 6; j++) {
             set(cfg.pin_ptr[j], LOW);
         }
-        sleep(30);
+        sleep(ioTimer);
         for (int j = 3; j < 6; j++) {
             set(cfg.pin_ptr[j], HIGH);
         }
-        sleep(30);
+        sleep(ioTimer);
     }
-    sleep(90);
+    sleep(50);
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 3; j++) {
             set(cfg.pin_ptr[j], LOW);
         }
-        sleep(30);
+        sleep(ioTimer);
         for (int j = 0; j < 3; j++) {
             set(cfg.pin_ptr[j], HIGH);
         }
-        sleep(30);
+        sleep(ioTimer);
     }
-    sleep(90);
+    sleep(50);
     for (int i = 0; i < 4; ++i) {
         for (int j = 3; j < 6; j++) {
             set(cfg.pin_ptr[j], LOW);
         }
-        sleep(30);
+        sleep(ioTimer);
         for (int j = 3; j < 6; j++) {
             set(cfg.pin_ptr[j], HIGH);
         }
-        sleep(30);
+        sleep(ioTimer);
     }
-    sleep(90);
+    // sleep(50);
     off();
-    sleep(1000);
+    sleep(500);
     // sequence 3
     for (int k = 0; k < 2; ++k) {
         for (int i = 0; i < 6; i += 2) {
             for (int j = 0; j < 4; ++j) {
                 digitalWrite(cfg.pin_ptr[i], LOW);
                 digitalWrite(cfg.pin_ptr[i + 1], LOW);
-                sleep(30);
+                sleep(ioTimer);
                 digitalWrite(cfg.pin_ptr[i], HIGH);
                 digitalWrite(cfg.pin_ptr[i + 1], HIGH);
-                sleep(30);
+                sleep(ioTimer);
             }
-            sleep(250);
+            sleep(300);
         }
-        sleep(1000);
+        sleep(500);
     }
     off();
     // sequence 4
     for (int i = 6; i > 0; --i) {
         for (int j = 0; j < i; j++) {
             digitalWrite(cfg.pin_ptr[j], LOW);
-            sleep(60);
+            sleep(ioTimer * 2);
             digitalWrite(cfg.pin_ptr[j], HIGH);
         }
         digitalWrite(cfg.pin_ptr[i - 1], LOW);
     }
     // off();
-    // sleep(1000);
+    // sleep(500);
     // sequence 5
     for (int i = 6; i > 0; --i) {
         digitalWrite(cfg.pin_ptr[i - 1], HIGH);
-        sleep(60);
+        sleep(ioTimer * 2);
     }
     off();
-    sleep(1000);
+    sleep(500);
     // sequence 6
-    for (int k = 60; k >= 30; k -= 5) {
+    for (int k = ioTimer * 2; k >= ioTimer; k -= 5) {
         for (int j = 0; j < 3; ++j) {
             for (int i = 6; i > 3 + j; --i) {
                 digitalWrite(cfg.pin_ptr[i - 1], LOW);
@@ -203,50 +212,71 @@ void Keed6ChannelExt::taskSequence0() {
         }
     }
     on();
-    sleep(1000);
+    sleep(500);
     for (int i = 6; i > 0; --i) {
         digitalWrite(cfg.pin_ptr[i - 1], HIGH);
-        sleep(60);
+        sleep(ioTimer * 2);
     }
     off();
-    sleep(1000);
+    sleep(500);
+}
+
+void Keed6ChannelExt::taskSequence2() {
+    // sequence 4
+    for (int i = 6; i > 0; --i) {
+        for (int j = 0; j < i; j++) {
+            digitalWrite(cfg.pin_ptr[j], LOW);
+            sleep(ioTimer * 2);
+            digitalWrite(cfg.pin_ptr[j], HIGH);
+        }
+        digitalWrite(cfg.pin_ptr[i - 1], LOW);
+    }
+    // off();
+    // sleep(500);
+    // sequence 5
+    for (int i = 6; i > 0; --i) {
+        digitalWrite(cfg.pin_ptr[i - 1], HIGH);
+        sleep(ioTimer * 2);
+    }
+    off();
+    sleep(500);
     // sequence 8
     for (int i = 0; i < 6; ++i) {
         for (int j = 0; j < 6; ++j) {
             digitalWrite(cfg.pin_ptr[i], LOW);
-            sleep(30);
+            sleep(ioTimer);
             digitalWrite(cfg.pin_ptr[i], HIGH);
-            sleep(30);
+            sleep(ioTimer);
         }
-        sleep(30);
+        sleep(ioTimer);
     }
     for (int i = 6; i > 0; --i) {
         for (int j = 0; j < 6; ++j) {
             digitalWrite(cfg.pin_ptr[i - 1], LOW);
-            sleep(30);
+            sleep(ioTimer);
             digitalWrite(cfg.pin_ptr[i - 1], HIGH);
-            sleep(30);
+            sleep(ioTimer);
         }
-        sleep(30);
+        sleep(ioTimer);
     }
     off();
-    sleep(1000);
+    sleep(500);
     // sequence 9
     for (int i = 0; i < 3 + 1; ++i) {
         for (int j = 0; j < 4; ++j) {
             digitalWrite(cfg.pin_ptr[i], LOW);
             digitalWrite(cfg.pin_ptr[i + 2], LOW);
-            sleep(30);
+            sleep(ioTimer);
             digitalWrite(cfg.pin_ptr[i], HIGH);
             digitalWrite(cfg.pin_ptr[i + 2], HIGH);
-            sleep(30);
+            sleep(ioTimer);
         }
-        sleep(90);
+        sleep(50);
     }
     off();
-    sleep(1000);
+    sleep(500);
     // sequence 10
-    for (int k = 40; k >= 20; k -= 4) {
+    for (float k = ioTimer * 2; k >= ioTimer; k -= (ioTimer / 3)) {
         for (int i = 0; i < 6; i++) {
             digitalWrite(cfg.pin_ptr[i], LOW);
             sleep(k);
@@ -264,24 +294,19 @@ void Keed6ChannelExt::taskSequence0() {
             sleep(k);
         }
     }
+    off();
+    sleep(500);
 }
 
-void Keed6ChannelExt::taskSequence1() {
-    for (int i = 40; i >= 20; i -= 4) {
-        snake(i);
+void Keed6ChannelExt::taskSequenceOFF() {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        digitalWrite(cfg.pin_ptr[i], HIGH);
     }
 }
 
-void Keed6ChannelExt::taskSequence2() {
-    for (int i = 40; i >= 20; i -= 4) {
-        snakeReverse(i);
-    }
-}
-
-void Keed6ChannelExt::taskSequence3() {
-    for (int i = 40; i >= 16; i -= 8) {
-        snake(i);
-        snakeReverse(i);
+void Keed6ChannelExt::taskSequenceON() {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        digitalWrite(cfg.pin_ptr[i], LOW);
     }
 }
 

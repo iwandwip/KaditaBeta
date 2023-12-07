@@ -39,6 +39,10 @@ public:
         /*not implemented yet*/
     }
 
+    virtual void setBaseDelay(uint32_t _time) {
+        /*not implemented yet*/
+    }
+
     KeedBase &operator=(const KeedBase &) = default;
     KeedBase &operator=(KeedBase &&) = default;
 };
