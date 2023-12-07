@@ -13,23 +13,18 @@ Keed6ChannelExt::Keed6ChannelExt()
                     &Keed6ChannelExt::taskSequence2, &Keed6ChannelExt::taskSequence3} {}
 
 void Keed6ChannelExt::init() {
+    pinMode(isr.pin, INPUT_PULLUP);
 #if defined(ESP8266)
 #elif defined(ESP32)
-#else // avr
-    pinMode(isr.pin, INPUT_PULLUP);
+#else
     attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, FALLING);
 #endif
     taskTemp = sequences[sequence];
 }
 
 void Keed6ChannelExt::update() {
-    if (isr.pressed) {
-        isr.pressed = false;
-    }
+    if (isr.pressed) isr.pressed = false;
     (this->*taskTemp)();
-    Serial.print("| sequence: ");
-    Serial.print(sequence);
-    Serial.println();
 }
 
 void Keed6ChannelExt::run(IOExpander **_ioBase, uint8_t _ioNum) {
@@ -290,6 +285,11 @@ void Keed6ChannelExt::taskSequence3() {
     }
 }
 
+void Keed6ChannelExt::sleep(uint32_t _time) {
+    if (isr.pressed) return;
+    delay(_time);
+}
+
 void Keed6ChannelExt::blink(uint32_t _time) {
     for (int i = 0; i < cfg.pin_size; i++) {
         digitalWrite(cfg.pin_ptr[i], LOW);
@@ -343,9 +343,4 @@ void Keed6ChannelExt::on() {
     for (int i = 0; i < cfg.pin_size; i++) {
         digitalWrite(cfg.pin_ptr[i], LOW);
     }
-}
-
-void Keed6ChannelExt::sleep(uint32_t _time) {
-    if (isr.pressed) return;
-    delay(_time);
 }
