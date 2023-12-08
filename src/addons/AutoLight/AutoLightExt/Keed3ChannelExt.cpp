@@ -23,6 +23,7 @@ void Keed3ChannelExt::init() {
     attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, RISING);
 #endif
     taskTemp = sequences[sequence];
+    off();
 }
 
 void Keed3ChannelExt::update() {
@@ -62,18 +63,55 @@ void (Keed3ChannelExt::*Keed3ChannelExt::getSequence(uint8_t index))() {
 }
 
 void Keed3ChannelExt::taskSequence1() {
-    for (int i = 0; i < 15; ++i) {
-        blink(ioTimer);
+    for (int j = 0; j < 2; ++j) {
+        for (int i = 0; i < 7; ++i) {
+            set(cfg.pin_ptr[1], HIGH);
+            sleep(ioTimer);
+            set(cfg.pin_ptr[1], LOW);
+            sleep(ioTimer);
+        }
+        off();
+        sleep(ioTimer);
+        for (int i = 0; i < 7; ++i) {
+            set(cfg.pin_ptr[0], HIGH);
+            set(cfg.pin_ptr[2], HIGH);
+            sleep(ioTimer);
+            set(cfg.pin_ptr[0], LOW);
+            set(cfg.pin_ptr[2], LOW);
+            sleep(ioTimer);
+        }
+        off();
+        sleep(ioTimer);
     }
-    delay(500);
+    off();
+    for (int i = 0; i < 6; ++i) {
+        blink(ioTimer * 4);
+    }
 }
 
 void Keed3ChannelExt::taskSequence2() {
-    snake(ioTimer);
+    for (int i = 0; i < 2; ++i) {
+        snake(ioTimer * 2);
+        snakeReverse(ioTimer * 2);
+    }
+    for (int j = 0; j < 3; ++j) {
+        for (int i = 0; i < 8; ++i) {
+            blink(ioTimer);
+        }
+        sleep(ioTimer * 4);
+    }
 }
 
 void Keed3ChannelExt::taskSequence3() {
-    snakeReverse(ioTimer);
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 15; ++j) {
+            set(cfg.pin_ptr[i], HIGH);
+            sleep(ioTimer);
+            set(cfg.pin_ptr[i], LOW);
+            sleep(ioTimer);
+        }
+        sleep(ioTimer);
+    }
 }
 
 void Keed3ChannelExt::taskSequenceOFF() {
