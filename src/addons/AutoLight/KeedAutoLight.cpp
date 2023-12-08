@@ -85,7 +85,10 @@ KeedBase *KeedAutoLight::switchChannel() {
         }
     } else {
         switch (cfg.pin_size) {
+            case 3: return new Keed3ChannelExt();
+            case 4: return new Keed4ChannelExt();
             case 6: return new Keed6ChannelExt();
+            case 14: return new Keed14ChannelExt();
         }
     }
     return nullptr;
@@ -123,7 +126,7 @@ void KeedAutoLight::showInfo() {
     Serial.print("| io_size: ");
     Serial.print(cfg.io_size);
     Serial.print("| isUsingExpander(): ");
-    Serial.print(isUsingExpander());
+    Serial.print(isUsingExpander() ? "YES" : "NO");
     Serial.print("| pin_ptr: ");
     Serial.print(cfg.pin_ptr == nullptr ? "NULL" : "NOT NULL");
     Serial.print("| pin_size: ");

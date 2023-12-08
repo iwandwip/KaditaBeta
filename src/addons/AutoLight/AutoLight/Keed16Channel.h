@@ -10,7 +10,7 @@
 #ifndef KEED_16_CHANNEL_H
 #define KEED_16_CHANNEL_H
 
-#include "KeedBase.h"
+#include "../KeedBase.h"
 
 class Keed16Channel : public KeedBase {
 private:

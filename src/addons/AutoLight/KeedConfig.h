@@ -19,6 +19,7 @@ struct configuration_t {
     uint8_t io_size = 0;
     uint8_t *pin_ptr = nullptr;
     uint8_t pin_size = 0;
+    bool reverse = false;
     void setPins(int size, ...);
 };
 
