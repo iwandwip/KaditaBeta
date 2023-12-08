@@ -7,8 +7,8 @@
 
 #include "Keed14ChannelExt.h"
 
-#define setHigh(...) setStateHigh(__VA_ARGS__, 0)
-#define setLow(...) setStateLow(__VA_ARGS__, 0)
+#define setHigh(...) setStateHigh(__VA_ARGS__, -1)
+#define setLow(...) setStateLow(__VA_ARGS__, -1)
 
 Keed14ChannelExt::Keed14ChannelExt()
         : sequence(0), ioTimer(40), taskTemp(nullptr),
@@ -62,15 +62,18 @@ void (Keed14ChannelExt::*Keed14ChannelExt::getSequence(uint8_t index))() {
 }
 
 void Keed14ChannelExt::taskSequence1() {
-    blink(50);
+    on();
+    delay(ioTimer);
+    off();
+    delay(ioTimer);
 }
 
 void Keed14ChannelExt::taskSequence2() {
-    snake(30);
+    snake(ioTimer);
 }
 
 void Keed14ChannelExt::taskSequence3() {
-    snakeReverse(30);
+    snakeReverse(ioTimer);
 }
 
 void Keed14ChannelExt::taskSequenceOFF() {
@@ -127,7 +130,7 @@ void Keed14ChannelExt::setStateHigh(int index, ...) {
     va_list args;
     va_start(args, index);
     int currentIndex = index;
-    while (currentIndex != 0) {
+    while (currentIndex != -1) {
         set(cfg.pin_ptr[currentIndex], HIGH);
         currentIndex = va_arg(args, int);
     }
@@ -141,7 +144,7 @@ void Keed14ChannelExt::setStateLow(int index, ...) {
     va_list args;
     va_start(args, index);
     int currentIndex = index;
-    while (currentIndex != 0) {
+    while (currentIndex != -1) {
         set(cfg.pin_ptr[currentIndex], LOW);
         currentIndex = va_arg(args, int);
     }

@@ -7,6 +7,9 @@
 
 #include "Keed3ChannelExt.h"
 
+#define setHigh(...) setStateHigh(__VA_ARGS__, -1)
+#define setLow(...) setStateLow(__VA_ARGS__, -1)
+
 Keed3ChannelExt::Keed3ChannelExt()
         : sequence(0), ioTimer(40), taskTemp(nullptr),
           sequences{&Keed3ChannelExt::taskSequenceOFF, &Keed3ChannelExt::taskSequence1,
@@ -59,19 +62,22 @@ void (Keed3ChannelExt::*Keed3ChannelExt::getSequence(uint8_t index))() {
 }
 
 void Keed3ChannelExt::taskSequence1() {
-
+    for (int i = 0; i < 15; ++i) {
+        blink(ioTimer);
+    }
+    delay(500);
 }
 
 void Keed3ChannelExt::taskSequence2() {
-
+    snake(ioTimer);
 }
 
 void Keed3ChannelExt::taskSequence3() {
-
+    snakeReverse(ioTimer);
 }
 
 void Keed3ChannelExt::taskSequenceOFF() {
-
+    off();
 }
 
 void Keed3ChannelExt::sleep(uint32_t _time) {
@@ -81,49 +87,79 @@ void Keed3ChannelExt::sleep(uint32_t _time) {
 
 void Keed3ChannelExt::blink(uint32_t _time) {
     for (int i = 0; i < cfg.pin_size; i++) {
-        digitalWrite(cfg.pin_ptr[i], LOW);
+        set(cfg.pin_ptr[i], HIGH);
     }
     sleep(_time);
     for (int i = 0; i < cfg.pin_size; i++) {
-        digitalWrite(cfg.pin_ptr[i], HIGH);
+        set(cfg.pin_ptr[i], LOW);
     }
     sleep(_time);
 }
 
 void Keed3ChannelExt::snake(uint32_t _time) {
     for (int j = 0; j < cfg.pin_size; j++) {
-        digitalWrite(cfg.pin_ptr[j], LOW);
+        set(cfg.pin_ptr[j], HIGH);
         sleep(_time);
     }
     for (int j = 0; j < cfg.pin_size; j++) {
-        digitalWrite(cfg.pin_ptr[j], HIGH);
+        set(cfg.pin_ptr[j], LOW);
         sleep(_time);
     }
 }
 
 void Keed3ChannelExt::snakeReverse(uint32_t _time) {
-    for (int j = cfg.pin_size; j > 0; j--) {
-        digitalWrite(cfg.pin_ptr[j - 1], LOW);
+    for (int j = cfg.pin_size - 1; j >= 0; j--) {
+        set(cfg.pin_ptr[j], HIGH);
         sleep(_time);
     }
-    for (int j = cfg.pin_size; j > 0; j--) {
-        digitalWrite(cfg.pin_ptr[j - 1], HIGH);
+    for (int j = cfg.pin_size - 1; j >= 0; j--) {
+        set(cfg.pin_ptr[j], LOW);
         sleep(_time);
     }
 }
 
 void Keed3ChannelExt::set(uint8_t _pin, uint8_t _state) {
-    digitalWrite(_pin, _state);
+    if (cfg.reverse) digitalWrite(_pin, !_state);
+    else digitalWrite(_pin, _state);
+}
+
+void Keed3ChannelExt::setStateHigh(int index, ...) {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        set(cfg.pin_ptr[i], LOW);
+    }
+    va_list args;
+    va_start(args, index);
+    int currentIndex = index;
+    while (currentIndex != -1) {
+        set(cfg.pin_ptr[currentIndex], HIGH);
+        currentIndex = va_arg(args, int);
+    }
+    va_end(args);
+}
+
+void Keed3ChannelExt::setStateLow(int index, ...) {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        set(cfg.pin_ptr[i], LOW);
+    }
+    va_list args;
+    va_start(args, index);
+    int currentIndex = index;
+    while (currentIndex != -1) {
+        set(cfg.pin_ptr[currentIndex], LOW);
+        currentIndex = va_arg(args, int);
+    }
+    va_end(args);
 }
 
 void Keed3ChannelExt::off() {
     for (int i = 0; i < cfg.pin_size; i++) {
-        digitalWrite(cfg.pin_ptr[i], HIGH);
+        set(cfg.pin_ptr[i], LOW);
     }
 }
 
 void Keed3ChannelExt::on() {
     for (int i = 0; i < cfg.pin_size; i++) {
-        digitalWrite(cfg.pin_ptr[i], LOW);
+        set(cfg.pin_ptr[i], HIGH);
     }
 }
+

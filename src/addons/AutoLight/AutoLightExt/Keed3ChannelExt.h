@@ -32,6 +32,8 @@ protected:
     void snake(uint32_t _delay);
     void snakeReverse(uint32_t _delay);
     void set(uint8_t _pin, uint8_t _state);
+    void setStateHigh(int index, ...);
+    void setStateLow(int index, ...);
     void off();
     void on();
 
