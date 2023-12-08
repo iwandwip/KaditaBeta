@@ -26,6 +26,7 @@ struct interrupt_t {
 
 class KeedBase {
 public:
+    // pure virtual function
     virtual void init() = 0;
     virtual void update() = 0;
     virtual void run(IOExpander **ioBase, uint8_t ioNum) = 0;
