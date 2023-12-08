@@ -51,8 +51,8 @@ public:
     void (Keed14ChannelExt::*getSequence(uint8_t index))();
     void taskSequence1();
     void taskSequence2();
-    void taskSequence3();
     void taskSequenceOFF();
+    void taskSequenceON();
 };
 
 #endif // KEED_14_CHANNEL_EXT_H

@@ -13,7 +13,7 @@
 Keed14ChannelExt::Keed14ChannelExt()
         : sequence(0), ioTimer(40), taskTemp(nullptr),
           sequences{&Keed14ChannelExt::taskSequenceOFF, &Keed14ChannelExt::taskSequence1,
-                    &Keed14ChannelExt::taskSequence2, &Keed14ChannelExt::taskSequence3} {}
+                    &Keed14ChannelExt::taskSequence2, &Keed14ChannelExt::taskSequenceON} {}
 
 void Keed14ChannelExt::init() {
     pinMode(isr.pin, INPUT_PULLUP);
@@ -70,10 +70,11 @@ void Keed14ChannelExt::taskSequence1() {
 
 void Keed14ChannelExt::taskSequence2() {
     snake(ioTimer);
+    snakeReverse(ioTimer);
 }
 
-void Keed14ChannelExt::taskSequence3() {
-    snakeReverse(ioTimer);
+void Keed14ChannelExt::taskSequenceON() {
+    on();
 }
 
 void Keed14ChannelExt::taskSequenceOFF() {
