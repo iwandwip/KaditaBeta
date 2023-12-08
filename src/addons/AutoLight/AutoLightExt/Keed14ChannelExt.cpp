@@ -19,6 +19,7 @@ void Keed14ChannelExt::init() {
     pinMode(isr.pin, INPUT_PULLUP);
 #if defined(ESP8266)
 #elif defined(ESP32)
+    attachInterrupt(isr.pin, isr.isrCallback, RISING);
 #else
     attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, RISING);
 #endif
