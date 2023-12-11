@@ -2,7 +2,7 @@
  src/addons/AutoLight/AutoLightStrobe/Keed3ChannelStrobe.cpp \
  src/addons/AutoLight/AutoLightStrobe/Keed3ChannelStrobe.h \
  src/addons/AutoLight/AutoLightStrobe/../KeedBase.h \
- src/addons/AutoLight/AutoLightStrobe/../KeedConfig.h \
+ src/addons/AutoLight/AutoLightStrobe/../AutoLightConfig/KeedConfig.h \
  src/modules/communication/wired/i2c/io-expander.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
@@ -141,4 +141,4 @@
  .pio/libdeps/esp32doit-devkit-v1/PCF8574\ library/PCF8574.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
- src/addons/AutoLight/AutoLightStrobe/../KeedDef.h
+ src/addons/AutoLight/AutoLightStrobe/../AutoLightConfig/KeedDef.h

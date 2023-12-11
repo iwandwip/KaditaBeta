@@ -10,7 +10,7 @@
 #ifndef KEED_AUTO_LIGHT_H
 #define KEED_AUTO_LIGHT_H
 
-#include "KeedIndex.h"
+#include "AutoLightConfig/KeedIndex.h"
 
 class KeedAutoLight {
 private:

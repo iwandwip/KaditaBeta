@@ -10,7 +10,7 @@
 #ifndef KEED_BASE_H
 #define KEED_BASE_H
 
-#include "KeedConfig.h"
+#include "AutoLightConfig/KeedConfig.h"
 
 struct interrupt_t {
     uint8_t pin = 0;
@@ -26,21 +26,24 @@ struct interrupt_t {
 
 class KeedBase {
 public:
+    KeedBase() = default;
+    ~KeedBase() = default;
     // pure virtual function
     virtual void init() = 0;
     virtual void update() = 0;
     virtual void run(IOExpander **ioBase, uint8_t ioNum, configuration_t _cfg) = 0;
 
-    virtual void setInterruptConfig(interrupt_t _cfg) {
-        /*not implemented yet*/
+    // basic virtual function
+    __attribute__((unused)) virtual void setInterruptConfig(interrupt_t _cfg) {
+        /*implemented on a derived class*/
     }
 
-    virtual void changeModes() {
-        /*not implemented yet*/
+    __attribute__((unused)) virtual void changeModes() {
+        /*implemented on a derived class*/
     }
 
-    virtual void setBaseDelay(uint32_t _time) {
-        /*not implemented yet*/
+    __attribute__((unused)) virtual void setBaseDelay(uint32_t _time) {
+        /*implemented on a derived class*/
     }
 
     KeedBase &operator=(const KeedBase &) = default;
