@@ -36,8 +36,7 @@ cfg_error_t KeedAutoLight::init() {
 
 void KeedAutoLight::runAutoLight() {
     if (keedBase == nullptr) return;
-    if (isUsingExpander()) keedBase->run(ioBase, cfg.io_size);
-    else keedBase->run(cfg);
+    keedBase->run(ioBase, cfg.io_size, cfg);
 }
 
 void KeedAutoLight::setInterruptConfig(interrupt_t _cfg) {
@@ -96,7 +95,7 @@ KeedBase *KeedAutoLight::switchChannel() {
     } else {
         switch (cfg.pin_size) {
             case 3: return new Keed3ChannelExt();
-            case 4: return new Keed4ChannelExt();
+            case 4: return nullptr;
             case 6: return new Keed6ChannelExt();
             case 8: return nullptr;
             case 10: return nullptr;

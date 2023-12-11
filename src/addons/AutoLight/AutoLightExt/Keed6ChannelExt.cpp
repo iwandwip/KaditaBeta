@@ -12,13 +12,16 @@
 
 Keed6ChannelExt::Keed6ChannelExt()
         : sequence(0), ioTimer(40), taskTemp(nullptr),
-          sequences{&Keed6ChannelExt::taskSequenceOFF, &Keed6ChannelExt::taskSequence1,
-                    &Keed6ChannelExt::taskSequence2, &Keed6ChannelExt::taskSequenceON} {}
+          sequences{&Keed6ChannelExt::taskSequenceOFF,
+                    &Keed6ChannelExt::taskSequence1,
+                    &Keed6ChannelExt::taskSequence2,
+                    &Keed6ChannelExt::taskSequenceON} {}
 
 void Keed6ChannelExt::init() {
     pinMode(isr.pin, INPUT_PULLUP);
 #if defined(ESP8266)
 #elif defined(ESP32)
+    attachInterrupt(isr.pin, isr.isrCallback, RISING);
 #else
     attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, RISING);
 #endif
@@ -30,11 +33,7 @@ void Keed6ChannelExt::update() {
     (this->*taskTemp)();
 }
 
-void Keed6ChannelExt::run(IOExpander **_ioBase, uint8_t _ioNum) {
-    update();
-}
-
-void Keed6ChannelExt::run(configuration_t _cfg) {
+void Keed6ChannelExt::run(IOExpander **_ioBase, uint8_t _ioNum, configuration_t _cfg) {
     cfg = _cfg;
     update();
 }
@@ -44,8 +43,8 @@ void Keed6ChannelExt::setInterruptConfig(interrupt_t _cfg) {
 }
 
 void Keed6ChannelExt::changeModes() {
-    if (millis() - isrTimer >= 250) {
-        sequence = (sequence < 3) ? sequence + 1 : 0;
+    if (millis() - isrTimer >= BUTTON_DEBOUNCE_TIME) {
+        sequence = (sequence < (TASK_SEQUENCE_NUM - 1)) ? sequence + 1 : 0;
         taskTemp = sequences[sequence];
         isr.num++;
         isr.pressed = true;
@@ -66,7 +65,14 @@ void Keed6ChannelExt::taskSequence1() {
     {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 15; ++j) {
-                blink(ioTimer);
+                for (int k = 0; k < cfg.pin_size; k++) {
+                    set(cfg.pin_ptr[k], HIGH);
+                }
+                sleep(ioTimer);
+                for (int k = 0; k < cfg.pin_size; k++) {
+                    set(cfg.pin_ptr[k], LOW);
+                }
+                sleep(ioTimer);
             }
             sleep(500);
         }
@@ -343,39 +349,6 @@ void Keed6ChannelExt::sleep(uint32_t _time) {
     delay(_time);
 }
 
-void Keed6ChannelExt::blink(uint32_t _time) {
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], HIGH);
-    }
-    sleep(_time);
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], LOW);
-    }
-    sleep(_time);
-}
-
-void Keed6ChannelExt::snake(uint32_t _time) {
-    for (int j = 0; j < cfg.pin_size; j++) {
-        set(cfg.pin_ptr[j], HIGH);
-        sleep(_time);
-    }
-    for (int j = 0; j < cfg.pin_size; j++) {
-        set(cfg.pin_ptr[j], LOW);
-        sleep(_time);
-    }
-}
-
-void Keed6ChannelExt::snakeReverse(uint32_t _time) {
-    for (int j = cfg.pin_size - 1; j >= 0; j--) {
-        set(cfg.pin_ptr[j], HIGH);
-        sleep(_time);
-    }
-    for (int j = cfg.pin_size - 1; j >= 0; j--) {
-        set(cfg.pin_ptr[j], LOW);
-        sleep(_time);
-    }
-}
-
 void Keed6ChannelExt::set(uint8_t _pin, uint8_t _state) {
     if (cfg.reverse) digitalWrite(_pin, !_state);
     else digitalWrite(_pin, _state);
@@ -420,3 +393,4 @@ void Keed6ChannelExt::on() {
         set(cfg.pin_ptr[i], HIGH);
     }
 }
+

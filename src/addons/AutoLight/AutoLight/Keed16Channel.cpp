@@ -23,13 +23,9 @@ void Keed16Channel::update() {
     else sequence = 0;
 }
 
-void Keed16Channel::run(IOExpander **_ioBase, uint8_t _ioNum) {
+void Keed16Channel::run(IOExpander **_ioBase, uint8_t _ioNum, configuration_t _cfg) {
     ioBase = _ioBase;
     ioNum = _ioNum;
-    update();
-}
-
-void Keed16Channel::run(configuration_t _cfg) {
     update();
 }
 

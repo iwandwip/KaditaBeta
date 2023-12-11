@@ -143,7 +143,6 @@
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
  src/addons/AutoLight/AutoLightExt/../KeedDef.h \
- src/addons/AutoLight/AutoLightExt/Keed4ChannelExt.h \
  src/addons/AutoLight/AutoLightExt/Keed6ChannelExt.h \
  src/addons/AutoLight/AutoLightExt/Keed14ChannelExt.h \
  src/addons/AutoLight/AutoLight/Keed16Channel.h

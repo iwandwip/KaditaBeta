@@ -29,8 +29,7 @@ public:
     // pure virtual function
     virtual void init() = 0;
     virtual void update() = 0;
-    virtual void run(IOExpander **ioBase, uint8_t ioNum) = 0;
-    virtual void run(configuration_t _cfg) = 0;
+    virtual void run(IOExpander **ioBase, uint8_t ioNum, configuration_t _cfg) = 0;
 
     virtual void setInterruptConfig(interrupt_t _cfg) {
         /*not implemented yet*/

@@ -31,11 +31,7 @@ void Keed3ChannelExt::update() {
     (this->*taskTemp)();
 }
 
-void Keed3ChannelExt::run(IOExpander **_ioBase, uint8_t _ioNum) {
-    update();
-}
-
-void Keed3ChannelExt::run(configuration_t _cfg) {
+void Keed3ChannelExt::run(IOExpander **_ioBase, uint8_t _ioNum, configuration_t _cfg) {
     cfg = _cfg;
     update();
 }

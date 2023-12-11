@@ -10,6 +10,9 @@
 #ifndef KEED_6_CHANNEL_EXT_H
 #define KEED_6_CHANNEL_EXT_H
 
+#define TASK_SEQUENCE_NUM 4
+#define BUTTON_DEBOUNCE_TIME 250
+
 #include "../KeedBase.h"
 
 class Keed6ChannelExt : public KeedBase {
@@ -24,13 +27,10 @@ private:
     configuration_t cfg;
 
     void (Keed6ChannelExt::*taskTemp)();
-    void (Keed6ChannelExt::*sequences[4])();
+    void (Keed6ChannelExt::*sequences[TASK_SEQUENCE_NUM])();
 
 protected:
     void sleep(uint32_t _delay);
-    void blink(uint32_t _delay);
-    void snake(uint32_t _delay);
-    void snakeReverse(uint32_t _delay);
     void set(uint8_t _pin, uint8_t _state);
     void setStateHigh(int index, ...);
     void setStateLow(int index, ...);
@@ -41,8 +41,7 @@ public:
     Keed6ChannelExt();
     void init() override;
     void update() override;
-    void run(IOExpander **_ioBase, uint8_t _ioNum) override;
-    void run(configuration_t _cfg) override;
+    void run(IOExpander **_ioBase, uint8_t _ioNum, configuration_t _cfg) override;
 
     void setInterruptConfig(interrupt_t _cfg) override;
     void changeModes() override;
