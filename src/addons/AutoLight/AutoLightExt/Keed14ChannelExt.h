@@ -10,6 +10,9 @@
 #ifndef KEED_14_CHANNEL_EXT_H
 #define KEED_14_CHANNEL_EXT_H
 
+#define TASK_SEQUENCE_NUM 4
+#define BUTTON_DEBOUNCE_TIME 250
+
 #include "../KeedBase.h"
 
 class Keed14ChannelExt : public KeedBase {
@@ -24,13 +27,10 @@ private:
     configuration_t cfg;
 
     void (Keed14ChannelExt::*taskTemp)();
-    void (Keed14ChannelExt::*sequences[4])();
+    void (Keed14ChannelExt::*sequences[TASK_SEQUENCE_NUM])();
 
 protected:
     void sleep(uint32_t _delay);
-    void blink(uint32_t _delay);
-    void snake(uint32_t _delay);
-    void snakeReverse(uint32_t _delay);
     void set(uint8_t _pin, uint8_t _state);
     void setStateHigh(int index, ...);
     void setStateLow(int index, ...);

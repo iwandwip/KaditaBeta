@@ -12,8 +12,10 @@
 
 Keed14ChannelExt::Keed14ChannelExt()
         : sequence(0), ioTimer(40), taskTemp(nullptr),
-          sequences{&Keed14ChannelExt::taskSequenceOFF, &Keed14ChannelExt::taskSequence1,
-                    &Keed14ChannelExt::taskSequence2, &Keed14ChannelExt::taskSequenceON} {}
+          sequences{&Keed14ChannelExt::taskSequenceOFF,
+                    &Keed14ChannelExt::taskSequence1,
+                    &Keed14ChannelExt::taskSequence2,
+                    &Keed14ChannelExt::taskSequenceON} {}
 
 void Keed14ChannelExt::init() {
     pinMode(isr.pin, INPUT_PULLUP);
@@ -45,8 +47,8 @@ void Keed14ChannelExt::setInterruptConfig(interrupt_t _cfg) {
 }
 
 void Keed14ChannelExt::changeModes() {
-    if (millis() - isrTimer >= 250) {
-        sequence = (sequence < 3) ? sequence + 1 : 0;
+    if (millis() - isrTimer >= BUTTON_DEBOUNCE_TIME) {
+        sequence = (sequence < (TASK_SEQUENCE_NUM - 1)) ? sequence + 1 : 0;
         taskTemp = sequences[sequence];
         isr.num++;
         isr.pressed = true;
@@ -67,7 +69,14 @@ void Keed14ChannelExt::taskSequence1() {
     {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 15; ++j) {
-                blink(ioTimer);
+                for (int k = 0; k < cfg.pin_size; k++) {
+                    set(cfg.pin_ptr[k], HIGH);
+                }
+                sleep(ioTimer);
+                for (int k = 0; k < cfg.pin_size; k++) {
+                    set(cfg.pin_ptr[k], LOW);
+                }
+                sleep(ioTimer);
             }
             sleep(500);
         }
@@ -342,39 +351,6 @@ void Keed14ChannelExt::taskSequenceOFF() {
 void Keed14ChannelExt::sleep(uint32_t _time) {
     if (isr.pressed) return;
     delay(_time);
-}
-
-void Keed14ChannelExt::blink(uint32_t _time) {
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], HIGH);
-    }
-    sleep(_time);
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], LOW);
-    }
-    sleep(_time);
-}
-
-void Keed14ChannelExt::snake(uint32_t _time) {
-    for (int j = 0; j < cfg.pin_size; j++) {
-        set(cfg.pin_ptr[j], HIGH);
-        sleep(_time);
-    }
-    for (int j = 0; j < cfg.pin_size; j++) {
-        set(cfg.pin_ptr[j], LOW);
-        sleep(_time);
-    }
-}
-
-void Keed14ChannelExt::snakeReverse(uint32_t _time) {
-    for (int j = cfg.pin_size - 1; j >= 0; j--) {
-        set(cfg.pin_ptr[j], HIGH);
-        sleep(_time);
-    }
-    for (int j = cfg.pin_size - 1; j >= 0; j--) {
-        set(cfg.pin_ptr[j], LOW);
-        sleep(_time);
-    }
 }
 
 void Keed14ChannelExt::set(uint8_t _pin, uint8_t _state) {
