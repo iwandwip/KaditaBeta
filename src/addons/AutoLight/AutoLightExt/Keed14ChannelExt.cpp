@@ -180,6 +180,10 @@ void Keed14ChannelExt::taskSequence1() {
                 sleep(300);
             }
         }
+        for (int i = cfg.pin_size; i > 0; --i) {
+            set(cfg.pin_ptr[i - 1], LOW);
+            sleep(ioTimer * 2);
+        }
         off();
         sleep(500);
     }
