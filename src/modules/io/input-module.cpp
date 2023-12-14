@@ -25,6 +25,14 @@ DigitalIn::DigitalIn(int pin, int mode) {
     lastDebounceTime = 0;
 }
 
+void DigitalIn::setInterrupt(void (*_callback)(), int mode) {
+#if defined(ESP32)
+    attachInterrupt(btnPin, _callback, mode);
+#else
+    attachInterrupt(digitalPinToInterrupt(btnPin), _callback, mode);
+#endif
+}
+
 void DigitalIn::setDebounceTime(unsigned long time) {
     debounceTime = time;
 }
@@ -35,6 +43,14 @@ int DigitalIn::getState() const {
 
 int DigitalIn::getStateRaw() const {
     return digitalRead(btnPin);
+}
+
+bool DigitalIn::isPressed(unsigned long time) {
+    if (millis() - debounceTime >= time) {
+        debounceTime = millis();
+        return true;
+    }
+    return false;
 }
 
 bool DigitalIn::isPressed() const {

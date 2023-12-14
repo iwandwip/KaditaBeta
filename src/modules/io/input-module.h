@@ -30,9 +30,11 @@ private:
 public:
     explicit DigitalIn(int pin);
     DigitalIn(int pin, int mode);
+    void setInterrupt(void (*_callback)(), int mode = RISING);
     void setDebounceTime(unsigned long time);
     int getState() const;
     virtual int getStateRaw() const;
+    bool isPressed(unsigned long time);
     bool isPressed() const;
     bool isReleased() const;
     void setCountMode(int mode);
