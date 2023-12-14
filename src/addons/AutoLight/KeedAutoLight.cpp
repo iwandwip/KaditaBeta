@@ -94,14 +94,14 @@ KeedBase *KeedAutoLight::switchChannel() {
         }
     } else {
         switch (cfg.pin_size) {
-            case 3: return nullptr;
+            case 3: return new Keed3ChannelStrobe();
             case 4: return nullptr;
-            case 6: return nullptr;
+            case 6: return new Keed6ChannelExt();
             case 8: return nullptr;
             case 10: return nullptr;
             case 12: return nullptr;
             case 14: return new Keed14ChannelExt();
-            case 16: return nullptr;
+            case 16: return new Keed16ChannelExt();
             case 20: return nullptr;
             case 24: return nullptr;
             case 32: return nullptr;
