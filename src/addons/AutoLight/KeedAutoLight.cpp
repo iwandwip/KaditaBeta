@@ -30,6 +30,13 @@ cfg_error_t KeedAutoLight::setChannel(configuration_t _cfg) {
 
 cfg_error_t KeedAutoLight::init() {
     if (keedBase == nullptr) return INITIALIZE_ERROR;
+    if (isUsingExpander()) {
+        cfg.pin_size = cfg.channel;
+        cfg.pin_ptr = new uint8_t[cfg.pin_size];
+        for (int i = 0; i < cfg.pin_size; ++i) {
+            cfg.pin_ptr[i] = i % 8;
+        }
+    }
     keedBase->init();
     return INITIALIZE_OK;
 }
