@@ -335,8 +335,9 @@ void Keed18Channel::sleep(uint32_t _time) {
 }
 
 void Keed18Channel::set(uint8_t _pin, uint8_t _state) {
-    if (cfg.reverse) ioBase[static_cast<int>(ceil(cfg.pin_size / 8))]->digitalWrite(_pin, !_state);
-    else ioBase[static_cast<int>(ceil(cfg.pin_size / 8))]->digitalWrite(_pin, _state);
+    int index = static_cast<int>(ceil(cfg.pin_size / 8));
+    if (cfg.reverse) ioBase[index]->digitalWrite(_pin, !_state);
+    else ioBase[index]->digitalWrite(_pin, _state);
 }
 
 void Keed18Channel::setStateHigh(int index, ...) {
