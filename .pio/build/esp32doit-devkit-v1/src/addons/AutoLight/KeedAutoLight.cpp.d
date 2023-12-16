@@ -147,4 +147,6 @@
  src/addons/AutoLight/AutoLightConfig/../AutoLightExt/Keed14ChannelExt.h \
  src/addons/AutoLight/AutoLightConfig/../AutoLightExt/Keed16ChannelExt.h \
  src/addons/AutoLight/AutoLightConfig/../AutoLightI2C/Keed16Channel.h \
+ src/addons/AutoLight/AutoLightConfig/../AutoLightI2C/Keed18Channel.h \
+ src/addons/AutoLight/AutoLightConfig/../AutoLightI2C/Keed24Channel.h \
  src/addons/AutoLight/AutoLightConfig/../AutoLightStrobe/Keed3ChannelStrobe.h

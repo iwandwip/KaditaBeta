@@ -33,8 +33,8 @@ cfg_error_t KeedAutoLight::init() {
     if (isUsingExpander()) {
         cfg.pin_size = cfg.channel;
         cfg.pin_ptr = new uint8_t[cfg.pin_size];
-        for (int i = 0; i < cfg.pin_size; ++i) {
-            cfg.pin_ptr[i] = i % 8;
+        for (uint8_t i = 0; i < cfg.pin_size; ++i) {
+            cfg.pin_ptr[i] = i;
         }
     }
     keedBase->init();
@@ -95,8 +95,9 @@ KeedBase *KeedAutoLight::switchChannel() {
             case 12: return nullptr;
             case 14: return nullptr;
             case 16: return new Keed16Channel();
+            case 18: return new Keed18Channel();
             case 20: return nullptr;
-            case 24: return nullptr;
+            case 24: return new Keed24Channel();
             case 32: return nullptr;
         }
     } else {

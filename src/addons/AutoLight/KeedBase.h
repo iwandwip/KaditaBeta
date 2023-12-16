@@ -46,6 +46,10 @@ public:
         /*implemented on a derived class*/
     }
 
+    __attribute__((unused)) virtual uint8_t getTaskSequenceIndex() {
+        return 0;
+    }
+
     KeedBase &operator=(const KeedBase &) = default;
     KeedBase &operator=(KeedBase &&) = default;
 };

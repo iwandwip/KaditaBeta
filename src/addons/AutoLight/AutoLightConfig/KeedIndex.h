@@ -15,6 +15,8 @@
 #include "../AutoLightExt/Keed16ChannelExt.h"
 
 #include "../AutoLightI2C/Keed16Channel.h"
+#include "../AutoLightI2C/Keed18Channel.h"
+#include "../AutoLightI2C/Keed24Channel.h"
 
 #include "../AutoLightStrobe/Keed3ChannelStrobe.h"
 
