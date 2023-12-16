@@ -24,7 +24,6 @@ cfg_error_t KeedAutoLight::setChannel(configuration_t _cfg) {
         if (!beginExpander()) return INITIALIZE_ERROR;
     }
     keedBase = switchChannel();
-    if (keedBase == nullptr) return INITIALIZE_ERROR;
     return INITIALIZE_OK;
 }
 
@@ -86,36 +85,9 @@ bool KeedAutoLight::beginExpander() {
 
 KeedBase *KeedAutoLight::switchChannel() {
     if (isUsingExpander()) {
-        switch (cfg.channel) {
-            case 3: return nullptr;
-            case 4: return nullptr;
-            case 6: return nullptr;
-            case 8: return nullptr;
-            case 10: return nullptr;
-            case 12: return nullptr;
-            case 14: return nullptr;
-            case 16: return nullptr;
-            case 18: return nullptr;
-            case 20: return nullptr;
-            case 24: return new Keed24Channel();
-            case 32: return nullptr;
-        }
-    } else {
-        switch (cfg.pin_size) {
-            case 3: return nullptr;
-            case 4: return nullptr;
-            case 6: return nullptr;
-            case 8: return nullptr;
-            case 10: return nullptr;
-            case 12: return nullptr;
-            case 14: return nullptr;
-            case 16: return new Keed16ChannelExt();
-            case 20: return nullptr;
-            case 24: return nullptr;
-            case 32: return nullptr;
-        }
+        return new KeedI2CChannel();
     }
-    return nullptr;
+    return new KeedExtChannel();
 }
 
 bool KeedAutoLight::isUsingExpander() const {

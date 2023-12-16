@@ -2,9 +2,9 @@
  src/addons/AutoLight/KeedAutoLight.cpp \
  src/addons/AutoLight/KeedAutoLight.h \
  src/addons/AutoLight/AutoLightConfig/KeedIndex.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightExt/Keed16ChannelExt.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightExt/../KeedBase.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightExt/../AutoLightConfig/KeedConfig.h \
+ src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedI2CChannel.h \
+ d:\user\source\caktin_ws\clion-kadita\src\addons\autolight\keedbase.h \
+ d:\user\source\caktin_ws\clion-kadita\src\addons\autolight\AutoLightConfig/KeedConfig.h \
  src/modules/communication/wired/i2c/io-expander.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
@@ -143,5 +143,5 @@
  .pio/libdeps/esp32doit-devkit-v1/PCF8574\ library/PCF8574.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightExt/../AutoLightConfig/KeedDef.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightI2C/Keed24Channel.h
+ d:\user\source\caktin_ws\clion-kadita\src\addons\autolight\AutoLightConfig/KeedDef.h \
+ src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedExtChannel.h
