@@ -23,6 +23,7 @@ private:
     uint32_t isrTimer;
     interrupt_t isr;
     configuration_t cfg;
+    bool isUsingExpander;
 
     void (KeedBaseChannel::*taskTemp)();
     void (KeedBaseChannel::*sequences[(TASK_SEQUENCE_NUM + 2)])();
@@ -36,7 +37,7 @@ protected:
     void on();
 
 public:
-    KeedBaseChannel();
+    KeedBaseChannel(bool _isUsingExpander = false);
     void init(IOExpander **_ioBase, configuration_t _cfg) override;
     void update() override;
     void run() override;

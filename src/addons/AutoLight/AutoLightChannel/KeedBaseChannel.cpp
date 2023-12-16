@@ -10,8 +10,8 @@
 #define setHigh(...) setStateHigh(__VA_ARGS__, -1)
 #define setLow(...) setStateLow(__VA_ARGS__, -1)
 
-KeedBaseChannel::KeedBaseChannel()
-        : sequence(0), ioTimer(40), taskTemp(nullptr),
+KeedBaseChannel::KeedBaseChannel(bool _isUsingExpander)
+        : sequence(0), ioTimer(40), taskTemp(nullptr), isUsingExpander(_isUsingExpander),
           sequences{&KeedBaseChannel::off,
                     &KeedBaseChannel::taskSequence0,
                     &KeedBaseChannel::taskSequence1,
@@ -345,10 +345,15 @@ void KeedBaseChannel::sleep(uint32_t _time) {
 
 void KeedBaseChannel::set(uint8_t _pin, uint8_t _state) {
     if (isr.pressed) return;
-    int index = ceil((_pin + 1) / 8.0) - 1;
-    int pins_mod = _pin % 8;
-    if (cfg.reverse) ioBase[index]->digitalWrite(pins_mod, !_state);
-    else ioBase[index]->digitalWrite(pins_mod, _state);
+    if (isUsingExpander) {
+        int index = ceil((_pin + 1) / 8.0) - 1;
+        int pins_mod = _pin % 8;
+        if (cfg.reverse) ioBase[index]->digitalWrite(pins_mod, !_state);
+        else ioBase[index]->digitalWrite(pins_mod, _state);
+    } else {
+        if (cfg.reverse) digitalWrite(_pin, !_state);
+        else digitalWrite(_pin, _state);
+    }
 }
 
 void KeedBaseChannel::setStateHigh(int index, ...) {
