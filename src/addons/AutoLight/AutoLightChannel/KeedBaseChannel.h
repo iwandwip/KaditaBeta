@@ -24,8 +24,6 @@ private:
     interrupt_t isr;
     configuration_t cfg;
 
-    void (KeedBaseChannel::*taskTemp)();
-    void (KeedBaseChannel::*sequences[(TASK_SEQUENCE_NUM + 2)])();
 
 protected:
     void sleep(uint32_t _delay);
@@ -44,6 +42,9 @@ public:
     void changeModes() override;
     void setBaseDelay(uint32_t _time) override;
     void (KeedBaseChannel::*getSequence(uint8_t index))();
+
+    void (KeedBaseChannel::*taskTemp)();
+    void (KeedBaseChannel::*sequences[(TASK_SEQUENCE_NUM + 2)])();
 
     void taskSequence0();
     void taskSequence1();
