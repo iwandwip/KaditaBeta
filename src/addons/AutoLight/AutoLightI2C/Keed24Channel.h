@@ -18,7 +18,6 @@
 class Keed24Channel : public KeedBase {
 private:
     IOExpander **ioBase;
-    uint8_t ioNum;
     uint8_t sequence;
     uint32_t ioTimer;
     uint32_t isrTimer;
