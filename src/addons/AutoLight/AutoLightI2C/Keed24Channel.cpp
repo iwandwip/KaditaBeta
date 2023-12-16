@@ -34,7 +34,17 @@ void Keed24Channel::init() {
 }
 
 void Keed24Channel::update() {
-    if (isr.pressed) isr.pressed = false;
+    if (isr.pressed) {
+        for (int i = 0; i < cfg.io_size; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                if (cfg.reverse) ioBase[i]->digitalWrite(j, HIGH);
+                else ioBase[i]->digitalWrite(j, LOW);
+            }
+        }
+        sequence = (sequence < ((TASK_SEQUENCE_NUM + 2) - 1)) ? sequence + 1 : 0;
+        taskTemp = sequences[sequence];
+        isr.pressed = false;
+    }
     (this->*taskTemp)();
 }
 
@@ -51,8 +61,6 @@ void Keed24Channel::setInterruptConfig(interrupt_t _cfg) {
 
 void Keed24Channel::changeModes() {
     if (millis() - isrTimer >= BUTTON_DEBOUNCE_TIME) {
-        sequence = (sequence < ((TASK_SEQUENCE_NUM + 2) - 1)) ? sequence + 1 : 0;
-        taskTemp = sequences[sequence];
         isr.num++;
         isr.pressed = true;
         isrTimer = millis();
@@ -341,6 +349,7 @@ void Keed24Channel::sleep(uint32_t _time) {
 }
 
 void Keed24Channel::set(uint8_t _pin, uint8_t _state) {
+    if (isr.pressed) return;
     int index = ceil((_pin + 1) / 8.0) - 1;
     int pins_mod = _pin % 8;
     if (cfg.reverse) ioBase[index]->digitalWrite(pins_mod, !_state);
