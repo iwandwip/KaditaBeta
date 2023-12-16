@@ -38,14 +38,13 @@ protected:
 
 public:
     Keed24Channel();
-    void init() override;
+    void init(IOExpander **_ioBase, configuration_t _cfg) override;
     void update() override;
-    void run(IOExpander **_ioBase, uint8_t _ioNum, configuration_t _cfg) override;
+    void run() override;
     void setInterruptConfig(interrupt_t _cfg) override;
     void changeModes() override;
     void setBaseDelay(uint32_t _time) override;
     void (Keed24Channel::*getSequence(uint8_t index))();
-    uint8_t getTaskSequenceIndex() override;
 
     void taskSequence0();
     void taskSequence1();

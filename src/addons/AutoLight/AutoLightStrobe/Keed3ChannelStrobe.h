@@ -39,9 +39,9 @@ protected:
 
 public:
     Keed3ChannelStrobe();
-    void init() override;
+    void init(IOExpander **_ioBase, configuration_t _cfg) override;
     void update() override;
-    void run(IOExpander **_ioBase, uint8_t _ioNum, configuration_t _cfg) override;
+    void run() override;
 
     void setInterruptConfig(interrupt_t _cfg) override;
     void changeModes() override;

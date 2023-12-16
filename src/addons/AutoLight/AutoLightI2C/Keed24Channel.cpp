@@ -22,7 +22,7 @@ Keed24Channel::Keed24Channel()
                     &Keed24Channel::taskSequence6,
                     &Keed24Channel::on} {}
 
-void Keed24Channel::init() {
+void Keed24Channel::init(IOExpander **_ioBase, configuration_t _cfg) {
     pinMode(isr.pin, INPUT_PULLUP);
 #if defined(ESP8266)
 #elif defined(ESP32)
@@ -31,6 +31,8 @@ void Keed24Channel::init() {
     attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, RISING);
 #endif
     taskTemp = sequences[sequence];
+    ioBase = _ioBase;
+    cfg = _cfg;
 }
 
 void Keed24Channel::update() {
@@ -48,10 +50,7 @@ void Keed24Channel::update() {
     (this->*taskTemp)();
 }
 
-void Keed24Channel::run(IOExpander **_ioBase, uint8_t _ioNum, configuration_t _cfg) {
-    ioBase = _ioBase;
-    ioNum = _ioNum;
-    cfg = _cfg;
+void Keed24Channel::run() {
     update();
 }
 
@@ -73,10 +72,6 @@ void Keed24Channel::setBaseDelay(uint32_t _time) {
 
 void (Keed24Channel::*Keed24Channel::getSequence(uint8_t index))() {
     return sequences[index];
-}
-
-uint8_t Keed24Channel::getTaskSequenceIndex() {
-    return sequence;
 }
 
 void Keed24Channel::taskSequence0() {

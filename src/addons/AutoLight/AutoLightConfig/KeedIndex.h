@@ -10,14 +10,8 @@
 #ifndef KEED_INDEX_H
 #define KEED_INDEX_H
 
-#include "../AutoLightExt/Keed6ChannelExt.h"
-#include "../AutoLightExt/Keed14ChannelExt.h"
 #include "../AutoLightExt/Keed16ChannelExt.h"
 
-#include "../AutoLightI2C/Keed16Channel.h"
-#include "../AutoLightI2C/Keed18Channel.h"
 #include "../AutoLightI2C/Keed24Channel.h"
-
-#include "../AutoLightStrobe/Keed3ChannelStrobe.h"
 
 #endif // KEED_INDEX_H

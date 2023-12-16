@@ -29,9 +29,9 @@ public:
     KeedBase() = default;
     ~KeedBase() = default;
     // pure virtual function
-    virtual void init() = 0;
+    virtual void init(IOExpander **ioBase, configuration_t _cfg) = 0;
     virtual void update() = 0;
-    virtual void run(IOExpander **ioBase, uint8_t ioNum, configuration_t _cfg) = 0;
+    virtual void run() = 0;
 
     // basic virtual function
     __attribute__((unused)) virtual void setInterruptConfig(interrupt_t _cfg) {
@@ -44,10 +44,6 @@ public:
 
     __attribute__((unused)) virtual void setBaseDelay(uint32_t _time) {
         /*implemented on a derived class*/
-    }
-
-    __attribute__((unused)) virtual uint8_t getTaskSequenceIndex() {
-        return 0;
     }
 
     KeedBase &operator=(const KeedBase &) = default;

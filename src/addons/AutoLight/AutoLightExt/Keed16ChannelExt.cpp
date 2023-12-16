@@ -22,7 +22,7 @@ Keed16ChannelExt::Keed16ChannelExt()
                     &Keed16ChannelExt::taskSequence6,
                     &Keed16ChannelExt::on} {}
 
-void Keed16ChannelExt::init() {
+void Keed16ChannelExt::init(IOExpander **_ioBase, configuration_t _cfg) {
     pinMode(isr.pin, INPUT_PULLUP);
 #if defined(ESP8266)
 #elif defined(ESP32)
@@ -31,6 +31,8 @@ void Keed16ChannelExt::init() {
     attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, RISING);
 #endif
     taskTemp = sequences[sequence];
+    ioBase = _ioBase;
+    cfg = _cfg;
 }
 
 void Keed16ChannelExt::update() {
@@ -38,8 +40,7 @@ void Keed16ChannelExt::update() {
     (this->*taskTemp)();
 }
 
-void Keed16ChannelExt::run(IOExpander **_ioBase, uint8_t _ioNum, configuration_t _cfg) {
-    cfg = _cfg;
+void Keed16ChannelExt::run() {
     update();
 }
 

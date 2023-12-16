@@ -37,13 +37,13 @@ cfg_error_t KeedAutoLight::init() {
             cfg.pin_ptr[i] = i;
         }
     }
-    keedBase->init();
+    keedBase->init(ioBase, cfg);
     return INITIALIZE_OK;
 }
 
 void KeedAutoLight::runAutoLight() {
     if (keedBase == nullptr) return;
-    keedBase->run(ioBase, cfg.io_size, cfg);
+    keedBase->run();
 }
 
 void KeedAutoLight::setInterruptConfig(interrupt_t _cfg) {
@@ -94,21 +94,21 @@ KeedBase *KeedAutoLight::switchChannel() {
             case 10: return nullptr;
             case 12: return nullptr;
             case 14: return nullptr;
-            case 16: return new Keed16Channel();
-            case 18: return new Keed18Channel();
+            case 16: return nullptr;
+            case 18: return nullptr;
             case 20: return nullptr;
             case 24: return new Keed24Channel();
             case 32: return nullptr;
         }
     } else {
         switch (cfg.pin_size) {
-            case 3: return new Keed3ChannelStrobe();
+            case 3: return nullptr;
             case 4: return nullptr;
-            case 6: return new Keed6ChannelExt();
+            case 6: return nullptr;
             case 8: return nullptr;
             case 10: return nullptr;
             case 12: return nullptr;
-            case 14: return new Keed14ChannelExt();
+            case 14: return nullptr;
             case 16: return new Keed16ChannelExt();
             case 20: return nullptr;
             case 24: return nullptr;
