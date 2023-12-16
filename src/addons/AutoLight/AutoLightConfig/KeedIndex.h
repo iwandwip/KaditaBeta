@@ -12,6 +12,7 @@
 
 #include "../AutoLightChannel/KeedI2CChannel.h"
 #include "../AutoLightChannel/KeedExtChannel.h"
+#include "../AutoLightChannel/KeedBaseChannel.h"
 
 
 #endif // KEED_INDEX_H

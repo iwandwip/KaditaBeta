@@ -144,4 +144,5 @@
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
  d:\user\source\caktin_ws\clion-kadita\src\addons\autolight\AutoLightConfig/KeedDef.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedExtChannel.h
+ src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedExtChannel.h \
+ src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedBaseChannel.h
