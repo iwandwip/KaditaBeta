@@ -97,16 +97,21 @@ KeedBase *KeedAutoLight::getChannel() {
             case AUTO_LIGHT_CUSTOM_3: return nullptr;
         }
     } else {
-
+        switch (cfg.pin_size) {
+            case 3: return new Keed3ChannelStrobe();
+        }
     }
     return nullptr;
 }
 
 int KeedAutoLight::getIndex() {
     for (int i = AUTO_LIGHT_CUSTOM_0; i < AUTO_LIGHT_CUSTOM_NUM; ++i) {
+#if defined(ESP32)
         if (strchx(strconv(EEPROM.readString(0)), custom_keed_t[i])) {
             return i;
         }
+#else
+#endif
     }
     return -1;
 }

@@ -12,7 +12,10 @@ KeedConfiguration::KeedConfiguration(bool _debug)
 }
 
 cfg_error_t KeedConfiguration::initialize(void (*init_callback)(void)) {
+#if defined(ESP32)
     if (!EEPROM.begin(4095)) return INITIALIZE_ERROR;
+#else
+#endif
     if (init_callback != nullptr) init_callback();
     return INITIALIZE_OK;
 }

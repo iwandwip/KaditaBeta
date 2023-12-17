@@ -139,4 +139,6 @@
  .pio/libdeps/esp32doit-devkit-v1/PCF8574\ library/PCF8574.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
- src/addons/AutoLight/AutoLightConfig/KeedDef.h
+ src/addons/AutoLight/AutoLightConfig/KeedDef.h \
+ src/addons/AutoLight/AutoLightConfig/KeedCustom.h \
+ C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/EEPROM/src/EEPROM.h
