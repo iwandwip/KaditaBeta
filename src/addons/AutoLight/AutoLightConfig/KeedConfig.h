@@ -14,8 +14,6 @@
 #include "KeedDef.h"
 #include "EEPROM.h"
 
-#define KEY_LEN 20
-
 struct configuration_t {
     uint8_t version = 0;
     uint8_t channel = 0;
@@ -24,10 +22,7 @@ struct configuration_t {
     uint8_t pin_size = 0;
     bool reverse = false;
     uint8_t *pin_ptr = nullptr;
-    char key[KEY_LEN + 1] = "";
-
     void setPins(int size, ...);
-    void setKey(const char *_key);
 };
 
 class KeedConfiguration {

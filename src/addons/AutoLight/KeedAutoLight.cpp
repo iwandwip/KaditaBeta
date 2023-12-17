@@ -85,7 +85,12 @@ bool KeedAutoLight::beginExpander() {
 }
 
 KeedBase *KeedAutoLight::getChannel() {
-    return new KeedBaseChannel(isUsingExpander());
+    if (!cfg.custom) return new KeedBaseChannel(isUsingExpander());
+    if (!EEPROM.begin(4095)) return nullptr;
+    if (strcmp("asdas", EEPROM.readString(0).c_str()) == 0) {
+
+    }
+    return nullptr;
 }
 
 KeedBase *KeedAutoLight::switchChannel() {
