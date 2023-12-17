@@ -2,7 +2,7 @@
  src/addons/AutoLight/KeedAutoLight.cpp \
  src/addons/AutoLight/KeedAutoLight.h \
  src/addons/AutoLight/AutoLightConfig/KeedIndex.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedI2CChannel.h \
+ src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedBaseChannel.h \
  d:\user\source\caktin_ws\clion-kadita\src\addons\autolight\keedbase.h \
  d:\user\source\caktin_ws\clion-kadita\src\addons\autolight\AutoLightConfig/KeedConfig.h \
  src/modules/communication/wired/i2c/io-expander.h \
@@ -146,6 +146,4 @@
  d:\user\source\caktin_ws\clion-kadita\src\addons\autolight\AutoLightConfig/KeedDef.h \
  d:\user\source\caktin_ws\clion-kadita\src\addons\autolight\AutoLightConfig/KeedCustom.h \
  C:/Users/Brainless/.platformio/packages/framework-arduinoespressif32/libraries/EEPROM/src/EEPROM.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedExtChannel.h \
- src/addons/AutoLight/AutoLightConfig/../AutoLightChannel/KeedBaseChannel.h \
  src/addons/AutoLight/AutoLightConfig/../AutoLightStrobe/Keed3ChannelStrobe.h

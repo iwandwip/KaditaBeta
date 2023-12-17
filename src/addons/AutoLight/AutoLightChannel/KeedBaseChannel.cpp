@@ -37,10 +37,17 @@ void KeedBaseChannel::init(IOExpander **_ioBase, configuration_t _cfg) {
 
 void KeedBaseChannel::update() {
     if (isr.pressed) {
-        for (int i = 0; i < cfg.io_size; ++i) {
-            for (int j = 0; j < 8; ++j) {
-                if (cfg.reverse) ioBase[i]->digitalWrite(j, HIGH);
-                else ioBase[i]->digitalWrite(j, LOW);
+        if (isUsingExpander) {
+            for (int i = 0; i < cfg.io_size; ++i) {
+                for (int j = 0; j < 8; ++j) {
+                    if (cfg.reverse) ioBase[i]->digitalWrite(j, HIGH);
+                    else ioBase[i]->digitalWrite(j, LOW);
+                }
+            }
+        } else {
+            for (int i = 0; i < cfg.pin_size; ++i) {
+                if (cfg.reverse) digitalWrite(cfg.pin_ptr[i], HIGH);
+                else digitalWrite(cfg.pin_ptr[i], LOW);
             }
         }
         sequence = (sequence < ((TASK_SEQUENCE_NUM + 2) - 1)) ? sequence + 1 : 0;
