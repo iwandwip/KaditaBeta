@@ -13,6 +13,9 @@
 #define TASK_SEQUENCE_NUM 7
 #define BUTTON_DEBOUNCE_TIME 250
 
+#define setHigh(...) setStateHigh(__VA_ARGS__, -1)
+#define setLow(...) setStateLow(__VA_ARGS__, -1)
+
 #include "../KeedBase.h"
 
 class KeedBaseChannel : public KeedBase {
@@ -33,6 +36,7 @@ protected:
     void set(uint8_t _pin, uint8_t _state);
     void setStateHigh(int index, ...);
     void setStateLow(int index, ...);
+    void forceOff();
     void off();
     void on();
 
