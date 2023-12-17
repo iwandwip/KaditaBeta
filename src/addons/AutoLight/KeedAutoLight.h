@@ -22,7 +22,7 @@ private:
     void addIoExpander(IOExpander *ioExpander);
     bool beginExpander();
     KeedBase *getChannel();
-    KeedBase *switchChannel();
+    int getIndex();
     bool isUsingExpander() const;
 
 public:

@@ -7,6 +7,9 @@
 
 #include "KeedAutoLight.h"
 
+const byte *strconv(String input);
+bool strchx(const byte *a, const byte *b);
+
 KeedAutoLight::KeedAutoLight()
         : ioBase(nullptr),
           keedBase(nullptr) {}
@@ -86,29 +89,26 @@ bool KeedAutoLight::beginExpander() {
 
 KeedBase *KeedAutoLight::getChannel() {
     if (!cfg.custom) return new KeedBaseChannel(isUsingExpander());
-    if (strcmp("asdas", EEPROM.readString(0).c_str()) == 0) {
-
+    if (isUsingExpander()) {
+        switch (getIndex()) {
+            case AUTO_LIGHT_CUSTOM_0: return nullptr;
+            case AUTO_LIGHT_CUSTOM_1: return nullptr;
+            case AUTO_LIGHT_CUSTOM_2: return nullptr;
+            case AUTO_LIGHT_CUSTOM_3: return nullptr;
+        }
+    } else {
+        
     }
     return nullptr;
 }
 
-KeedBase *KeedAutoLight::switchChannel() {
-    if (isUsingExpander()) {
-        switch (cfg.channel) {
-            case 8: return nullptr;
-            case 16: return nullptr;
-            case 24: return new KeedI2CChannel();
-            case 32: return nullptr;
-        }
-    } else {
-        switch (cfg.pin_size) {
-            case 3: return nullptr;
-            case 16: return new KeedExtChannel();
-            case 24: return nullptr;
-            case 32: return nullptr;
+int KeedAutoLight::getIndex() {
+    for (int i = AUTO_LIGHT_CUSTOM_0; i < AUTO_LIGHT_CUSTOM_NUM; ++i) {
+        if (strchx(strconv(EEPROM.readString(0)), custom_keed_t[i])) {
+            return i;
         }
     }
-    return nullptr;
+    return -1;
 }
 
 bool KeedAutoLight::isUsingExpander() const {
@@ -149,4 +149,19 @@ void KeedAutoLight::showInfo() {
     Serial.print("| pin_size: ");
     Serial.print(cfg.pin_size);
     Serial.println();
+}
+
+const byte *strconv(String input) {
+    static byte hexArray[CUSTOM_LEN];
+    for (int i = 0; i < input.length(); i++) {
+        hexArray[i] = input[i];
+    }
+    return hexArray;
+}
+
+bool strchx(const byte *a, const byte *b) {
+    for (int i = 0; i < 20; i++) {
+        if (a[i] != b[i]) return false;
+    }
+    return true;
 }
