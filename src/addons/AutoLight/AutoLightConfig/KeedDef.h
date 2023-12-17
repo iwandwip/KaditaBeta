@@ -11,6 +11,7 @@
 #define KEED_DEF_H
 
 #include "Arduino.h"
+#include "KeedCustom.h"
 
 #define TOTAL_VERSION_NUM 32
 #define ADDRESS_CONFIG_PIN_NUM 5

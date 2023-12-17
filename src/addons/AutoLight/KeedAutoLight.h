@@ -24,6 +24,7 @@ private:
     KeedBase *getChannel();
     KeedBase *switchChannel();
     bool isUsingExpander() const;
+
 public:
     KeedAutoLight();
     ~KeedAutoLight();

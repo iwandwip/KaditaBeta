@@ -86,7 +86,6 @@ bool KeedAutoLight::beginExpander() {
 
 KeedBase *KeedAutoLight::getChannel() {
     if (!cfg.custom) return new KeedBaseChannel(isUsingExpander());
-    if (!EEPROM.begin(4095)) return nullptr;
     if (strcmp("asdas", EEPROM.readString(0).c_str()) == 0) {
 
     }

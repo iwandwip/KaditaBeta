@@ -12,6 +12,7 @@ KeedConfiguration::KeedConfiguration(bool _debug)
 }
 
 cfg_error_t KeedConfiguration::initialize(void (*init_callback)(void)) {
+    if (!EEPROM.begin(4095)) return INITIALIZE_ERROR;
     if (init_callback != nullptr) init_callback();
     return INITIALIZE_OK;
 }
