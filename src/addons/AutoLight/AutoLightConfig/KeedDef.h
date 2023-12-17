@@ -66,9 +66,9 @@ typedef enum {
 typedef enum {
     // version 1.0
     I2CCOM_8N0 = 0x00020,
-    I2CCOM_8N1 = 0x00022, // 0x00021
+    I2CCOM_8N1 = 0x00024, // 0x00021
     // version 2.0
-    I2CCOM_8N2 = 0x00024,
+    I2CCOM_8N2 = 0x00022,
     I2CCOM_8N3 = 0x00023,
     // version 3.0
     I2CCOM_8N4 = 0x00024,

@@ -89,3 +89,8 @@ void configuration_t::setPins(int size, ...) {
     }
     va_end(args);
 }
+
+void configuration_t::setKey(const char *_key) {
+    strncpy(key, _key, KEY_LEN);
+    key[KEY_LEN] = '\0';
+}
