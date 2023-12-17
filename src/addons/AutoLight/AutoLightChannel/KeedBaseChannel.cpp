@@ -81,6 +81,65 @@ void (KeedBaseChannel::*KeedBaseChannel::getSequence(uint8_t index))() {
     return sequences[index];
 }
 
+
+void KeedBaseChannel::sleep(uint32_t _time) {
+    if (isr.pressed) return;
+    delay(_time);
+}
+
+void KeedBaseChannel::set(uint8_t _pin, uint8_t _state) {
+    if (isr.pressed) return;
+    if (isUsingExpander) {
+        int index = ceil((_pin + 1) / 8.0) - 1;
+        int pins_mod = _pin % 8;
+        if (cfg.reverse) ioBase[index]->digitalWrite(pins_mod, !_state);
+        else ioBase[index]->digitalWrite(pins_mod, _state);
+    } else {
+        if (cfg.reverse) digitalWrite(_pin, !_state);
+        else digitalWrite(_pin, _state);
+    }
+}
+
+void KeedBaseChannel::setStateHigh(int index, ...) {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        set(cfg.pin_ptr[i], LOW);
+    }
+    va_list args;
+    va_start(args, index);
+    int currentIndex = index;
+    while (currentIndex != -1) {
+        set(cfg.pin_ptr[currentIndex], HIGH);
+        currentIndex = va_arg(args, int);
+    }
+    va_end(args);
+}
+
+void KeedBaseChannel::setStateLow(int index, ...) {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        set(cfg.pin_ptr[i], LOW);
+    }
+    va_list args;
+    va_start(args, index);
+    int currentIndex = index;
+    while (currentIndex != -1) {
+        set(cfg.pin_ptr[currentIndex], LOW);
+        currentIndex = va_arg(args, int);
+    }
+    va_end(args);
+}
+
+void KeedBaseChannel::off() {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        set(cfg.pin_ptr[i], LOW);
+    }
+}
+
+void KeedBaseChannel::on() {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        set(cfg.pin_ptr[i], HIGH);
+    }
+}
+
 void KeedBaseChannel::taskSequence0() {
     // blink ////////////////////////////////////////
     {
@@ -344,62 +403,3 @@ void KeedBaseChannel::taskSequence6() {
         sleep(500);
     }
 }
-
-void KeedBaseChannel::sleep(uint32_t _time) {
-    if (isr.pressed) return;
-    delay(_time);
-}
-
-void KeedBaseChannel::set(uint8_t _pin, uint8_t _state) {
-    if (isr.pressed) return;
-    if (isUsingExpander) {
-        int index = ceil((_pin + 1) / 8.0) - 1;
-        int pins_mod = _pin % 8;
-        if (cfg.reverse) ioBase[index]->digitalWrite(pins_mod, !_state);
-        else ioBase[index]->digitalWrite(pins_mod, _state);
-    } else {
-        if (cfg.reverse) digitalWrite(_pin, !_state);
-        else digitalWrite(_pin, _state);
-    }
-}
-
-void KeedBaseChannel::setStateHigh(int index, ...) {
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], LOW);
-    }
-    va_list args;
-    va_start(args, index);
-    int currentIndex = index;
-    while (currentIndex != -1) {
-        set(cfg.pin_ptr[currentIndex], HIGH);
-        currentIndex = va_arg(args, int);
-    }
-    va_end(args);
-}
-
-void KeedBaseChannel::setStateLow(int index, ...) {
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], LOW);
-    }
-    va_list args;
-    va_start(args, index);
-    int currentIndex = index;
-    while (currentIndex != -1) {
-        set(cfg.pin_ptr[currentIndex], LOW);
-        currentIndex = va_arg(args, int);
-    }
-    va_end(args);
-}
-
-void KeedBaseChannel::off() {
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], LOW);
-    }
-}
-
-void KeedBaseChannel::on() {
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], HIGH);
-    }
-}
-
