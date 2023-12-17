@@ -12,8 +12,10 @@
 
 Keed3ChannelStrobe::Keed3ChannelStrobe()
         : sequence(0), ioTimer(40), taskTemp(nullptr),
-          sequences{&Keed3ChannelStrobe::taskSequenceOFF, &Keed3ChannelStrobe::taskSequence1,
-                    &Keed3ChannelStrobe::taskSequence2, &Keed3ChannelStrobe::taskSequence3} {}
+          sequences{&Keed3ChannelStrobe::taskSequenceOFF,
+                    &Keed3ChannelStrobe::taskSequence1,
+                    &Keed3ChannelStrobe::taskSequence2,
+                    &Keed3ChannelStrobe::taskSequence3} {}
 
 void Keed3ChannelStrobe::init(IOExpander **_ioBase, configuration_t _cfg) {
     pinMode(isr.pin, INPUT_PULLUP);
