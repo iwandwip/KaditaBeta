@@ -97,7 +97,7 @@ KeedBase *KeedAutoLight::getChannel() {
             case AUTO_LIGHT_CUSTOM_3: return nullptr;
         }
     } else {
-        
+
     }
     return nullptr;
 }
