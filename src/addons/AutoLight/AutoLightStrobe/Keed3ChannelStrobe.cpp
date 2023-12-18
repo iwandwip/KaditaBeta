@@ -83,7 +83,7 @@ void Keed3ChannelStrobe::taskSequence1() {
         sleep(ioTimer);
     }
     off();
-    for (int i = 0; i < 6; ++i) {
+    for (int i = 0; i < 8; ++i) {
         blink(ioTimer * 4);
     }
 }

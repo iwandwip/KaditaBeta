@@ -101,12 +101,10 @@ KeedBase *KeedAutoLight::getChannel() {
                 cfg.setAddress(cfg.io_size, 0x24, 0x20);
                 return new KeedBaseChannel(true);
             }
-            case AUTO_LIGHT_CUSTOM_2: return new KeedBaseChannel(true);
-            case AUTO_LIGHT_CUSTOM_3: return new KeedBaseChannel(true);
         }
     } else {
-        switch (cfg.pin_size) {
-            case 3: return new Keed3ChannelStrobe();
+        switch (getIndex()) {
+            case AUTO_LIGHT_CUSTOM_2: return new Keed3ChannelStrobe();
         }
     }
     return nullptr;
@@ -146,6 +144,8 @@ KeedBase &KeedAutoLight::getChannelClass() {
 void KeedAutoLight::showInfo() {
     Serial.print("| SERIAL-KEY: ");
     Serial.print(readMEM(0));
+    Serial.print("| INDEX: ");
+    Serial.print(getIndex());
     Serial.println();
     Serial.print("| version: ");
     Serial.print(cfg.version);
