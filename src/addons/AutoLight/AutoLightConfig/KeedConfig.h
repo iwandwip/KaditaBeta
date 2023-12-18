@@ -50,6 +50,7 @@ public:
 #else
 void writeMEM(int addrOffset, const String &strToWrite);
 String readMEM(int addrOffset);
+String memstr(const byte* byteArray, size_t size);
 #endif
 
 #endif // KEED_CONFIG_H

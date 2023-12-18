@@ -123,4 +123,12 @@ String readMEM(int addrOffset) {
     data[newStrLen] = '\0';
     return String(data);
 }
+
+String memstr(const byte* byteArray, size_t size) {
+  String result = "";
+  for (size_t i = 0; i < size; i++) {
+    result += String(byteArray[i], HEX);
+  }
+  return result;
+}
 #endif

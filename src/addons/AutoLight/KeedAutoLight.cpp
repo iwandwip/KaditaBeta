@@ -92,13 +92,13 @@ KeedBase *KeedAutoLight::getChannel() {
     if (!cfg.custom) return new KeedBaseChannel(isUsingExpander());
     if (isUsingExpander()) {
         switch (getIndex()) {
-            case AUTO_LIGHT_CUSTOM_0: {
+            case AUTO_LIGHT_CUSTOM_0: return new KeedBaseChannel(true);
+            case AUTO_LIGHT_CUSTOM_1: {
                 cfg.channel = 16;
                 cfg.io_size = 2;
                 cfg.setAddress(cfg.io_size, 0x24, 0x20);
                 return new KeedBaseChannel(true);
             }
-            case AUTO_LIGHT_CUSTOM_1: return new KeedBaseChannel(true);
             case AUTO_LIGHT_CUSTOM_2: return new KeedBaseChannel(true);
             case AUTO_LIGHT_CUSTOM_3: return new KeedBaseChannel(true);
         }
@@ -142,7 +142,7 @@ KeedBase &KeedAutoLight::getChannelClass() {
 }
 
 void KeedAutoLight::showInfo() {
-    Serial.print("| serial_key: ");
+    Serial.print("| SERIAL-KEY: ");
     Serial.print(readMEM(0));
     Serial.println();
     Serial.print("| version: ");
@@ -170,7 +170,11 @@ const byte *strconv(String input) {
 
 bool strchx(const byte *a, const byte *b) {
     for (int i = 0; i < 20; i++) {
+#if defined(ESP32)
         if (a[i] != b[i]) return false;
+#else
+        if (a[i] != pgm_read_byte(&(b[i]))) return false;
+#endif
     }
     return true;
 }
