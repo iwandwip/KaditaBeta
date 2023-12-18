@@ -91,10 +91,10 @@ KeedBase *KeedAutoLight::getChannel() {
     if (!cfg.custom) return new KeedBaseChannel(isUsingExpander());
     if (isUsingExpander()) {
         switch (getIndex()) {
-            case AUTO_LIGHT_CUSTOM_0: return nullptr;
-            case AUTO_LIGHT_CUSTOM_1: return nullptr;
-            case AUTO_LIGHT_CUSTOM_2: return nullptr;
-            case AUTO_LIGHT_CUSTOM_3: return nullptr;
+            case AUTO_LIGHT_CUSTOM_0: return new KeedBaseChannel(true);
+            case AUTO_LIGHT_CUSTOM_1: return new KeedBaseChannel(true);
+            case AUTO_LIGHT_CUSTOM_2: return new KeedBaseChannel(true);
+            case AUTO_LIGHT_CUSTOM_3: return new KeedBaseChannel(true);
         }
     } else {
         switch (cfg.pin_size) {
