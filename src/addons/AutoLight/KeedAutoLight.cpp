@@ -23,11 +23,11 @@ KeedAutoLight::~KeedAutoLight() {
 
 cfg_error_t KeedAutoLight::setChannel(configuration_t _cfg) {
     cfg = _cfg;
+    keedBase = getChannel();
+    if (keedBase == nullptr) return INITIALIZE_ERROR;
     if (isUsingExpander()) {
         if (!beginExpander()) return INITIALIZE_ERROR;
     }
-    keedBase = getChannel();
-    if (keedBase == nullptr) return INITIALIZE_ERROR;
     return INITIALIZE_OK;
 }
 
@@ -90,15 +90,14 @@ bool KeedAutoLight::beginExpander() {
 
 KeedBase *KeedAutoLight::getChannel() {
     if (!cfg.custom) return new KeedBaseChannel(isUsingExpander());
-    Serial.print("| isUsingExpander(): ");
-    Serial.print(isUsingExpander());
-    Serial.print("| getIndex(): ");
-    Serial.print(getIndex());
-    Serial.println();
-    showInfo();
     if (isUsingExpander()) {
         switch (getIndex()) {
-            case AUTO_LIGHT_CUSTOM_0: return new KeedBaseChannel(true);
+            case AUTO_LIGHT_CUSTOM_0: {
+                cfg.channel = 16;
+                cfg.io_size = 2;
+                cfg.setAddress(cfg.io_size, 0x24, 0x20);
+                return new KeedBaseChannel(true);
+            }
             case AUTO_LIGHT_CUSTOM_1: return new KeedBaseChannel(true);
             case AUTO_LIGHT_CUSTOM_2: return new KeedBaseChannel(true);
             case AUTO_LIGHT_CUSTOM_3: return new KeedBaseChannel(true);
@@ -143,6 +142,9 @@ KeedBase &KeedAutoLight::getChannelClass() {
 }
 
 void KeedAutoLight::showInfo() {
+    Serial.print("| serial_key: ");
+    Serial.print(readMEM(0));
+    Serial.println();
     Serial.print("| version: ");
     Serial.print(cfg.version);
     Serial.print("| channel: ");
