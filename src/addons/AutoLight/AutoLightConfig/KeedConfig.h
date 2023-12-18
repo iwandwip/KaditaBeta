@@ -23,7 +23,9 @@ struct configuration_t {
     bool reverse = false;
     uint8_t pin_size = 0;
     uint8_t *pin_ptr = nullptr;
+    uint8_t *i2c_ptr = nullptr;
     void setPins(int size, ...);
+    void setAddress(int size, ...);
 };
 
 class KeedConfiguration {

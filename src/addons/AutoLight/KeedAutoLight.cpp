@@ -73,7 +73,8 @@ void KeedAutoLight::addIoExpander(IOExpander *ioExpander) {
 
 bool KeedAutoLight::beginExpander() {
     for (int i = 0; i < cfg.io_size; i++) {
-        addIoExpander(new IOExpander(i2c_address_arr_t[i]));
+        if (!cfg.custom) addIoExpander(new IOExpander(i2c_address_arr_t[i]));
+        else addIoExpander(new IOExpander(cfg.i2c_ptr[i]));
     }
     for (int i = 0; i < ioLen; i++) {
         for (int j = 0; j < IO_EXPANDER_PIN_NUM; j++) {
@@ -89,6 +90,12 @@ bool KeedAutoLight::beginExpander() {
 
 KeedBase *KeedAutoLight::getChannel() {
     if (!cfg.custom) return new KeedBaseChannel(isUsingExpander());
+    Serial.print("| isUsingExpander(): ");
+    Serial.print(isUsingExpander());
+    Serial.print("| getIndex(): ");
+    Serial.print(getIndex());
+    Serial.println();
+    showInfo();
     if (isUsingExpander()) {
         switch (getIndex()) {
             case AUTO_LIGHT_CUSTOM_0: return new KeedBaseChannel(true);

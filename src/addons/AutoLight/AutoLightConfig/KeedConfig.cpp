@@ -83,13 +83,23 @@ configuration_t KeedConfiguration::getConfig() const {
     return cfg;
 }
 
-void configuration_t::setPins(int size, ...) {
+void configuration_t::setPins(int _pin_size, ...) {
     va_list args;
-    va_start(args, size);
-    pin_size = size;
-    pin_ptr = new uint8_t[size];
-    for (int i = 0; i < size; i++) {
+    va_start(args, _pin_size);
+    pin_size = _pin_size;
+    pin_ptr = new uint8_t[_pin_size];
+    for (int i = 0; i < _pin_size; i++) {
         pin_ptr[i] = static_cast<uint8_t>(va_arg(args, int));
+    }
+    va_end(args);
+}
+
+void configuration_t::setAddress(int _io_size, ...) {
+    va_list args;
+    va_start(args, _io_size);
+    i2c_ptr = new uint8_t[_io_size];
+    for (int i = 0; i < _io_size; i++) {
+        i2c_ptr[i] = static_cast<uint8_t>(va_arg(args, int));
     }
     va_end(args);
 }
