@@ -66,7 +66,6 @@ void (KeedBaseChannel::*KeedBaseChannel::getSequence(uint8_t index))() {
     return sequences[index];
 }
 
-
 void KeedBaseChannel::sleep(uint32_t _time) {
     if (isr.pressed) return;
     delay(_time);
