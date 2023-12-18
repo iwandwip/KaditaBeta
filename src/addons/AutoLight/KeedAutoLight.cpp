@@ -92,9 +92,7 @@ KeedBase *KeedAutoLight::getChannel() {
     if (!cfg.custom) return new KeedBaseChannel(isUsingExpander());
     if (isUsingExpander()) {
         switch (getIndex()) {
-            case AUTO_LIGHT_CUSTOM_0: {
-                return new KeedBaseChannel(true);
-            }
+            case AUTO_LIGHT_CUSTOM_0: return new KeedBaseChannel(true);
             case AUTO_LIGHT_CUSTOM_1: {
                 cfg.channel = 16;
                 cfg.io_size = 2;
