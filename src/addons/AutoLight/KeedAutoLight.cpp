@@ -157,11 +157,11 @@ void KeedAutoLight::showInfo() {
 }
 
 const byte *strconv(String input) {
-    static byte hexArray[CUSTOM_LEN];
+    static byte hex_arr[CUSTOM_LEN];
     for (int i = 0; i < input.length(); i++) {
-        hexArray[i] = input[i];
+        hex_arr[i] = input[i];
     }
-    return hexArray;
+    return hex_arr;
 }
 
 bool strchx(const byte *a, const byte *b) {
