@@ -40,7 +40,6 @@ void KeedDisplay::fillBorder() {
     }
 }
 
-
 void KeedDisplay::clear() {
     display->clearDisplay();
 }
