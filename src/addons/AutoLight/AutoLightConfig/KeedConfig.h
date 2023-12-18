@@ -12,6 +12,7 @@
 
 #include "modules/communication/wired/i2c/io-expander.h"
 #include "KeedDef.h"
+#include "KeedDisplay.h"
 
 #include "EEPROM.h"
 
@@ -50,7 +51,7 @@ public:
 #else
 void writeMEM(int addrOffset, const String &strToWrite);
 String readMEM(int addrOffset);
-String memstr(const byte* byteArray, size_t size);
+String memstr(const byte *byteArray, size_t size);
 #endif
 
 #endif // KEED_CONFIG_H
