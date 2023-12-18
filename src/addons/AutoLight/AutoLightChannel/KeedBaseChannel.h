@@ -18,13 +18,10 @@
 
 #include "../KeedBase.h"
 
-
 class KeedBaseChannel : public KeedBase {
 private:
     IOExpander **ioBase;
-#if KEED_AUTO_LIGHT_DISPLAY
     KeedDisplay *display;
-#endif
     uint8_t sequence;
     uint32_t ioTimer;
     uint32_t isrTimer;

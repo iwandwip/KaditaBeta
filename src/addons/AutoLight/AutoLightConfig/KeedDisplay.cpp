@@ -36,7 +36,7 @@ void KeedDisplay::setPos() {
 
 void KeedDisplay::fillBorder() {
     for (int i = 0; i < channel; ++i) {
-        display->drawCircle(pos[i][0], pos[i][1], 3, SSD1306_WHITE);
+        display->drawCircle(pos[i][0], pos[i][1], 2, SSD1306_WHITE);
     }
 }
 
@@ -48,11 +48,13 @@ void KeedDisplay::clear() {
 void KeedDisplay::off() {
     for (int i = 0; i < channel; ++i) {
         display->drawRect(pos[i][0], pos[i][1], WIDTH, HEIGHT, SSD1306_INVERSE);
+        // display->fillCircle(pos[i][0], pos[i][1], 2, SSD1306_INVERSE);
     }
 }
 
 void KeedDisplay::on() {
     for (int i = 0; i < channel; ++i) {
         display->drawRect(pos[i][0], pos[i][1], WIDTH, HEIGHT, SSD1306_WHITE);
+        // display->fillCircle(pos[i][0], pos[i][1], 2, SSD1306_WHITE);
     }
 }

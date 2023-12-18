@@ -30,18 +30,20 @@ void KeedBaseChannel::init(IOExpander **_ioBase, configuration_t _cfg) {
     taskTemp = sequences[sequence];
     ioBase = _ioBase;
     cfg = _cfg;
-#if KEED_AUTO_LIGHT_DISPLAY
-    display = new KeedDisplay(cfg.channel, 0x3C);
-#endif
+    if (cfg.display) {
+        display = new KeedDisplay(cfg.channel, 0x3C);
+        display->clear();
+        display->fillBorder();
+    }
 }
 
 void KeedBaseChannel::update() {
     if (isr.pressed) {
         forceOff();
-#if KEED_AUTO_LIGHT_DISPLAY
-        display->clear();
-        display->fillBorder();
-#endif
+        if (cfg.display) {
+            display->clear();
+            display->fillBorder();
+        }
         sequence = (sequence < ((TASK_SEQUENCE_NUM + 2) - 1)) ? sequence + 1 : 0;
         taskTemp = sequences[sequence];
         isr.pressed = false;
@@ -89,9 +91,9 @@ void KeedBaseChannel::set(uint8_t _pin, uint8_t _state) {
         if (cfg.reverse) digitalWrite(_pin, !_state);
         else digitalWrite(_pin, _state);
     }
-#if KEED_AUTO_LIGHT_DISPLAY
-    display->write(_pin, _state);
-#endif
+    if (cfg.display) {
+        display->write(_pin, _state);
+    }
 }
 
 void KeedBaseChannel::setStateHigh(int index, ...) {
