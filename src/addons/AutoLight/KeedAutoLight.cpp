@@ -106,12 +106,7 @@ KeedBase *KeedAutoLight::getChannel() {
 
 int KeedAutoLight::getIndex() {
     for (int i = AUTO_LIGHT_CUSTOM_0; i < AUTO_LIGHT_CUSTOM_NUM; ++i) {
-#if defined(ESP32)
-        if (strchx(strconv(EEPROM.readString(0)), custom_keed_t[i])) {
-            return i;
-        }
-#else
-#endif
+        if (strchx(strconv(readMEM(0)), custom_keed_t[i])) return i;
     }
     return -1;
 }

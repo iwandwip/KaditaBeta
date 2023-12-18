@@ -13,10 +13,7 @@
 #include "modules/communication/wired/i2c/io-expander.h"
 #include "KeedDef.h"
 
-#if defined(ESP32)
 #include "EEPROM.h"
-#else
-#endif
 
 struct configuration_t {
     uint8_t version = 0;
@@ -44,5 +41,13 @@ public:
     bool isUsingExpander() const;
     configuration_t getConfig() const;
 };
+
+#if defined(ESP32)
+#define readMEM(x) EEPROM.readString(x)
+#define writeMEM(x, y) EEPROM.writeString(x, y)
+#else
+void writeMEM(int addrOffset, const String &strToWrite);
+String readMEM(int addrOffset);
+#endif
 
 #endif // KEED_CONFIG_H
