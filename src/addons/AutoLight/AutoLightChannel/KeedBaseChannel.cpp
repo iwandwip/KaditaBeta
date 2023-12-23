@@ -30,6 +30,8 @@ void KeedBaseChannel::init(IOExpander **_ioBase, configuration_t _cfg) {
     taskTemp = sequences[sequence];
     ioBase = _ioBase;
     cfg = _cfg;
+    sequence = cfg.sequence;
+    taskTemp = sequences[sequence];
     if (cfg.display) {
         display = new KeedDisplay(cfg.channel, 0x3C);
         display->clear();

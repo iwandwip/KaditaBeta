@@ -21,6 +21,7 @@ struct configuration_t {
     uint8_t channel = 0;
     uint8_t io_size = 0;
     uint8_t pin_size = 0;
+    uint8_t sequence = 0;
     uint8_t *pin_ptr = nullptr;
     uint8_t *i2c_ptr = nullptr;
     bool custom = false;
