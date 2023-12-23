@@ -27,11 +27,11 @@ void KeedBaseChannel::init(IOExpander **_ioBase, configuration_t _cfg) {
 #else
     attachInterrupt(digitalPinToInterrupt(isr.pin), isr.isrCallback, RISING);
 #endif
-    taskTemp = sequences[sequence];
     ioBase = _ioBase;
     cfg = _cfg;
     sequence = cfg.sequence;
     taskTemp = sequences[sequence];
+
     if (cfg.display) {
         display = new KeedDisplay(cfg.channel, 0x3C);
         display->clear();
@@ -48,6 +48,7 @@ void KeedBaseChannel::update() {
         }
         sequence = (sequence < ((TASK_SEQUENCE_NUM + 2) - 1)) ? sequence + 1 : 0;
         taskTemp = sequences[sequence];
+
         isr.pressed = false;
     }
     (this->*taskTemp)();
@@ -73,9 +74,14 @@ void KeedBaseChannel::setBaseDelay(uint32_t _time) {
     ioTimer = _time;
 }
 
+uint8_t KeedBaseChannel::getSequenceIndex() {
+    return sequence;
+}
+
 void (KeedBaseChannel::*KeedBaseChannel::getSequence(uint8_t index))() {
     return sequences[index];
 }
+
 
 void KeedBaseChannel::sleep(uint32_t _time) {
     if (isr.pressed) return;
