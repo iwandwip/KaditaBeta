@@ -1,5 +1,5 @@
 /*
- *  KeedConfig.cpp
+ *  KeedConfigExt.cpp
  *
  *  Kastara Electronics Embedded Development
  *  Created on: 2023. 4. 3
@@ -35,7 +35,7 @@ void configuration_t::setAddress(int _io_size, ...) {
 indicator_t::indicator_t() :
         outs{DigitalOut(LED_RED), DigitalOut(LED_GREEN), DigitalOut(LED_BLUE), DigitalOut(BUZZER)},
         times{TimerTask(2000), TimerTask(2000), TimerTask(100), TimerTask(100)} {
-    outs[3].toggleInit(100, 5);
+    outs[3].toggleInit(90, 5);
 }
 
 void indicator_t::show(uint8_t _seq) {

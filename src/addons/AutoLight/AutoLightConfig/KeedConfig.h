@@ -52,6 +52,8 @@ public:
 
 #if defined(ESP32)
 
+#include <WiFi.h>
+
 class KeedCore {
 private:
     uint8_t index;
@@ -59,6 +61,20 @@ private:
 public:
     KeedCore();
     void createCore(uint8_t _core_index, void (*core_callback)(void *pvParameter));
+};
+
+class KeedWiFi {
+private:
+    WiFiServer server;
+    String header;
+    IPAddress IP;
+public:
+    KeedWiFi();
+    KeedWiFi(const char *ssid, const char *password = NULL);
+    int createWiFIAP(const char *ssid, const char *password = NULL);
+    void beginServer();
+    void showServerInfo();
+    void runServer();
 };
 
 #endif
