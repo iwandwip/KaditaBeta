@@ -76,6 +76,10 @@ void KeedConfiguration::setConfig(configuration_t _cfg) {
     cfg = _cfg;
 }
 
+configuration_t KeedConfiguration::getConfig() {
+    return cfg;
+}
+
 bool KeedConfiguration::isUsingExpander() const {
     return cfg.pin_ptr == nullptr && cfg.pin_size == 0;
 }

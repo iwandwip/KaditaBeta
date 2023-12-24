@@ -8,7 +8,7 @@
 #include "KeedConfig.h"
 
 configuration_t::configuration_t()
-        : version(0), channel(0), io_size(0), pin_size(0), sequence(0), pin_ptr(nullptr), i2c_ptr(nullptr), custom(false), reverse(false), display(false) {
+        : delay_time(40), version(0), channel(0), io_size(0), pin_size(0), sequence(0), pin_ptr(nullptr), i2c_ptr(nullptr), custom(false), reverse(false), display(false) {
 }
 
 void configuration_t::setPins(int _pin_size, ...) {

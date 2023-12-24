@@ -22,8 +22,6 @@ class KeedBaseChannel : public KeedBase {
 private:
     IOExpander **ioBase;
     KeedDisplay *display;
-    uint8_t sequenceMode;
-    uint32_t ioTimer;
     uint32_t isrTimer;
     interrupt_t isr;
     configuration_t cfg;
