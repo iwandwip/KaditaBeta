@@ -41,22 +41,15 @@ void KeedWiFi::showServerInfo() {
 }
 
 void KeedWiFi::runServer() {
-    WiFiClient client = server.available();  // Listen for incoming clients
-
-    if (client) {                     // If a new client connects,
-//        Serial.println("New Client.");  // print a message out in the serial port
-        String currentLine = "";        // make a String to hold incoming data from the client
-        while (client.connected()) {    // loop while the client's connected
-            if (client.available()) {     // if there's bytes to read from the client,
-                char c = client.read();     // read a byte, then
-//                Serial.write(c);            // print it out the serial monitor
+    WiFiClient client = server.available();
+    if (client) {
+        String currentLine = "";
+        while (client.connected()) {
+            if (client.available()) {
+                char c = client.read();
                 header += c;
-                if (c == '\n') {  // if the byte is a newline character
-                    // if the current line is blank, you got two newline characters in a row.
-                    // that's the end of the client HTTP request, so send a response:
+                if (c == '\n') {
                     if (currentLine.length() == 0) {
-                        // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
-                        // and a content-type so the client knows what's coming, then a blank line:
                         client.println("HTTP/1.1 200 OK");
                         client.println("Content-type:text/html");
                         client.println("Connection: close");
@@ -64,7 +57,7 @@ void KeedWiFi::runServer() {
 
                         if (header.indexOf("GET /mode") >= 0) {
                             auto setMode = [&]() -> size_t {
-                                for (int i = 1; i <= 10; ++i) {
+                                for (int i = 10; i >= 1; --i) {
                                     String modePath = "/mode/" + String(i);
                                     if (header.indexOf("GET " + modePath) >= 0) {
                                         return writeMEM(25, (i == 8 || i == 9) ? "0" : (i == 10) ? "8" : String(i));
@@ -72,22 +65,16 @@ void KeedWiFi::runServer() {
                                 }
                                 return 0;
                             };
-                            size_t addrOffset = setMode();
-                            Serial.print("| addrOffset: ");
-                            Serial.print(addrOffset);
-                            Serial.print("| readMEM(25): ");
-                            Serial.print(readMEM(25));
-                            Serial.println();
+                            setMode();
                         }
                         if (header.indexOf("GET /delay/set?value=") >= 0) {
                             int valueStart = header.indexOf("value=") + 6;
                             int valueEnd = header.indexOf(" ", valueStart);
                             String valueString = header.substring(valueStart, valueEnd);
                             int value = valueString.toInt();
-                            Serial.println("value: " + String(value));
+                            writeMEM(30, String(value));
                         }
 
-                        // Display the HTML web page
                         client.println("<!DOCTYPE html><html>");
                         client.println("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
                         client.println("<link rel=\"icon\" href=\"data:,\">");
@@ -101,13 +88,13 @@ void KeedWiFi::runServer() {
 
                         client.println("<form action=\"/delay/set\" method=\"get\">");
                         client.println("<p>Value for <b>Delay(ms)</b> </p>");
-                        client.println("<input type=\"number\" name=\"value\" min=\"30\" max=\"1000\" step=\"10\" placeholder=\"value\">");
+                        client.println("<input type=\"number\" name=\"value\" min=\"30\" max=\"1000\" step=\"1\" placeholder=\"value\">");
                         client.println("<input type=\"submit\" value=\"Set\">");
                         client.println("</form>");
 
                         client.println("<form action=\"/anything/set\" method=\"get\">");
                         client.println("<p>Value for <b>Anything</b> </p>");
-                        client.println("<input type=\"number\" name=\"value\" min=\"0\" max=\"5000\" step=\"10\" placeholder=\"value\">");
+                        client.println("<input type=\"number\" name=\"value\" min=\"0\" max=\"5000\" step=\"1\" placeholder=\"value\">");
                         client.println("<input type=\"submit\" value=\"Set\">");
                         client.println("</form>");
 
@@ -115,6 +102,7 @@ void KeedWiFi::runServer() {
 
                         [&]() -> void {
                             int sequence = readMEM(25).toInt();
+                            sequence = (sequence == 0) ? 9 : (sequence == 8) ? 10 : sequence;
                             auto displayMode = [&](const String &mode, const String &value, bool isActive) -> void {
                                 if (isActive) client.println("<a href=\"/mode/" + value + "\"><button class=\"button\">" + mode + "</button></a>");
                                 else client.println("<a href=\"/mode/" + value + "\"><button class=\"button button2\">" + mode + "</button></a>");
@@ -135,17 +123,15 @@ void KeedWiFi::runServer() {
                         client.println("</body></html>");
                         client.println();
                         break;
-                    } else {  // if you got a newline, then clear currentLine
+                    } else {
                         currentLine = "";
                     }
-                } else if (c != '\r') {  // if you got anything else but a carriage return character,
-                    currentLine += c;      // add it to the end of the currentLine
+                } else if (c != '\r') {
+                    currentLine += c;
                 }
             }
         }
         header = "";
         client.stop();
-//        Serial.println("Client disconnected.");
-//        Serial.println("");
     }
 }
