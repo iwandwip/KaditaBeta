@@ -62,12 +62,23 @@ void KeedWiFi::runServer() {
                         client.println("Connection: close");
                         client.println();
 
-                        if (header.indexOf("GET /mode/1") >= 0) {
-                            Serial.println("MODE 1");
-                        } else if (header.indexOf("GET /mode/2") >= 0) {
-                            Serial.println("MODE 2");
+                        if (header.indexOf("GET /mode") >= 0) {
+                            auto setMode = [&]() -> size_t {
+                                for (int i = 1; i <= 10; ++i) {
+                                    String modePath = "/mode/" + String(i);
+                                    if (header.indexOf("GET " + modePath) >= 0) {
+                                        return writeMEM(25, (i == 8 || i == 9) ? "0" : (i == 10) ? "8" : String(i));
+                                    }
+                                }
+                                return 0;
+                            };
+                            size_t addrOffset = setMode();
+                            Serial.print("| addrOffset: ");
+                            Serial.print(addrOffset);
+                            Serial.print("| readMEM(25): ");
+                            Serial.print(readMEM(25));
+                            Serial.println();
                         }
-
                         if (header.indexOf("GET /delay/set?value=") >= 0) {
                             int valueStart = header.indexOf("value=") + 6;
                             int valueEnd = header.indexOf(" ", valueStart);
@@ -90,133 +101,37 @@ void KeedWiFi::runServer() {
 
                         client.println("<form action=\"/delay/set\" method=\"get\">");
                         client.println("<p>Value for <b>Delay(ms)</b> </p>");
-                        client.println("<input type=\"number\" name=\"value\" min=\"30\" max=\"1000\" step=\"1\" placeholder=\"value\">");
+                        client.println("<input type=\"number\" name=\"value\" min=\"30\" max=\"1000\" step=\"10\" placeholder=\"value\">");
                         client.println("<input type=\"submit\" value=\"Set\">");
                         client.println("</form>");
 
                         client.println("<form action=\"/anything/set\" method=\"get\">");
                         client.println("<p>Value for <b>Anything</b> </p>");
-                        client.println("<input type=\"number\" name=\"value\" min=\"0\" max=\"5000\" step=\"1\" placeholder=\"value\">");
+                        client.println("<input type=\"number\" name=\"value\" min=\"0\" max=\"5000\" step=\"10\" placeholder=\"value\">");
                         client.println("<input type=\"submit\" value=\"Set\">");
                         client.println("</form>");
 
                         client.println("</div>");
 
                         [&]() -> void {
+                            int sequence = readMEM(25).toInt();
                             auto displayMode = [&](const String &mode, const String &value, bool isActive) -> void {
                                 if (isActive) client.println("<a href=\"/mode/" + value + "\"><button class=\"button\">" + mode + "</button></a>");
                                 else client.println("<a href=\"/mode/" + value + "\"><button class=\"button button2\">" + mode + "</button></a>");
                             };
-                            int random_value = random(1, 11);
                             client.println("<div style=\"display: flex; justify-content: space-evenly;\">");
                             client.println("<p> AUTO LIGHT MODE </p>");
-                            String modes[] = {"MODE 1", "MODE 2", "MODE 3", "MODE 4", "MODE 5", "MODE 6", "MODE 7", "MODE X", "MODE ON", "MODE OFF"};
+                            String modes[] = {"MODE 1", "MODE 2", "MODE 3", "MODE 4", "MODE 5", "MODE 6", "MODE 7", "MODE X", "MODE OFF", "MODE ON"};
                             String values[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
                             bool isActive[] = {false, false, false, false, false, false, false, false, false, false};
-                            isActive[random_value - 1] = true;
+                            isActive[sequence - 1] = true;
                             for (int i = 0; i < 5; ++i) {
                                 client.println("</div>");
                                 client.println("<div style=\"display: flex; justify-content: space-evenly;\">");
                                 displayMode(modes[2 * i], values[2 * i], isActive[2 * i]);
                                 displayMode(modes[2 * i + 1], values[2 * i + 1], isActive[2 * i + 1]);
                             }
-
-//                            int random_value = random(1, 11);
-//                            client.println("<div style=\"display: flex; justify-content: space-evenly;\">");
-//                            client.println("<p> AUTO LIGHT MODE </p>");
-//                            auto displayMode = [&](String _first, String _last, String _first_value, String _last_value, bool _first_state, bool _second_state) -> void {
-//                                client.println("</div>");
-//                                client.println("<div style=\"display: flex; justify-content: space-evenly;\">");
-//                                if (_first_state) client.println("<a href=\"/mode/" + _first_value + "\"><button class=\"button\">MODE " + _first + " </button></a>");
-//                                else client.println("<a href=\"/mode/" + _first_value + "\"><button class=\"button button2\">MODE " + _first + "</button></a>");
-//                                if (_second_state) client.println("<a href=\"/mode/" + _last_value + "\"><button class=\"button\">MODE " + _last + "</button></a>");
-//                                else client.println("<a href=\"/mode/" + _last_value + "\"><button class=\"button button2\">MODE " + _last + "</button></a>");
-//                                client.println("</div>");
-//                            };
-//                            if (random_value == 1) {
-//                                displayMode("1", "2", "1", "2", true, false);
-//                                displayMode("3", "4", "3", "4", false, false);
-//                                displayMode("5", "6", "5", "6", false, false);
-//                                displayMode("7", "X", "7", "8", false, false);
-//                                displayMode("ON", "OFF", "9", "10", false, false);
-//                            } else if (random_value == 2) {
-//                                displayMode("1", "2", "1", "2", false, true);
-//                                displayMode("3", "4", "3", "4", false, false);
-//                                displayMode("5", "6", "5", "6", false, false);
-//                                displayMode("7", "X", "7", "8", false, false);
-//                                displayMode("ON", "OFF", "9", "10", false, false);
-//                            } else if (random_value == 3) {
-//                                displayMode("1", "2", "1", "2", false, false);
-//                                displayMode("3", "4", "3", "4", true, false);
-//                                displayMode("5", "6", "5", "6", false, false);
-//                                displayMode("7", "X", "7", "8", false, false);
-//                                displayMode("ON", "OFF", "9", "10", false, false);
-//                            } else if (random_value == 4) {
-//                                displayMode("1", "2", "1", "2", false, false);
-//                                displayMode("3", "4", "3", "4", false, true);
-//                                displayMode("5", "6", "5", "6", false, false);
-//                                displayMode("7", "X", "7", "8", false, false);
-//                                displayMode("ON", "OFF", "9", "10", false, false);
-//                            } else if (random_value == 5) {
-//                                displayMode("1", "2", "1", "2", false, false);
-//                                displayMode("3", "4", "3", "4", false, false);
-//                                displayMode("5", "6", "5", "6", true, false);
-//                                displayMode("7", "X", "7", "8", false, false);
-//                                displayMode("ON", "OFF", "9", "10", false, false);
-//                            } else if (random_value == 6) {
-//                                displayMode("1", "2", "1", "2", false, false);
-//                                displayMode("3", "4", "3", "4", false, false);
-//                                displayMode("5", "6", "5", "6", false, true);
-//                                displayMode("7", "X", "7", "8", false, false);
-//                                displayMode("ON", "OFF", "9", "10", false, false);
-//                            } else if (random_value == 7) {
-//                                displayMode("1", "2", "1", "2", false, false);
-//                                displayMode("3", "4", "3", "4", false, false);
-//                                displayMode("5", "6", "5", "6", false, false);
-//                                displayMode("7", "X", "7", "8", true, false);
-//                                displayMode("ON", "OFF", "9", "10", false, false);
-//                            } else if (random_value == 8) {
-//                                displayMode("1", "2", "1", "2", false, false);
-//                                displayMode("3", "4", "3", "4", false, false);
-//                                displayMode("5", "6", "5", "6", false, false);
-//                                displayMode("7", "X", "7", "8", false, true);
-//                                displayMode("ON", "OFF", "9", "10", false, false);
-//                            } else if (random_value == 9) {
-//                                displayMode("1", "2", "1", "2", false, false);
-//                                displayMode("3", "4", "3", "4", false, false);
-//                                displayMode("5", "6", "5", "6", false, false);
-//                                displayMode("7", "X", "7", "8", false, false);
-//                                displayMode("ON", "OFF", "9", "10", true, false);
-//                            } else if (random_value == 10) {
-//                                displayMode("1", "2", "1", "2", false, false);
-//                                displayMode("3", "4", "3", "4", false, false);
-//                                displayMode("5", "6", "5", "6", false, false);
-//                                displayMode("7", "X", "7", "8", false, false);
-//                                displayMode("ON", "OFF", "9", "10", false, true);
-//                            }
                         }();
-
-//                        auto modeMenu = [&](String _left, String _right, bool _active_left, bool _active_right) -> void {
-//                            client.println("<div style=\"display: flex; justify-content: space-evenly;\">");
-//                            client.println("<p> " + _left + " </p>");
-//                            client.println("<p> " + _right + " </p>");
-//                            client.println("</div>");
-//
-//                            client.println("<div style=\"display: flex; justify-content: space-evenly;\">");
-//                            {
-//                                if (_active_left) client.println("<a href=\"/26/on\"><button class=\"button\">ON</button></a>");
-//                                else client.println("<a href=\"/mode/on\"><button class=\"button button2\">ON</button></a>");
-//                                if (_active_right) client.println("<a href=\"/27/on\"><button class=\"button\">ON</button></a>");
-//                                else client.println("<a href=\"/mode/on\"><button class=\"button button2\">ON</button></a>");
-//                            }
-//                            client.println("</div>");
-//                        };
-//
-//                        modeMenu("MODE 1", "MODE 2", true, false);
-//                        modeMenu("MODE 3", "MODE 4", false, false);
-//                        modeMenu("MODE 5", "MODE 6", false, false);
-//                        modeMenu("MODE ON", "MODE OFF", false, false);
-
                         client.println("</body></html>");
                         client.println();
                         break;

@@ -8,12 +8,13 @@
 #include "KeedConfig.h"
 
 KeedConfiguration::KeedConfiguration(bool _debug)
-        : debug(_debug) {
+        : debug(_debug), is_initialize(false) {
 }
 
 cfg_error_t KeedConfiguration::initialize(void (*init_callback)(void)) {
 #if defined(ESP32)
     if (!EEPROM.begin(4095)) return INITIALIZE_ERROR;
+    is_initialize = true;
 #else
 #endif
     if (init_callback != nullptr) init_callback();
@@ -79,6 +80,10 @@ bool KeedConfiguration::isUsingExpander() const {
     return cfg.pin_ptr == nullptr && cfg.pin_size == 0;
 }
 
+bool KeedConfiguration::isInitialize() const {
+    return is_initialize;
+}
+
 configuration_t KeedConfiguration::getConfig() const {
     return cfg;
 }
@@ -86,7 +91,7 @@ configuration_t KeedConfiguration::getConfig() const {
 #if defined(ESP32)
 
 KeedCore::KeedCore()
-        : index(0), stack_depth(10000) {};
+        : index(0), stack_depth(10000) {}
 
 void KeedCore::createCore(uint8_t _core_index, void (*core_callback)(void *pvParameter)) {
     char task_name[20];

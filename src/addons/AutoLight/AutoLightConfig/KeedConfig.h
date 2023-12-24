@@ -38,6 +38,7 @@ class KeedConfiguration {
 private:
     configuration_t cfg;
     bool debug;
+    bool is_initialize;
 
 public:
     explicit KeedConfiguration(bool _debug = false);
@@ -47,6 +48,7 @@ public:
 
     void setConfig(configuration_t _cfg);
     bool isUsingExpander() const;
+    bool isInitialize() const;
     configuration_t getConfig() const;
 };
 

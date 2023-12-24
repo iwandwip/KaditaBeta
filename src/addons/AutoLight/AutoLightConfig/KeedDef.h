@@ -18,16 +18,6 @@
 #define IO_EXPANDER_ADDRESS_NUM 8
 #define IO_EXPANDER_PIN_NUM 8
 
-#define KEED_DEBUG_PRINT(X) Serial.print(X)
-#define KEED_DEBUG_PRINTLN(X) Serial.println(X)
-#define KEED_DEBUG_PRINTER(X)                       \
-    Serial.print("[INFO] [");                       \
-    Serial.print(random(10000000, 99999999), DEC);  \
-    Serial.print(".");                              \
-    Serial.print(random(10000000, 99999999), DEC);  \
-    Serial.print("]: ");                            \
-    Serial.println(X)
-
 typedef enum {
     I2C_ADDRESS_OK = 1,
     VERSION_ADDRESS_OK = 2,
@@ -126,5 +116,11 @@ typedef enum {
 const uint8_t indicator_pin_arr_t[INDICATOR_NUM]{
         LED_RED, LED_GREEN, LED_BLUE, BUZZER
 };
+
+typedef enum {
+    SERIAL_NUMBER = 0,
+    MODE_ADDRESS = 25,
+    DELAY_ADDRESS = 30,
+} eeprom_address_offset_t;
 
 #endif // KEED_DEF_H
