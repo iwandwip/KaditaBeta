@@ -33,6 +33,7 @@ struct configuration_t {
     configuration_t();
     void setPins(int size, ...);
     void setAddress(int size, ...);
+    void setDelay(uint32_t _time);
 };
 
 class KeedConfiguration {

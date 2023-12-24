@@ -32,9 +32,15 @@ void configuration_t::setAddress(int _io_size, ...) {
     va_end(args);
 }
 
+void configuration_t::setDelay(uint32_t _time) {
+    delay_time = _time;
+    writeMEM(25, String(sequence));
+    writeMEM(30, String(delay_time));
+}
+
 indicator_t::indicator_t() :
         outs{DigitalOut(LED_RED), DigitalOut(LED_GREEN), DigitalOut(LED_BLUE), DigitalOut(BUZZER)},
-        times{TimerTask(2000), TimerTask(2000), TimerTask(100), TimerTask(100)} {
+        times{TimerTask(500), TimerTask(500), TimerTask(100), TimerTask(100)} {
     outs[3].toggleInit(90, 5);
 }
 
@@ -43,17 +49,24 @@ void indicator_t::show(uint8_t _seq) {
     static uint8_t _seq_before = 0;
     if (_seq != _seq_before) {
         outs[2].on();
-        outs[2].offDelay(200);
+        outs[2].offDelay(600);
         outs[3].on();
         outs[3].offDelay(50);
         _seq_before = _seq;
     }
-    if (times[!state].triggered()) {
-        outs[!state].on();
-        outs[!state].offDelay(100);
-        outs[state].off();
-        times[state].reset();
+    if (state) {
+        outs[0].on();
+        outs[1].off();
+    } else {
+        outs[1].on();
+        outs[0].off();
     }
+//    if (times[!state].triggered()) {
+//        outs[!state].on();
+//        outs[!state].offDelay(100);
+//        outs[state].off();
+//        times[state].reset();
+//    }
     for (auto &out: outs) {
         out.update();
     }

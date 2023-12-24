@@ -35,7 +35,9 @@ public:
     void showInfo();
 
     void setInterruptConfig(interrupt_t _cfg);
+    interrupt_t getInterruptConfig();
     void changeModes();
+    void readModes();
     void setBaseDelay(uint32_t _time);
 
     IOExpander *getIoExpander(uint8_t index);

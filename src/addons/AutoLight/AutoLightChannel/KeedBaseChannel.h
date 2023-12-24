@@ -45,7 +45,9 @@ public:
     void update() override;
     void run() override;
     void setInterruptConfig(interrupt_t _cfg) override;
+    interrupt_t getInterruptConfig() override;
     void changeModes() override;
+    void readModes() override;
     void setBaseDelay(uint32_t _time) override;
     uint8_t getSequenceIndex() override;
     void (KeedBaseChannel::*getSequence(uint8_t index))();

@@ -53,8 +53,16 @@ void KeedAutoLight::setInterruptConfig(interrupt_t _cfg) {
     keedBase->setInterruptConfig(_cfg);
 }
 
+interrupt_t KeedAutoLight::getInterruptConfig() {
+    return keedBase->getInterruptConfig();
+}
+
 void KeedAutoLight::changeModes() {
     keedBase->changeModes();
+}
+
+void KeedAutoLight::readModes() {
+    keedBase->readModes();
 }
 
 void KeedAutoLight::setBaseDelay(uint32_t _time) {

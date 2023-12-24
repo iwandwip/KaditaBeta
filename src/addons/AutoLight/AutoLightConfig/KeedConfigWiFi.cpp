@@ -19,6 +19,8 @@ int KeedWiFi::createWiFIAP(const char *ssid, const char *password) {
     Serial.print("| Setting AP (Access Point)… ");
     WiFi.softAP(ssid, password);
     IP = WiFi.softAPIP();
+    pinMode(LED_BUILTIN, OUTPUT);
+    digitalWrite(LED_BUILTIN, HIGH);
     return IP;
 }
 
@@ -87,13 +89,13 @@ void KeedWiFi::runServer() {
                         client.println("<div style=\"display: flex; justify-content: space-evenly;\">");
 
                         client.println("<form action=\"/delay/set\" method=\"get\">");
-                        client.println("<p>Value for <b>Delay(ms)</b> </p>");
-                        client.println("<input type=\"number\" name=\"value\" min=\"30\" max=\"1000\" step=\"1\" placeholder=\"value\">");
+                        client.println("<p><b>Delay(ms): " + String(readMEM(30)) + "</b> </p>");
+                        client.println("<input type=\"number\" name=\"value\" min=\"10\" max=\"1000\" step=\"1\" placeholder=\"value\">");
                         client.println("<input type=\"submit\" value=\"Set\">");
                         client.println("</form>");
 
                         client.println("<form action=\"/anything/set\" method=\"get\">");
-                        client.println("<p>Value for <b>Anything</b> </p>");
+                        client.println("<p><b>Anything</b> </p>");
                         client.println("<input type=\"number\" name=\"value\" min=\"0\" max=\"5000\" step=\"1\" placeholder=\"value\">");
                         client.println("<input type=\"submit\" value=\"Set\">");
                         client.println("</form>");

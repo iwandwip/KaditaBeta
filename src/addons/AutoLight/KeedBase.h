@@ -16,6 +16,7 @@ struct interrupt_t {
     uint8_t pin = 0;
     volatile uint32_t num = 0;
     volatile bool pressed = false;
+    volatile bool changed = false;
     void (*isrCallback)() = nullptr;
 
     void attachInterrupt(uint8_t _pin, void (*_callback)()) {
@@ -38,7 +39,16 @@ public:
         /*implemented on a derived class*/
     }
 
+    __attribute__((unused)) virtual interrupt_t getInterruptConfig() {
+        interrupt_t interrupt;
+        return interrupt;
+    }
+
     __attribute__((unused)) virtual void changeModes() {
+        /*implemented on a derived class*/
+    }
+
+    __attribute__((unused)) virtual void readModes() {
         /*implemented on a derived class*/
     }
 
