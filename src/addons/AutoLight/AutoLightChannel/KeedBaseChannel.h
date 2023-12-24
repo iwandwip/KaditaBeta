@@ -22,7 +22,7 @@ class KeedBaseChannel : public KeedBase {
 private:
     IOExpander **ioBase;
     KeedDisplay *display;
-    uint8_t sequence;
+    uint8_t sequenceMode;
     uint32_t ioTimer;
     uint32_t isrTimer;
     interrupt_t isr;
@@ -30,7 +30,7 @@ private:
     bool isUsingExpander;
 
     void (KeedBaseChannel::*taskTemp)();
-    void (KeedBaseChannel::*sequences[(TASK_SEQUENCE_NUM + 2)])();
+    void (KeedBaseChannel::*totalMode[(TASK_SEQUENCE_NUM + 2)])();
 
 protected:
     void sleep(uint32_t _delay);

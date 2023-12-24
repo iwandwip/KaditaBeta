@@ -8,8 +8,8 @@
 #include "KeedBaseChannel.h"
 
 KeedBaseChannel::KeedBaseChannel(bool _isUsingExpander)
-        : sequence(0), ioTimer(40), isUsingExpander(_isUsingExpander), taskTemp(nullptr),
-          sequences{&KeedBaseChannel::off,
+        : sequenceMode(0), ioTimer(40), isUsingExpander(_isUsingExpander), taskTemp(nullptr),
+          totalMode{&KeedBaseChannel::off,
                     &KeedBaseChannel::taskSequence0,
                     &KeedBaseChannel::taskSequence1,
                     &KeedBaseChannel::taskSequence2,
@@ -29,8 +29,8 @@ void KeedBaseChannel::init(IOExpander **_ioBase, configuration_t _cfg) {
 #endif
     ioBase = _ioBase;
     cfg = _cfg;
-    sequence = cfg.sequence;
-    taskTemp = sequences[sequence];
+    sequenceMode = cfg.sequence;
+    taskTemp = totalMode[sequenceMode];
 
     if (cfg.display) {
         display = new KeedDisplay(cfg.channel, 0x3C);
@@ -46,8 +46,8 @@ void KeedBaseChannel::update() {
             display->clear();
             display->fillBorder();
         }
-        sequence = (sequence < ((TASK_SEQUENCE_NUM + 2) - 1)) ? sequence + 1 : 0;
-        taskTemp = sequences[sequence];
+        sequenceMode = (sequenceMode < ((TASK_SEQUENCE_NUM + 2) - 1)) ? sequenceMode + 1 : 0;
+        taskTemp = totalMode[sequenceMode];
 
         isr.pressed = false;
     }
@@ -75,11 +75,11 @@ void KeedBaseChannel::setBaseDelay(uint32_t _time) {
 }
 
 uint8_t KeedBaseChannel::getSequenceIndex() {
-    return sequence;
+    return sequenceMode;
 }
 
 void (KeedBaseChannel::*KeedBaseChannel::getSequence(uint8_t index))() {
-    return sequences[index];
+    return totalMode[index];
 }
 
 
