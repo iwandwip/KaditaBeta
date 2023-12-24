@@ -88,7 +88,7 @@ struct indicator_t {
 
 #if defined(ESP32)
 #define readMEM(x) EEPROM.readString(x)
-#define writeMEM(x, y) EEPROM.writeString(x, y)
+#define writeMEM(x, y) EEPROM.writeString(x, y); EEPROM.commit()
 #else
 void writeMEM(int addrOffset, const String &strToWrite);
 String readMEM(int addrOffset);
