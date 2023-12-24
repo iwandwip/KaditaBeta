@@ -91,11 +91,9 @@ void KeedWiFi::runServer() {
                                 while (ssid.indexOf('+') != -1) {
                                     ssid.replace("+", " ");
                                 }
-                                Serial.println(ssid);
-//                                writeMEM(SSID_ADDRESS, ssid);
-//                                 writeMEM(PASSWORD_ADDRESS, password);
-
-//                                ESP.restart();
+                                writeMEM(SSID_ADDRESS, ssid);
+//                                writeMEM(PASSWORD_ADDRESS, password);
+                                ESP.restart();
                             };
                             parseSSIDAndPassword(header);
                         }
@@ -151,7 +149,7 @@ void KeedWiFi::runServer() {
 
                         client.println("<form action=\"/ap/set\" method=\"get\">");
                         client.println("<p>" + readMEM(SSID_ADDRESS) + " | " + (readMEM(PASSWORD_ADDRESS).isEmpty() ? "NONE" : readMEM(PASSWORD_ADDRESS)) + "</p>");
-                        client.println("<input type=\"text\" name=\"ssid\" placeholder=\"SSID\" maxlength=\"10\" required>");
+                        client.println("<input type=\"text\" name=\"ssid\" placeholder=\"SSID\" maxlength=\"30\" required>");
                         client.println("<input type=\"text\" name=\"password\" placeholder=\"PASSWORD\"  minlength=\"8\" maxlength=\"10\" required>");
                         client.println("<br><br>");
                         client.println("<input type=\"submit\" value=\"Set AP\">");
