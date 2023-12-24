@@ -75,8 +75,8 @@ private:
     IPAddress IP;
 public:
     KeedWiFi();
-    KeedWiFi(const char *ssid, const char *password = NULL);
-    int createWiFIAP(const char *ssid, const char *password = NULL);
+    KeedWiFi(const char *_ssid, const char *_password = NULL);
+    int createWiFIAP(const char *_ssid, const char *_password = NULL);
     void beginServer();
     void showServerInfo();
     void runServer();

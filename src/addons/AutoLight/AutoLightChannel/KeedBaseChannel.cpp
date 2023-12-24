@@ -49,9 +49,9 @@ void KeedBaseChannel::update() {
         if (isr.pressed) cfg.sequence = (cfg.sequence < ((TASK_SEQUENCE_NUM + 2) - 1)) ? cfg.sequence + 1 : 0;
         taskTemp = totalMode[cfg.sequence];
 
-        writeMEM(25, String(cfg.sequence));
-        writeMEM(30, String(cfg.delay_time));
-        writeMEM(50, "1");
+        writeMEM(MODE_ADDRESS, String(cfg.sequence));
+        writeMEM(DELAY_ADDRESS, String(cfg.delay_time));
+        writeMEM(WIFI_STATE_ADDRESS, "1");
 
         isr.pressed = false;
         isr.changed = false;

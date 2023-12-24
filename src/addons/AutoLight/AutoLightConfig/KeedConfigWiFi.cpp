@@ -15,9 +15,22 @@ KeedWiFi::KeedWiFi(const char *ssid, const char *password) {
     createWiFIAP(ssid, password);
 }
 
-int KeedWiFi::createWiFIAP(const char *ssid, const char *password) {
-    Serial.print("| Setting AP (Access Point)… ");
-    WiFi.softAP(ssid, password);
+int KeedWiFi::createWiFIAP(const char *_ssid, const char *_password) {
+    Serial.print("| Setting AP (Access Point) … ");
+    writeMEM(SSID_ADDRESS, "Testing AP");
+    String ssid_mem = readMEM(SSID_ADDRESS);
+    String password_mem = readMEM(PASSWORD_ADDRESS);
+    if (ssid_mem.isEmpty()) {
+        WiFi.softAP(_ssid, _password);
+        Serial.println("| WiFi set to Default");
+    } else {
+        WiFi.softAP(ssid_mem.c_str(), password_mem.isEmpty() ? nullptr : password_mem.c_str());
+        Serial.print("| WiFi set to SSID: ");
+        Serial.print(ssid_mem);
+        Serial.print("| PASSWORD: ");
+        Serial.print(password_mem.isEmpty() ? "NONE" : password_mem);
+        Serial.println();
+    }
     IP = WiFi.softAPIP();
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH);
@@ -26,15 +39,6 @@ int KeedWiFi::createWiFIAP(const char *ssid, const char *password) {
 
 void KeedWiFi::beginServer() {
     server.begin();
-    // core.createCore(1, [](void *pvParameter) [[TASK_FUNCTION]] -> void {
-    //   KeedWiFi server("Auto Light AP");
-    //   server.beginServer();
-    //   server.showServerInfo();
-    //   for (;;) {
-    //     server.runServer();
-    //     vTaskDelay(20 / portTICK_PERIOD_MS);
-    //   }
-    // });
 }
 
 void KeedWiFi::showServerInfo() {
@@ -62,7 +66,7 @@ void KeedWiFi::runServer() {
                                 for (int i = 10; i >= 1; --i) {
                                     String modePath = "/mode/" + String(i);
                                     if (header.indexOf("GET " + modePath) >= 0) {
-                                        return writeMEM(25, (i == 8 || i == 9) ? "0" : (i == 10) ? "8" : String(i));
+                                        return writeMEM(MODE_ADDRESS, (i == 8 || i == 9) ? "0" : (i == 10) ? "8" : String(i));
                                     }
                                 }
                                 return 0;
@@ -74,7 +78,7 @@ void KeedWiFi::runServer() {
                             int valueEnd = header.indexOf(" ", valueStart);
                             String valueString = header.substring(valueStart, valueEnd);
                             int value = valueString.toInt();
-                            writeMEM(30, String(value));
+                            if (value) writeMEM(DELAY_ADDRESS, String(value));
                         }
 
                         client.println("<!DOCTYPE html><html>");
@@ -122,6 +126,18 @@ void KeedWiFi::runServer() {
                                 displayMode(modes[2 * i + 1], values[2 * i + 1], isActive[2 * i + 1]);
                             }
                         }();
+
+                        client.println("<div style=\"display: flex; justify-content: space-evenly;\">");
+
+                        client.println("<form action=\"/delay/set\" method=\"get\">");
+                        client.println("<p><b>Delay(ms): " + String(readMEM(30)) + "</b> </p>");
+                        client.println("<input type=\"number\" name=\"value\" min=\"10\" max=\"1000\" step=\"1\" placeholder=\"value\">");
+                        client.println("<input type=\"number\" name=\"value\" min=\"10\" max=\"1000\" step=\"1\" placeholder=\"value\">");
+                        client.println("<input type=\"submit\" value=\"Set\">");
+                        client.println("</form>");
+
+                        client.println("</div>");
+
                         client.println("</body></html>");
                         client.println();
                         break;

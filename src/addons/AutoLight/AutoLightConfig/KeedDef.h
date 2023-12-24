@@ -118,9 +118,12 @@ const uint8_t indicator_pin_arr_t[INDICATOR_NUM]{
 };
 
 typedef enum {
-    SERIAL_NUMBER = 0,
+    SERIAL_NUMBER_ADDRESS = 0,
     MODE_ADDRESS = 25,
     DELAY_ADDRESS = 30,
+    WIFI_STATE_ADDRESS = 50,
+    SSID_ADDRESS = 60,
+    PASSWORD_ADDRESS = 85,
 } eeprom_address_offset_t;
 
 #endif // KEED_DEF_H

@@ -34,8 +34,8 @@ void configuration_t::setAddress(int _io_size, ...) {
 
 void configuration_t::setDelay(uint32_t _time) {
     delay_time = _time;
-    writeMEM(25, String(sequence));
-    writeMEM(30, String(delay_time));
+    writeMEM(MODE_ADDRESS, String(sequence));
+    writeMEM(DELAY_ADDRESS, String(delay_time));
 }
 
 indicator_t::indicator_t() :
