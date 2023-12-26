@@ -27,13 +27,16 @@ struct configuration_t {
     uint8_t pin_size;
     uint8_t *pin_ptr;
     uint8_t *i2c_ptr;
+    uint8_t *pin_sequence;
     bool custom;
+    bool custom_seq;
     bool reverse;
     bool display;
     configuration_t();
     void setPins(int size, ...);
     void setAddress(int size, ...);
     void setDelay(uint32_t _time);
+    void setPinSequence(int size, ...);
 };
 
 class KeedConfiguration {

@@ -8,7 +8,7 @@
 #include "KeedConfig.h"
 
 configuration_t::configuration_t()
-        : delay_time(40), version(0), channel(0), io_size(0), pin_size(0), sequence(0), pin_ptr(nullptr), i2c_ptr(nullptr), custom(false), reverse(false), display(false) {
+        : sequence(0), delay_time(40), version(0), channel(0), io_size(0), pin_size(0), pin_ptr(nullptr), i2c_ptr(nullptr), pin_sequence(nullptr), custom(false), custom_seq(false), reverse(false), display(false) {
 }
 
 void configuration_t::setPins(int _pin_size, ...) {
@@ -36,6 +36,17 @@ void configuration_t::setDelay(uint32_t _time) {
     delay_time = _time;
     writeMEM(MODE_ADDRESS, String(sequence));
     writeMEM(DELAY_ADDRESS, String(delay_time));
+}
+
+void configuration_t::setPinSequence(int _pin_sequence_size, ...) {
+    va_list args;
+    va_start(args, _pin_sequence_size);
+    custom_seq = true;
+    pin_sequence = new uint8_t[_pin_sequence_size];
+    for (int i = 0; i < _pin_sequence_size; i++) {
+        pin_sequence[i] = static_cast<uint8_t>(va_arg(args, int));
+    }
+    va_end(args);
 }
 
 indicator_t::indicator_t() :

@@ -37,7 +37,8 @@ cfg_error_t KeedAutoLight::init() {
         cfg.pin_size = cfg.channel;
         cfg.pin_ptr = new uint8_t[cfg.pin_size];
         for (uint8_t i = 0; i < cfg.pin_size; ++i) {
-            cfg.pin_ptr[i] = i;
+            if (cfg.custom_seq) cfg.pin_ptr[i] = cfg.pin_sequence[i] - 1;
+            else cfg.pin_ptr[i] = i;
         }
     }
     keedBase->init(ioBase, cfg);
