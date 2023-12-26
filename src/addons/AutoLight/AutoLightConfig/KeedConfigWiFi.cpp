@@ -7,6 +7,8 @@
 
 #include "KeedConfig.h"
 
+#if defined(ESP32)
+
 KeedWiFi::KeedWiFi()
         : server(80) {
 }
@@ -172,3 +174,5 @@ void KeedWiFi::runServer() {
         client.stop();
     }
 }
+
+#endif // ESP32
