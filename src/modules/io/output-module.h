@@ -41,6 +41,7 @@ public:
     void reverse();
     void setPins(uint8_t pin, bool isReverse = false);
     bool getState() const;
+    static void updateAll(DigitalOut *_digital_out_ptr, ...);
 };
 
 #endif  // KADITA_OUTPUT_MODULE_H

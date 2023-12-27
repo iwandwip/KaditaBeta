@@ -115,3 +115,14 @@ void DigitalOut::setPins(uint8_t pin, bool isReverse) {
 bool DigitalOut::getState() const {
     return _state;
 }
+
+void DigitalOut::updateAll(DigitalOut *_digital_out_ptr, ...) {
+    va_list args;
+    va_start(args, _digital_out_ptr);
+    DigitalOut *currentIndex = _digital_out_ptr;
+    while (currentIndex != nullptr) {
+        _digital_out_ptr->update();
+        currentIndex = va_arg(args, DigitalOut *);
+    }
+    va_end(args);
+}
