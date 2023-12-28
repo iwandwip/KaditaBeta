@@ -95,6 +95,10 @@ float HX711Sens::getUnits(byte time) {
     return this->get_units(time);
 }
 
+uint32_t HX711Sens::getADC(byte times) {
+    return this->read_average();
+}
+
 float HX711Sens::getCalibrateFactor(float units, float weight) {
     return units / weight;
 }
