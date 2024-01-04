@@ -17,6 +17,8 @@ KeedBaseChannel::KeedBaseChannel(bool _isUsingExpander)
                     &KeedBaseChannel::taskSequence4,
                     &KeedBaseChannel::taskSequence5,
                     &KeedBaseChannel::taskSequence6,
+                    &KeedBaseChannel::taskSequence7,
+                    &KeedBaseChannel::taskSequence8,
                     &KeedBaseChannel::on} {}
 
 void KeedBaseChannel::init(IOExpander **_ioBase, configuration_t _cfg) {
@@ -151,11 +153,6 @@ void KeedBaseChannel::setStateLow(int index, ...) {
     va_end(args);
 }
 
-void KeedBaseChannel::off() {
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], LOW);
-    }
-}
 
 void KeedBaseChannel::forceOff() {
     if (isUsingExpander) {
@@ -170,6 +167,12 @@ void KeedBaseChannel::forceOff() {
             if (cfg.reverse) digitalWrite(cfg.pin_ptr[i], HIGH);
             else digitalWrite(cfg.pin_ptr[i], LOW);
         }
+    }
+}
+
+void KeedBaseChannel::off() {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        set(cfg.pin_ptr[i], LOW);
     }
 }
 

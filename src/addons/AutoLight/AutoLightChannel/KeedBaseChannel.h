@@ -10,7 +10,7 @@
 #ifndef KEED_BASE_CHANNEL_H
 #define KEED_BASE_CHANNEL_H
 
-#define TASK_SEQUENCE_NUM 7
+#define TASK_SEQUENCE_NUM 11
 #define BUTTON_DEBOUNCE_TIME 250
 
 #define setHigh(...) setStateHigh(__VA_ARGS__, -1)
@@ -28,7 +28,7 @@ private:
     bool isUsingExpander;
 
     void (KeedBaseChannel::*taskTemp)();
-    void (KeedBaseChannel::*totalMode[(TASK_SEQUENCE_NUM + 2)])();
+    void (KeedBaseChannel::*totalMode[(TASK_SEQUENCE_NUM)])();
 
 protected:
     void sleep(uint32_t _delay);
@@ -59,6 +59,8 @@ public:
     void taskSequence4();
     void taskSequence5();
     void taskSequence6();
+    void taskSequence7();
+    void taskSequence8();
 };
 
 #endif // KEED_BASE_CHANNEL_H

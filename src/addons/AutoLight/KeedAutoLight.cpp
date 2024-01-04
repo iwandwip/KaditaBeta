@@ -23,12 +23,12 @@ KeedAutoLight::~KeedAutoLight() {
 
 cfg_error_t KeedAutoLight::setChannel(configuration_t _cfg) {
     cfg = _cfg;
-    keedBase = getChannel();
-    if (keedBase == nullptr) return INITIALIZE_ERROR;
-    if (isUsingExpander()) {
-        if (!beginExpander()) return INITIALIZE_ERROR;
-    }
-    return INITIALIZE_OK;
+//    keedBase = getChannel();
+//    if (keedBase == nullptr) return INITIALIZE_ERROR;
+//    if (isUsingExpander()) {
+//        if (!beginExpander()) return INITIALIZE_ERROR;
+//    }
+//    return INITIALIZE_OK;
 }
 
 cfg_error_t KeedAutoLight::init() {
