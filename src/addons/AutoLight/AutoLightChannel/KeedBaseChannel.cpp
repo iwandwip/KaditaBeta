@@ -17,6 +17,8 @@ KeedBaseChannel::KeedBaseChannel(bool _isUsingExpander)
                     &KeedBaseChannel::taskSequence4,
                     &KeedBaseChannel::taskSequence5,
                     &KeedBaseChannel::taskSequence6,
+                    &KeedBaseChannel::taskSequence7,
+                    &KeedBaseChannel::taskSequence8,
                     &KeedBaseChannel::on} {}
 
 void KeedBaseChannel::init(IOExpander **_ioBase, configuration_t _cfg) {

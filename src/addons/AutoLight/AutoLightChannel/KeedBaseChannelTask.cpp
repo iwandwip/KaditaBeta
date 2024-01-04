@@ -270,3 +270,11 @@ void KeedBaseChannel::taskSequence6() {
         sleep(500);
     }
 }
+
+void KeedBaseChannel::taskSequence7(){
+
+}
+
+void KeedBaseChannel::taskSequence8(){
+
+}
