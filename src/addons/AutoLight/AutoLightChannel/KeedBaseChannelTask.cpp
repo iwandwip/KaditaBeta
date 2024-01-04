@@ -8,97 +8,140 @@
 #include "KeedBaseChannel.h"
 
 void KeedBaseChannel::taskSequence0() {
-    // blink ////////////////////////////////////////
-    {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 15; ++j) {
-                for (int k = 0; k < cfg.pin_size; k++) {
-                    set(cfg.pin_ptr[k], HIGH);
+    for (int i = 0; i < (cfg.pin_size / 2) + 2; ++i) {
+        if (i < ((cfg.pin_size / 2) / 2) + 1) {
+            Serial.print("[");
+            Serial.print("INDEX| ");
+            Serial.print(i);
+            Serial.print("] -> ");
+
+            Serial.print("[");
+            Serial.print(i);
+            set(cfg.pin_ptr[i], HIGH);
+            Serial.print("]");
+
+            Serial.print("[");
+            if ((i == (cfg.pin_size / cfg.pin_size)) || (i == ((cfg.pin_size / 2) / 2))) {
+                Serial.print("| OFF: ");
+                Serial.print(i);
+                set(cfg.pin_ptr[i], HIGH);
+            } else {
+                if (i > (cfg.pin_size / cfg.pin_size) && (i < ((cfg.pin_size / 2) / 2))) {
+                    Serial.print("| CHANGE: ");
+                    Serial.print((cfg.pin_size / 2) - i);
+                    set(cfg.pin_ptr[(cfg.pin_size / 2) - i], HIGH);
+                } else {
+                    Serial.print((cfg.pin_size / 2) - (i + 1));
+                    set(cfg.pin_ptr[(cfg.pin_size / 2) - (i + 1)], HIGH);
                 }
-                sleep(cfg.delay_time);
-                for (int k = 0; k < cfg.pin_size; k++) {
-                    set(cfg.pin_ptr[k], LOW);
-                }
-                sleep(cfg.delay_time);
             }
-            sleep(500);
+            Serial.print("]");
+
+            Serial.print("| pin_size1: ");
+            Serial.print((cfg.pin_size / cfg.pin_size));
+            Serial.print("| pin_size2: ");
+            Serial.print(((cfg.pin_size / 2) / 2));
+            Serial.println();
+        } else {
+//            Serial.print(cfg.pin_ptr[i + (cfg.pin_size / 2)]);
+//            Serial.print(cfg.pin_ptr[(cfg.pin_size) - i - 1]);
         }
-        off();
+
+        sleep(1000);
     }
-    // half blink ////////////////////////////////////////
-    {
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < (cfg.pin_size / 2); j++) {
-                set(cfg.pin_ptr[j], HIGH);
-            }
-            sleep(cfg.delay_time);
-            for (int j = 0; j < (cfg.pin_size / 2); j++) {
-                set(cfg.pin_ptr[j], LOW);
-            }
-            sleep(cfg.delay_time);
-        }
-        sleep(50);
-        for (int i = 0; i < 4; ++i) {
-            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
-                set(cfg.pin_ptr[j], HIGH);
-            }
-            sleep(cfg.delay_time);
-            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
-                set(cfg.pin_ptr[j], LOW);
-            }
-            sleep(cfg.delay_time);
-        }
-        sleep(50);
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < (cfg.pin_size / 2); j++) {
-                set(cfg.pin_ptr[j], HIGH);
-            }
-            sleep(cfg.delay_time);
-            for (int j = 0; j < (cfg.pin_size / 2); j++) {
-                set(cfg.pin_ptr[j], LOW);
-            }
-            sleep(cfg.delay_time);
-        }
-        sleep(500);
-        off();
-    }
-    // half blink ////////////////////////////////////////
-    {
-        for (int i = 0; i < 4; ++i) {
-            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
-                set(cfg.pin_ptr[j], HIGH);
-            }
-            sleep(cfg.delay_time);
-            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
-                set(cfg.pin_ptr[j], LOW);
-            }
-            sleep(cfg.delay_time);
-        }
-        sleep(50);
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < (cfg.pin_size / 2); j++) {
-                set(cfg.pin_ptr[j], HIGH);
-            }
-            sleep(cfg.delay_time);
-            for (int j = 0; j < (cfg.pin_size / 2); j++) {
-                set(cfg.pin_ptr[j], LOW);
-            }
-            sleep(cfg.delay_time);
-        }
-        sleep(50);
-        for (int i = 0; i < 4; ++i) {
-            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
-                set(cfg.pin_ptr[j], HIGH);
-            }
-            sleep(cfg.delay_time);
-            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
-                set(cfg.pin_ptr[j], LOW);
-            }
-            sleep(cfg.delay_time);
-        }
-        off();
-        sleep(500);
-    }
+
+
+//    // blink ////////////////////////////////////////
+//    {
+//        for (int i = 0; i < 2; i++) {
+//            for (int j = 0; j < 15; ++j) {
+//                for (int k = 0; k < cfg.pin_size; k++) {
+//                    set(cfg.pin_ptr[k], HIGH);
+//                }
+//                sleep(cfg.delay_time);
+//                for (int k = 0; k < cfg.pin_size; k++) {
+//                    set(cfg.pin_ptr[k], LOW);
+//                }
+//                sleep(cfg.delay_time);
+//            }
+//            sleep(500);
+//        }
+//        off();
+//    }
+//    // half blink ////////////////////////////////////////
+//    {
+//        for (int i = 0; i < 4; ++i) {
+//            for (int j = 0; j < (cfg.pin_size / 2); j++) {
+//                set(cfg.pin_ptr[j], HIGH);
+//            }
+//            sleep(cfg.delay_time);
+//            for (int j = 0; j < (cfg.pin_size / 2); j++) {
+//                set(cfg.pin_ptr[j], LOW);
+//            }
+//            sleep(cfg.delay_time);
+//        }
+//        sleep(50);
+//        for (int i = 0; i < 4; ++i) {
+//            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
+//                set(cfg.pin_ptr[j], HIGH);
+//            }
+//            sleep(cfg.delay_time);
+//            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
+//                set(cfg.pin_ptr[j], LOW);
+//            }
+//            sleep(cfg.delay_time);
+//        }
+//        sleep(50);
+//        for (int i = 0; i < 4; ++i) {
+//            for (int j = 0; j < (cfg.pin_size / 2); j++) {
+//                set(cfg.pin_ptr[j], HIGH);
+//            }
+//            sleep(cfg.delay_time);
+//            for (int j = 0; j < (cfg.pin_size / 2); j++) {
+//                set(cfg.pin_ptr[j], LOW);
+//            }
+//            sleep(cfg.delay_time);
+//        }
+//        sleep(500);
+//        off();
+//    }
+//    // half blink ////////////////////////////////////////
+//    {
+//        for (int i = 0; i < 4; ++i) {
+//            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
+//                set(cfg.pin_ptr[j], HIGH);
+//            }
+//            sleep(cfg.delay_time);
+//            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
+//                set(cfg.pin_ptr[j], LOW);
+//            }
+//            sleep(cfg.delay_time);
+//        }
+//        sleep(50);
+//        for (int i = 0; i < 4; ++i) {
+//            for (int j = 0; j < (cfg.pin_size / 2); j++) {
+//                set(cfg.pin_ptr[j], HIGH);
+//            }
+//            sleep(cfg.delay_time);
+//            for (int j = 0; j < (cfg.pin_size / 2); j++) {
+//                set(cfg.pin_ptr[j], LOW);
+//            }
+//            sleep(cfg.delay_time);
+//        }
+//        sleep(50);
+//        for (int i = 0; i < 4; ++i) {
+//            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
+//                set(cfg.pin_ptr[j], HIGH);
+//            }
+//            sleep(cfg.delay_time);
+//            for (int j = (cfg.pin_size / 2); j < cfg.pin_size; j++) {
+//                set(cfg.pin_ptr[j], LOW);
+//            }
+//            sleep(cfg.delay_time);
+//        }
+//        off();
+//        sleep(500);
+//    }
 }
 
 void KeedBaseChannel::taskSequence1() {
@@ -271,10 +314,29 @@ void KeedBaseChannel::taskSequence6() {
     }
 }
 
-void KeedBaseChannel::taskSequence7(){
+void KeedBaseChannel::taskSequence7() {
+    auto setRandomLed = [&](int value) -> void {
+        int data[cfg.pin_size];
+        for (int i = 0; i < cfg.pin_size; ++i) {
+            data[i] = !value;
+        }
+        for (int i = 0; i < cfg.pin_size; ++i) {
+            int index;
+            do {
+                index = random(cfg.pin_size);
+            } while (data[index] == value);
+            data[index] = value;
+            for (int j = 0; j < cfg.pin_size; ++j) {
+                set(cfg.pin_ptr[j], data[j]);
+            }
+            sleep(cfg.delay_time);
+        }
+    };
 
+    setRandomLed(HIGH);
+    setRandomLed(LOW);
 }
 
-void KeedBaseChannel::taskSequence8(){
+void KeedBaseChannel::taskSequence8() {
 
 }
