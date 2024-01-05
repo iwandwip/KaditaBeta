@@ -64,6 +64,28 @@ void HardSerial::receive(void (*onReceive)(String)) {
     }
 }
 
+void HardSerial::receiveAsync(uint32_t _time, void (*onReceive)(String)) {
+    if (onReceive == nullptr) return;
+    if (serialPtr->available()) {
+        char rxBuffer[250];
+        uint8_t rxBufferPtr = 0;
+        rxBuffer[rxBufferPtr++] = serialPtr->read();
+        if (millis() - receiveTime >= _time) {
+            receiveTime = millis();
+            while (1) {
+                if (serialPtr->available()) {
+                    rxBuffer[rxBufferPtr++] = serialPtr->read();
+                    if (rxBuffer[rxBufferPtr - 1] == '\n') break;
+                }
+            }
+            rxBuffer[rxBufferPtr] = 0;
+            String dataCb = String(rxBuffer);
+            dataCb.replace("\n", "");
+            onReceive(dataCb);
+        }
+    }
+}
+
 float HardSerial::getData(String data, uint8_t index) {
     return parseStr(data, ";", index).toFloat();
 }

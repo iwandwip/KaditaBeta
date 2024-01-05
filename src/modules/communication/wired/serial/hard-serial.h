@@ -18,6 +18,7 @@ private:
     HardwareSerial *serialPtr;
     String dataSend;
     uint32_t sendTime;
+    uint32_t receiveTime;
     String parseStr(String data, char separator[], int index);
 
 public:
@@ -36,6 +37,7 @@ public:
     void sendDataAsync(uint32_t _time = 500);
     void sendDataAsyncCb(uint32_t _time = 500, void (*onReceive)() = nullptr);
     void receive(void (*onReceive)(String));
+    void receiveAsync(uint32_t _time = 500, void (*onReceive)(String) = nullptr);
     float getData(String data, uint8_t index = 0);
     String getStrData(String data, uint8_t index = 0);
 };
