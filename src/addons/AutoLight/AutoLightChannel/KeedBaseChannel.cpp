@@ -153,12 +153,6 @@ void KeedBaseChannel::setStateLow(int index, ...) {
     va_end(args);
 }
 
-void KeedBaseChannel::off() {
-    for (int i = 0; i < cfg.pin_size; i++) {
-        set(cfg.pin_ptr[i], LOW);
-    }
-}
-
 void KeedBaseChannel::forceOff() {
     if (isUsingExpander) {
         for (int i = 0; i < cfg.io_size; ++i) {
@@ -172,6 +166,12 @@ void KeedBaseChannel::forceOff() {
             if (cfg.reverse) digitalWrite(cfg.pin_ptr[i], HIGH);
             else digitalWrite(cfg.pin_ptr[i], LOW);
         }
+    }
+}
+
+void KeedBaseChannel::off() {
+    for (int i = 0; i < cfg.pin_size; i++) {
+        set(cfg.pin_ptr[i], LOW);
     }
 }
 

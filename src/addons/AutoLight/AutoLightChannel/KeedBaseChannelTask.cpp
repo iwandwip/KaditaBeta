@@ -296,30 +296,44 @@ void KeedBaseChannel::taskSequence7() {
 
 void KeedBaseChannel::taskSequence8() {
     auto setWaveLed = [&](int value) -> void {
-        for (int i = 0; i < (cfg.pin_size / 2) + 2; ++i) {
-            if (i < ((cfg.pin_size / 2) / 2) + 1) {
+        for (int i = 0; i < (cfg.pin_size / 2); ++i) {
+            if (i < ((cfg.pin_size / 2) / 2)) {
                 set(cfg.pin_ptr[i], value);
-                if (!((i == (cfg.pin_size / cfg.pin_size)) || (i == ((cfg.pin_size / 2) / 2)))) {
-                    if (i > (cfg.pin_size / cfg.pin_size) && (i < ((cfg.pin_size / 2) / 2))) {
-                        set(cfg.pin_ptr[(cfg.pin_size / 2) - i], value);
-                    } else {
-                        set(cfg.pin_ptr[(cfg.pin_size / 2) - (i + 1)], value);
-                    }
-                }
+                set(cfg.pin_ptr[(cfg.pin_size / 2) - (i + 1)], value);
             } else {
-                set(cfg.pin_ptr[i + (cfg.pin_size / 2) - 2], value);
-                if (!((i + (cfg.pin_size / 2) - 2 == (cfg.pin_size - 2)) || (i + (cfg.pin_size / 2) - 2 == (cfg.pin_size / 2) + (((cfg.pin_size / 2) / 2) - 1)))) {
-                    if ((i + (cfg.pin_size / 2) - 2 < (cfg.pin_size - 2)) && (i + (cfg.pin_size / 2) - 2 > (cfg.pin_size / 2) + (((cfg.pin_size / 2) / 2) - 1))) {
-                        set(cfg.pin_ptr[(cfg.pin_size - (i + (cfg.pin_size / 2) - 2)) + (cfg.pin_size / 2) - 2], value);
-                    } else {
-                        set(cfg.pin_ptr[cfg.pin_size / 2], value);
-                    }
-                }
+                set(cfg.pin_ptr[i + (cfg.pin_size / 2)], value);
+                set(cfg.pin_ptr[(cfg.pin_size) - i - 1], value);
             }
             sleep(cfg.delay_time);
         }
     };
-
     setWaveLed(HIGH);
     setWaveLed(LOW);
+
+//    auto setWaveLedCustom = [&](int value) -> void {
+//        for (int i = 0; i < (cfg.pin_size / 2) + 2; ++i) {
+//            if (i < ((cfg.pin_size / 2) / 2) + 1) {
+//                set(cfg.pin_ptr[i], value);
+//                if (!((i == (cfg.pin_size / cfg.pin_size)) || (i == ((cfg.pin_size / 2) / 2)))) {
+//                    if (i > (cfg.pin_size / cfg.pin_size) && (i < ((cfg.pin_size / 2) / 2))) {
+//                        set(cfg.pin_ptr[(cfg.pin_size / 2) - i], value);
+//                    } else {
+//                        set(cfg.pin_ptr[(cfg.pin_size / 2) - (i + 1)], value);
+//                    }
+//                }
+//            } else {
+//                set(cfg.pin_ptr[i + (cfg.pin_size / 2) - 2], value);
+//                if (!((i + (cfg.pin_size / 2) - 2 == (cfg.pin_size - 2)) || (i + (cfg.pin_size / 2) - 2 == (cfg.pin_size / 2) + (((cfg.pin_size / 2) / 2) - 1)))) {
+//                    if ((i + (cfg.pin_size / 2) - 2 < (cfg.pin_size - 2)) && (i + (cfg.pin_size / 2) - 2 > (cfg.pin_size / 2) + (((cfg.pin_size / 2) / 2) - 1))) {
+//                        set(cfg.pin_ptr[(cfg.pin_size - (i + (cfg.pin_size / 2) - 2)) + (cfg.pin_size / 2) - 2], value);
+//                    } else {
+//                        set(cfg.pin_ptr[cfg.pin_size / 2], value);
+//                    }
+//                }
+//            }
+//            sleep(cfg.delay_time);
+//        }
+//    };
+//    setWaveLedCustom(HIGH);
+//    setWaveLedCustom(LOW);
 }
