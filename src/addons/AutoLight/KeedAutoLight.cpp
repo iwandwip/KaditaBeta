@@ -12,7 +12,8 @@ bool strchx(const byte *a, const byte *b);
 
 KeedAutoLight::KeedAutoLight()
         : ioBase(nullptr),
-          keedBase(nullptr) {}
+          keedBase(nullptr),
+          isReadyRun(false) {}
 
 KeedAutoLight::~KeedAutoLight() {
     free(ioBase);
@@ -42,12 +43,17 @@ cfg_error_t KeedAutoLight::init() {
         }
     }
     keedBase->init(ioBase, cfg);
+    isReadyRun = true;
     return INITIALIZE_OK;
 }
 
 void KeedAutoLight::runAutoLight() {
     if (keedBase == nullptr) return;
     keedBase->run();
+}
+
+bool KeedAutoLight::isReady() {
+    return isReadyRun;
 }
 
 void KeedAutoLight::setInterruptConfig(interrupt_t _cfg) {

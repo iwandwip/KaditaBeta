@@ -18,6 +18,7 @@ private:
     IOExpander **ioBase;
     KeedBase *keedBase;
     uint8_t ioLen;
+    bool isReadyRun;
 
     void addIoExpander(IOExpander *ioExpander);
     bool beginExpander();
@@ -33,6 +34,7 @@ public:
 
     void runAutoLight();
     void showInfo();
+    bool isReady();
 
     void setInterruptConfig(interrupt_t _cfg);
     interrupt_t getInterruptConfig();
